@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start Head -->
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" content="R package actel.">
+
+    <title>actel: Manual</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="assets/images/actel_favicon.ico"/>
+    <!-- Font Awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- Slick slider -->
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- Modal popup -->
+    <link href="assets/css/modal.css" rel="stylesheet">
+
+    <!-- Main Style -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/section_image_bg.css" rel="stylesheet">
+    <link href="assets/css/basic_typography.css" rel="stylesheet">
+    <link href="assets/css/dropdown_menu.css" rel="stylesheet">
+    <link href="assets/css/tables.css" rel="stylesheet">
+    <link href="assets/css/buttons.css" rel="stylesheet">
+    <link href="assets/css/size_responsiveness.css" rel="stylesheet">
+
+    <!-- Fonts -->
+
+    <!-- Poppins For Title -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+ 
+		<!-- navBar  -->
+    <link href="assets/css/navBar_for_white_bg.css" rel="stylesheet">
+    <link href="assets/css/navBar-second_for_white_bg.css" rel="stylesheet">
+	</head>
+<!-- End Head -->
+<!-- Start Body -->
+<body>
+  <div class="page-container">	
+  <!--START SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#">
+      <i class="fa fa-angle-up"></i>
+    </a>
+  <!-- END SCROLL TOP BUTTON -->
+  <!-- Start NavBar -->
+		<div class="navBar" id="navBar">
+		  <a href="home.html">Home</a>
+		  <a href="news.html">News</a>
+		  <button onclick="toogleManualNavBarResponsive()"><strong>Manual</strong> <i class="fa-solid fa-caret-down"></i></button>
+		  <a href="mailto:hflavio@wlu.ca" onclick="closeNavBarDropdown()">Need help?<i class="fa fa-envelope" style="padding-left: 10px"></i></a>
+		  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleNavBarResponsive()"><i class="fa fa-bars"></i></a>
+		</div>
+	<!-- End NavBar -->
+  <!-- Start manual NavBar -->
+		<div class="navBar-second" id="navBar-manual">
+		  <a href="manual-home.html">Section index</a>
+		  <a href="manual-data.html"><strong>Input data</strong></a>
+		  <a href="manual-explore.html"><code>explore()</code></a>
+		  <a href="manual-migration.html"><code>migration()</code></a>
+		  <a href="manual-residency.html"><code>residency()</code></a>
+		  <a href="manual-manual.html">Manual mode</a>
+		  <a href="manual-beyond.html">Beyond the three analyses</a>
+		  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleManualNavBarResponsive()"><i class="fa-solid fa-arrow-left"></i></a>
+		</div>
+	<!-- End manual NavBar -->
+	<!-- Start Main Content -->
+	<main>
+		<section class="section-white-bg">
+			<div class="container">
+					
+				<div class="col-md-12 section-white-bg-area">
+
+					<h2>Different types of input data</h2>
+					<div class="manual">
+						<p>
+							Actel requires that you organise your input data in a specific fashion. Critically, you should have a file named <strong>biometrics.csv</strong>, one named <strong>spatial.csv</strong>, and one named <strong>deployments.csv</strong> (we will look into the file contents in detail soon). Finally, you also need a <strong>detections directory</strong>, containing all your detection files in <strong>.csv</strong> format. 
+						</p>
+						<p>
+							To create a blank workspace ready to be used, run <code>createWorkspace()</code>, and a template will be generated automatically in an "actel_workspace" directory. If you would like to, you can change the name of the target directory by using the argument <code>dir</code>. Remember to delete the example rows before including your data!
+						</p>
+
+						<div class="callout">
+						  <div class="callout-header"> Note for advanced R users</div>
+						  <div class="callout-container">
+						    <p>You can run actel analyses using R objects as an input, rather than input files. Read more about it <a href="manual-preload.html">in this dedicated page.</a></p>
+						  </div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-8 manual">
+							<h3>Covered in this page:</h3>
+					
+							<div class="row">
+								<div class="col-md-6 manual">
+									<ul class="fa-ul">
+										<li><i class="fa-li fa fa-angle-right manual-list-icon"></i><a href="#biometrics-file">Biometrics file</a></li>
+										<li><i class="fa-li fa fa-angle-right manual-list-icon"></i><a href="#spatial-file">Spatial file</a></li>
+										<li><i class="fa-li fa fa-angle-right manual-list-icon"></i><a href="#deployments-file">Deployments file</a></li>
+										<li><i class="fa-li fa fa-angle-right manual-list-icon"></i><a href="#detections">Detections</a></li>
+									</ul>
+								</div>
+
+
+								<div class="col-md-6 manual stack-list">
+									<ul class="fa-ul">
+										<li><i class="fa-li fa fa-angle-right manual-list-icon"></i><a href="#distances-matrix">Optional: Distances matrix</a></li>
+										<li><i class="fa-li fa fa-angle-right manual-list-icon"></i><a href="#spatial-txt">Optional: Spatial.txt file</a></li>
+										<li><i class="fa-li fa fa-angle-right manual-list-icon"></i><a href="#running-analysis">Running the analysis</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4 manual">
+							<h3>Related:</h3>
+						
+							<div class="manual">
+								<ul class="fa-ul">
+									<li><i class="fa-li fa fa-angle-right manual-list-icon"></i><a href="manual-study-area.html">Structuring your study area so actel understands it</a></li>
+									<li><i class="fa-li fa fa-angle-right manual-list-icon"></i><a href="manual-distances.html">Calculating a distances matrix</a></li>
+									<li><i class="fa-li fa fa-angle-right manual-list-icon"></i><a href="manual-preload.html">Running the analyses with R objects instead (the <code>preload()</code> function)</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+
+			<section class="section-white-bg" id="biometrics-file">
+				<div class="container">
+
+					<div class="col-md-12 section-white-bg-area">
+
+						<h2>Biometrics file</h2>
+						<div class="manual">
+							
+							<p>
+								Your biometrics file should look similar to this:
+							</p>
+
+							<div style="overflow-x:auto;">
+
+								<table><tr><th>Release.date</th><th>Signal</th><th>Sensor.unit</th><th>Length.mm</th><th>Weight.g</th><th>Group</th><th>Release.site</th><th>...</th></tr><tr><td>2018-02-01 10:05:00</td><td>501</td><td>T</td><td>150</td><td>40</td><td>Wild</td><td>Site A</td><td>...</td></tr><tr><td>2018-02-01 10:15:00</td><td>502|503</td><td>T|D</td><td>160</td><td>60</td><td>Hatchery</td><td>Site A</td><td>...</td></tr><tr><td>2018-02-01 10:15:00</td><td>504|505|506</td><td>T|D|A</td><td>170</td><td>50</td><td>Wild</td><td>Site B</td><td>...</td></tr></table>
+
+							</div>
+
+							<p>
+								Although the column order is not important, it is essential that this table contains two columns:
+							</p>
+
+							<p>
+								<strong>Release.date:</strong> Corresponds to the date and time when the animal was released, and <strong>must</strong> be typed in <strong>yyyy-mm-dd hh:mm:ss</strong> format. Note that the timestamps must be in the <strong>local time zone</strong> of the study area, which you will later supply in the <code>tz</code> argument.
+							</p>
+
+							<p>
+								<strong>Signal:</strong> Corresponds to the code emitted by your tags. If you are unsure as to what signals are, you should ask the tag manufacturer more about the differences between code spaces and signals.
+
+
+							<div class="callout">
+							  <div class="callout-header">Note:</div>
+							  <div class="callout-container">
+							    <p>If you do not include a "Code.space" column, actel will pick the code space that appears in the detections. If you want to be really sure that you are really picking your transmitter (i.e. a given signal in a given code space), make sure to include the code space as well.</p>
+							    <p>Code spaces may have different names for different manufacturers. Currently, actel will convert the following name spaces automatically, unless the <code>preload()</code> function is being used: "A69-1008" to "R256", "A69-1206" to "R94K", "A69-1105" to "S256" and "A69-1303" to "R64K". To deactivate this automatic conversion, set <code>options(actel.auto.convert.codespaces = FALSE)</code>.</p>
+							  </div>
+							</div>
+								
+
+							<p>
+								The <strong>Group</strong> and <strong>Release.site</strong> columns are also important but, if you only have one group or one release site, actel can generate these columns for you. If this happens, you will receive a message:
+							</p>
+							
+<pre>
+
+M: No Release site has been indicated in the biometrics file. Creating a 'Release.site' column to avoid script failure. Filling with 'unspecified'.
+M: No 'Group' column found in the biometrics file. Assigning all animals to group 'All'.
+
+</pre>
+
+							<div class="callout">
+							  <div class="callout-header">Note:</div>
+							  <div class="callout-container">
+							    <p>You can append as many columns as you want to <strong>biometrics.csv</strong>. Importantly, if the biometrics have columns with keywords such as <em>length</em>, <em>weight</em> or <em>mass</em>, graphics showing the distribution of these parameters per animal group will be drawn for you in the report.</p>
+							  </div>
+							</div>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</section>
+
+			<section class="section-white-bg" id="spatial-file">
+				<div class="container">
+
+					<div class="col-md-12 section-white-bg-area">
+
+						<h2>Spatial file</h2>
+						<div class="manual">
+							
+							<p>
+								Your spatial file should look similar to this:
+							</p>
+
+							<div style="overflow-x:auto;">
+
+								<table><tr><th>Station.name</th><th>Latitude</th><th>Longitude</th><th>Section</th><th>Array</th><th>Type</th></tr><tr><td>River East</td><td>8.411</td><td>40.411</td><td>River</td><td>A1</td><td>Hydrophone</td></tr><tr><td>River West</td><td>8.521</td><td>40.521</td><td>River</td><td>A1</td><td>Hydrophone</td></tr><tr><td>Estuary</td><td>8.402</td><td>40.402</td><td>River</td><td>A3</td><td>Hydrophone</td></tr><tr><td>Site A</td><td>8.442</td><td>40.442</td><td></td><td>A1</td><td>Release</td></tr><tr><td>Site B</td><td>8.442</td><td>40.442</td><td></td><td>A2</td><td>Release</td></tr></table>
+
+							</div>
+
+							<p>
+								In this file you should include both your station deployment sites and your release sites. It is essential that this table has the following columns:
+							</p>
+
+							<p>
+								<strong>Station.name:</strong> The name of the station will be used to match the receiver deployments.
+							</p>
+
+							<p>
+								<strong>Array:</strong> 
+							</p>
+							<p>- If you are listing a station: The array to which the station belongs. </p>
+							<p>- If you are listing a release site: The first array(s) that the animal is expected to cross after being released.</p>
+
+
+							<p>
+								<strong>Section:</strong> The study area section to which the hydrophone station belongs. Leave empty for the release sites.
+							</p>
+
+
+
+							<p>
+								<strong>Type:</strong> The nature of the item you are listing. You <strong>must</strong> choose between "Hydrophone" or "Release".
+							</p>
+
+
+
+							<div class="callout">
+							  <div class="callout-header">Note:</div>
+							  <div class="callout-container">
+							    <p>The release sites must have <strong>exactly</strong> the same names in the biometrics table and in the spatial table. If there is a mismatch, actel will stop.</p>
+
+							  </div>
+							</div>
+								
+							<p>If the spatial table contains release site information, but the biometrics table does not, release site information will be discarded and the following warning is issued:</p>
+							
+<pre>
+
+Warning: At least one release site has been indicated in the spatial file, but no release sites were specified in the biometrics file.
+Discarding release site information to avoid script failure. Please doublecheck your data.
+
+</pre>
+
+							<p><a href="manual-study-area.html">Learn more about how to fit your study area into a spatial.csv file.</a></p>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+
+			<section class="section-white-bg" id="deployments-file">
+				<div class="container">
+
+					<div class="col-md-12 section-white-bg-area">
+
+						<h2>Deployments file</h2>
+						<div class="manual">
+											
+							<p>
+								The deployments file is where you will list the receivers you used in the study. Here is an example:
+							</p>
+
+							<div style="overflow-x:auto;">
+
+								<table><tr><th>Receiver</th><th>Station.name</th><th>Start</th><th>Stop</th></tr><tr><td>11111</td><td>River East</td><td>2018-01-01 11:30:00</td><td>2018-05-03 09:30:00</td></tr><tr><td>22222</td><td>River West</td><td>2018-01-01 11:33:00</td><td>2018-05-04 08:33:00</td></tr><tr><td>33333</td><td>Estuary</td><td>2018-01-01 11:34:00</td><td>2018-05-05 12:00:00</td></tr></table>
+
+							</div>
+
+							<p>
+								Short description of the columns:
+							</p>
+
+							<p>
+								<strong>Receiver:</strong> The serial number of the receiver. If a receiver was retrieved and re-deployed, you should add extra rows for each deployment.
+							</p>
+
+							<p>
+								<strong>Station.name:</strong> The name of the station where the receiver was deployed. It <strong>must</strong> match one of the station names in the spatial file.
+							</p>
+
+							<p>
+								<strong>Start and Stop:</strong> The times when the receiver was deployed and when the receiver was retrieved, respectively. Must be in a <strong>yyyy-mm-dd hh:mm:ss</strong> format. Note that these timestamps <strong>must</strong> be in the local time zone of the study area, which you will later supply in the <code>tz</code> argument.
+							</p>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section-white-bg" id="detections">
+				<div class="container">
+
+					<div class="col-md-12 section-white-bg-area">
+
+						<h2>Detections</h2>
+						<div class="manual">
+										
+							<p>Including your detections is the easiest part. Copy the <em>.csv</em> files offloaded from your receivers to the <em>detections</em> folder that was created by the <code>createWorkspace()</code> function and actel will know they are to be imported. Right now actel can upload files generated specifically for actel, or generated by VEMCO and THELMA manufactured receivers. If you have an receiver from a different manufacturer, or if you are using one of the supported manufacturers and get the warning displayed below, please contact me so we can solve the issue.</p>
+
+<pre>
+
+Warning: File 'filename' does not match to any of the supported hydrophone file formats! If your file corresponds to a hydrophone log and actel did not recognize it, please get in contact through www.github.com/hugomflavio/actel/issues/new
+
+</pre>
+
+			
+							<div class="callout">
+							  <div class="callout-header">Note:</div>
+							  <div class="callout-container">
+							    <p>The detection timestamps <strong>must</strong> be in UTC. This is the default time zone used by the receivers, so as long as you did not edit the raw files, all should be ready to go</p>
+							  </div>
+							</div>
+						</div>
+					
+						<h3>Standard detections file</h3>
+
+						<div class="manual">
+							
+							<p>If you are working with a large database, odds are your detection data is no longer in the format of any given manufacturer. To import this data into actel, please prepare a .csv file with the following format:</p>
+
+							<div style="overflow-x:auto;">
+
+								<table><tr><th>Timestamp</th><th>Receiver</th><th>CodeSpace</th><th>Signal</th><th>Sensor.Value</th><th>Sensor.Unit</th></tr><tr><td>2018-01-01 11:30:00</td><td>11111</td><td>A12-3456</td><td>1234</td><td>10</td><td>T</td></tr><tr><td>2018-01-01 11:33:00</td><td>22222</td><td>A12-3456</td><td>1235</td><td>5.3</td><td>D</td></tr><tr><td>2018-01-01 11:34:00</td><td>33333</td><td>R64K</td><td>203</td><td>13.6</td><td>T</td></tr></table>
+
+							</div>
+
+
+							<div class="callout">
+							  <div class="callout-header">Note:</div>
+							  <div class="callout-container">
+							    <p>Timestamp data can use a space separator or a "T" separator between the date and time, but <strong>should always be in UTC</strong>.</p>
+							    <p>Only list the receiver's <strong>serial number</strong> in the receiver column (e.g. "13014" rather than "VR2W-13014", or "111" rather than "TBR-111").</p>
+							    <p>The column order is irrelevant, but the <strong>column names should be an exact match</strong> to what is displayed.</p>
+							  </div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<section class="section-white-bg" id="distances-matrix">
+				<div class="container">
+
+					<div class="col-md-12 section-white-bg-area">
+
+						<h2>Optional: Distances matrix</h2>
+						<div class="manual">
+									
+							<p>A distances matrix is a table that contains information on the distance (in metres) between every pair of spatial elements in your study area (i.e. your stations and your release sites). It looks like the table below:</p>
+
+							<div style="overflow-x:auto;">
+
+								<table><tr><th></th><th>St.1</th><th>St.2</th><th>St.3</th><th>St.4</th><th>St.5</th><th>St.6</th><th>Release</th></tr><tr><td>St.1</td><td>0</td><td>1366</td><td>3417</td><td>6912</td><td>8863</td><td>9272</td><td>2229</td></tr><tr><td>St.2</td><td>1366</td><td>0</td><td>2051</td><td>5545</td><td>7497</td><td>7906</td><td>3569</td></tr><tr><td>St.3</td><td>3417</td><td>2051</td><td>0</td><td>3528</td><td>5479</td><td>5888</td><td>5621</td></tr><tr><td>St.4</td><td>6912</td><td>5545</td><td>3528</td><td>0</td><td>1963</td><td>2372</td><td>9115</td></tr><tr><td>St.5</td><td>8863</td><td>7497</td><td>5479</td><td>1963</td><td>0</td><td>408</td><td>11067</td></tr><tr><td>St.6</td><td>9272</td><td>7906</td><td>5888</td><td>2372</td><td>408</td><td>0</td><td>11476</td></tr><tr><td>Release</td><td>2229</td><td>3569</td><td>5621</td><td>9115</td><td>11067</td><td>11476</td><td>0</td></tr></table>
+
+							</div>
+							
+
+							<p><a href="manual-distances.html">Learn more about creating distances matrices.</a></p>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<section class="section-white-bg" id="spatial-txt">
+				<div class="container">
+
+					<div class="col-md-12 section-white-bg-area">
+
+						<h2>Optional: Spatial.txt file</h2>
+						<div class="manual">
+											
+							<p>If your study area has multiple branches, then you need to tell actel how your arrays connect with each other. This file is optional because, if omitted, actel will assume that your study area is composed by a single branch and that the array order is the one listed in the spatial.csv file.</p>
+
+							<p>The spatial.txt file is very simple; all you need to do is connect your arrays with either dashes or arrows (find out the difference below). You can connect your arrays in pairs or make longer strings. To decide whether or not two arrays should be connected, ask yourself the following: "Can the animals move from A to B without having to pass through any other array?" If the answer is yes, then the arrays should be connected. Let's have a look at some examples:</p>
+
+						</div>
+
+
+						<div class="manual">
+							<h3>One branch study area, fully covering arrays</h3>
+											
+							<p>This is the simplest case, e.g. your animals are migrating through a channel, and your arrays split this channel in sections. Like in the figure below:</p>
+
+							<div class="image-margins">
+								<img src="assets/images/manual/spatialtxt_a.svg" alt="drawing" width="600"/>
+							</div>
+
+							<p>For this specific case you do not need to include a spatial.txt file, as long as you order the arrays in the spatial.csv file. However, if you wanted to include a spatial.txt file, it would look like this:</p>
+
+<pre>
+
+A -- B -- C -- D -- E
+
+</pre>
+
+							<p>Note that you could also specify only one connection per line. E.g.:</p>
+
+<pre>
+
+A -- B 
+B -- C 
+C -- D 
+D -- E
+
+</pre>							
+
+
+						</div>
+
+						<div class="manual">
+							<h3>One branch study area, partly-covering arrays</h3>
+											
+							<p>This case is similar to above, but some arrays do not cover the totality. For example, they may cover a specific area of a lake (e.g. a spawning ground), Like in the figure below:</p>
+
+							<div class="image-margins">
+								<img src="assets/images/manual/spatialtxt_b.svg" alt="drawing" width="600"/>
+							</div>
+
+							<p>In this case, the animals can move from B to D without passing through C. As such, a spatial.txt file is now required, and it would look like this:</p>
+
+<pre>
+A -- B -- D -- E
+B -- C
+C -- D
+</pre>
+
+							<p>Note that now, B, C and D are all directly connected with each other.</p>
+
+						</div>
+
+						<div class="manual">
+							<h3>Multi branch study areas</h3>
+											
+							<p>In this case, the water channel branches into multiple paths, which may then merge again or not, like in the figure below:</p>
+
+							<div class="image-margins">
+								<img src="assets/images/manual/spatialtxt_c.svg" alt="drawing" width="600"/>
+							</div>
+
+							<p>Things are getting a bit more complex now. To make sure you do not miss any connection, it can be useful to draw in a map the links between the arrays as you write them down, so you can check at the end if everything is done. Below, I have marked in purple the connections between all the arrays:</p>
+
+							<div class="image-margins">
+								<img src="assets/images/manual/spatialtxt_d.svg" alt="drawing" width="600"/>
+							</div>
+
+
+							<p>And here is the respective spatial.txt:</p>
+<pre>
+A -- B 
+A -- E
+A -- F
+B -- E
+B -- F
+E -- F
+B -- C
+C -- D
+C -- E
+E -- D
+F -- G
+</pre>
+
+							<p>Or, in the shortened version:</p>
+
+<pre>
+A -- B -- C -- D
+A -- E -- D
+A -- F -- G
+B -- E -- F
+B -- F
+C -- E
+</pre>				
+
+							<p>If are feeling wary of including multiple links in a single line, you can use the function <code>readDot</code> to read your spatial.txt file before starting the analysis and see if everything checks out. E.g.: <code>readDot(input = "spatial.txt")</code></p>							
+
+
+							<div class="callout">
+							  <div class="callout-header">Note:</div>
+							  <div class="callout-container">
+							    <p>This file can be called either "spatial.dot" or "spatial.txt", and you can create it using a simple text editor such as notepad, kate, VIM, etc.</p>
+							  </div>
+							</div>
+
+
+
+						</div>
+
+						<div class="manual">
+							<h3>Array direction</h3>
+											
+							<p>
+								In the migration analysis, array direction is relevant. That means that writing <code>A -- B</code> is not the same as writing <code>B -- A</code>. In the first case, array B comes after array A (i.e. the animals are expected to reach A before reaching B), while in the second case the situation is reversed. This has implications for array efficiency calculations, so be sure to encode your study area carefully.
+							</p>
+							<p>
+								If you intend to run an explore or residency analysis, array direction is irrelevant.
+							</p>
+
+						</div>
+
+
+						<div class="manual">
+							<h3>explore()/residency() vs migration()</h3>
+
+							<p>
+								An optimal spatial.txt may differ depending on whether you want to run a migration or an explore/residency analysis. This is because actel interprets the spatial.txt file differently depending on the analysis:
+							</p>
+
+							<p>
+								In an explore/residency analyses, <code>A -- B</code> should be read as: <em>It is possible to move from array A to array B and vice-versa.</em>
+							</p>
+
+							<p>
+								In a migration analysis, <code>A -- B</code> should be read as: <em> It is possible to move from array A to array B and vice-versa, AND the animals are expected to pass through array A before reaching array B.</em>
+							</p>
+
+							<p>Let's have a look at this example.</p>
+
+							<div class="image-margins">
+								<img src="assets/images/manual/multi_way_efficiency.svg" alt="drawing" width="600"/>
+							</div>
+
+							<p>In this case, the spatial.txt for a residency analysis would look like this:</p>
+
+<pre>
+
+A -- B -- C -- G
+A -- D -- E -- G
+D -- F -- G
+D -- B
+C -- E
+C -- F
+E -- F
+
+</pre>
+
+							<p>But a spatial.txt for a migration analysis would look like this:</p>
+
+<pre>
+
+A -- B -- C -- G
+A -- D -- E -- G
+D -- F -- G
+D -- B -- D
+C -- E -- C
+C -- F -- C
+E -- F -- E
+
+</pre>
+
+							<p>The difference here is that, in the spatial.txt for migration, actel expects arrays to connected in a directional way. That means that connecting <code>D -- B</code> and <code>B -- D</code> does not mean the same thing, and it is important that you explicitly state that the animals are as likely to reach B coming from D as they are to reach D coming from B. In other words, you are saying that neither of the movements would be an explicit backwards movement. This will inform actel that D and B are parallel arrays, and that special rules should apply to them. The same goes for C, E and F.
+
+
+
+						</div>
+
+						<div class="manual">
+							<h3>Barriers</h3>
+
+							<p>Sometimes it is possible for your animals to go from A to B, but not from B to A. In actel, you can include this information to further refine the analysis. In total, there are three symbols you can use to connect your arrays: <code>--</code>, <code>-></code> or <code><-</code>.</p>
+
+							<p>If the animals can move from A to B and vice-versa, use <code>A -- B</code>.</p>
+
+							<p>If the animals can only move from A to B, use either <code>A -> B</code> or <code>B <- A</code>.</p>
+
+							<p>If an animal then actually moves from B to A, actel will try to find an alternative route that the animal could have taken. If there are no alternative routes from B to A, actel will call this situation to your attention.</p>
+
+							<p>This has implications for array efficiency calculations, so be sure to encode your study area carefully.</p>
+
+							<p>You can find more information about <a href="manual-explore-processes.html#impassables">impassable barriers here.</a></p>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+
+			<section class="section-white-bg" id="running-analysis">
+				<div class="container">
+
+					<div class="col-md-12 section-white-bg-area">
+
+						<h2>Running the analysis</h2>
+						<div class="manual">
+												
+							<p>Now that you have prepared your workspace, it is time to start the analysis. The first thing you need to do is decide which analysis you want to run: <code>explore()</code>, <code>migration()</code> or <code>residency()</code>. Here is some more information on them:</p>
+
+						</div>
+
+						<div class="row">
+							<div class="col-md-4">
+								<div class="manual">
+
+									<h3><code>explore()</code></h3>
+									<p><code>explore()</code> allows you to quickly get a summary of your data. You can use <code>explore()</code> to get a general feel for the study results, and check if the input files are behaving as expected. It is also a good candidate if you just want to validate your detections for later use in other analyses.</p>
+
+									<p><a href="manual-explore.html">Learn more about the <code>explore()</code> function.</a></p>
+
+								</div>
+							</div>
+
+							<div class="col-md-4">
+								<div class="manual">
+									<h3><code>migration()</code></h3>
+									<p>The <code>migration()</code> analysis runs the same initial checks as <code>explore()</code>, but on top of it, it analyses the animal behaviour. By selecting the arrays that lead to success, you can define whether or not your animals survived the migration. Additional plots help you find out if some animal/tag has been acting odd. Multiple options allow you to tweak the analysis to fit your study perfectly.</p>
+
+									<p><a href="manual-migration.html">Learn more about the <code>migration()</code> function.</a></p>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="manual">
+									<h3><code>residency()</code></h3>
+									<p>The <code>residency()</code> analysis runs the same initial checks as <code>explore()</code>, but, similarly to migration, explores particular points of the animal behaviour. If you want to know where your animals were in each day of the study, how many animals were in each section each day, and other residency-focused variables, this is the analysis you are looking for!</p>
+
+									<p><a href="manual-residency.html">Learn more about the <code>residency()</code> function.</a></p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</section>
+
+
+		<!-- End Actions -->
+		</main>
+	<!-- End main content -->	
+	<!-- Start footer -->
+		<footer id="st-footer">
+			<div class="container">
+			<!-- Start Disclaimer Modal -->
+				<div class="modal fade" id="DisclaimerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered mw-100 w-75" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title">Copyright/Disclaimer Information</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+							  <div class="container-fluid">
+									  <div class="row middle-row">
+									  	<h5>Disclaimer</h5>
+											<p>SMOLTRACK accepts no responsibility for and excludes all liability in connection with browsing the website, use of information on the website and downloading any material from the website including but not limited to any liability for errors, inaccuracies, omissions or defamatory or misleading statements. SMOLTRACK reserves the right, in its sole discretion and without any obligation, to make improvements to, or correct any errors or omissions in any portion of the information displayed on the website.</p>
+											<p>The contents presented in the SMOLTRACK website are for general information only. No reliance should be placed upon the contents of the website. Advice and verification should be sought through our contacting information.</p>
+											<h5>Linking to Third Party Sites</h5>
+											<p>SMOLTRACK assumes no responsibility for the contents of linked websites. The inclusion of any link should not be taken as an endorsement of any kind by SMOLTRACK of the linked website or any association with its operators. Further, SMOLTRACK has no control over the availability of the linked pages.</p>
+											<h5>Copyright Notice</h5>
+											<p>Material on this website, including text and images, is protected by copyright. It may not be copied, reproduced, republished, downloaded, posted, broadcast or transmitted in any way except for your own personal, non-commercial use. Prior written consent of the copyright holder must be obtained for any other use of material. Copyright in all materials and/or works comprising or contained within this website remains with SMOLTRACK and other copyright owner(s) as specified. No part of this site or sub-domains of this site may be distributed or copied for any commercial purpose.</p>
+								    </div>
+						    </div>
+					      <div class="modal-footer">
+								  <button class="btn btn-secondary" onclick="location.href='mailto:smoltrack@gmail.com';">Contact us<i class="fa fa-envelope" style="padding-left: 10px"></i></button>
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</div>
+			<!-- End Disclaimer Modal -->
+				<div class="st-footer-area">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="st-footer-left">
+								<p class="st-copy-right">actel: Simplifying acoustic telemetry data analysis</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="st-footer-right">
+								<div class="st-social-media">
+									<a href="mailto:hflavio@wlu.ca" target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i></a>
+									<a href="https://ecoevo.social/@HugoMFlavio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-mastodon"></i></a>
+									<!-- <a href="#"><i class="fa fa-youtube"></i></a> -->
+									<button id="DisclaimerBtn" type="button" class="st-disclaimer-btn" data-toggle="modal" data-target="#DisclaimerModal">
+									  Terms of Use
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	<!-- End footer -->	
+	<!-- Start JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+		<!-- Slick slider -->
+	    <script type="text/javascript" src="assets/js/slick.min.js"></script>
+   	<!-- Ajax contact form  -->
+	    <script type="text/javascript" src="assets/js/app.js"></script>
+  	<!-- Modal popup -->
+	    <script type="text/javascript" src="assets/js/modal.js"></script>
+    <!-- Custom js -->
+			<script type="text/javascript" src="assets/js/custom.js"></script>
+			<script type="text/javascript" src="assets/js/navBar.js"></script>
+
+			<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+  <!-- End JavaScript -->
+	</div>
+  </body>
+<!-- End Body -->
+</html>
+
+
+

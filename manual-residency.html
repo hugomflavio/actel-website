@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start Head -->
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" content="R package actel.">
+
+    <title>actel: Manual</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="assets/images/actel_favicon.ico"/>
+    <!-- Font Awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- Slick slider -->
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- Modal popup -->
+    <link href="assets/css/modal.css" rel="stylesheet">
+
+    <!-- Main Style -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/section_image_bg.css" rel="stylesheet">
+    <link href="assets/css/basic_typography.css" rel="stylesheet">
+    <link href="assets/css/dropdown_menu.css" rel="stylesheet">
+    <link href="assets/css/tables.css" rel="stylesheet">
+    <link href="assets/css/buttons.css" rel="stylesheet">
+    <link href="assets/css/size_responsiveness.css" rel="stylesheet">
+    <link href="assets/css/prism.css" rel="stylesheet">
+
+    <!-- Fonts -->
+
+    <!-- Poppins For Title -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+ 
+		<!-- navBar  -->
+    <link href="assets/css/navBar_for_white_bg.css" rel="stylesheet">
+    <link href="assets/css/navBar-second_for_white_bg.css" rel="stylesheet">
+
+    <!-- Code colouring -->
+		<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+
+	</head>
+<!-- End Head -->
+<!-- Start Body -->
+  <body>
+  <div class="page-container">	
+  <!--START SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#">
+      <i class="fa fa-angle-up"></i>
+    </a>
+  <!-- END SCROLL TOP BUTTON -->
+  <!-- Start NavBar -->
+		<div class="navBar" id="navBar">
+		  <a href="home.html">Home</a>
+		  <a href="news.html">News</a>
+		  <button onclick="toogleManualNavBarResponsive()"><strong>Manual</strong> <i class="fa-solid fa-caret-down"></i></button>
+		  <a href="mailto:hflavio@wlu.ca" onclick="closeNavBarDropdown()">Need help?<i class="fa fa-envelope" style="padding-left: 10px"></i></a>
+		  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleNavBarResponsive()"><i class="fa fa-bars"></i></a>
+		</div>
+	<!-- End NavBar -->
+  <!-- Start manual NavBar -->
+		<div class="navBar-second" id="navBar-manual">
+		  <a href="manual-home.html">Section index</a>
+		  <a href="manual-data.html">Input data</a>
+		  <a href="manual-explore.html"><code>explore()</code></a>
+		  <a href="manual-migration.html"><code>migration()</code></a>
+		  <a href="manual-residency.html"><code><strong>residency()</strong></code></a>
+		  <a href="manual-manual.html">Manual mode</a>
+		  <a href="manual-beyond.html">Beyond the three analyses</a>
+		  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleManualNavBarResponsive()"><i class="fa-solid fa-arrow-left"></i></a>
+		</div>
+	<!-- End manual NavBar -->
+	<!-- Start Main Content -->
+		<main>
+		<!-- Start About -->
+			<section class="section-white-bg">
+				<div class="container">
+					
+					<div class="section-white-bg-area">
+
+						<h2>The <code>residency()</code> function</h2>
+						<div class="manual">
+						
+							<p>The <code>residency()</code> function builds on the same principles as the <strong> </strong> function and, in addition, computes metrics aiming to show the animal behaviour over time.</p>
+
+							<p><code>migration()</code> has the same arguments as explore(), and includes a set of new arguments aimed to fine tune the migration-related metrics. Like with explore, you do not need to start working with all arguments right away. For simple study areas, defining the <code>tz</code> is enough to get you going!</p>
+
+							<pre><code class="language-r">migration(tz = "Europe/Copenhagen")</code></pre>
+
+
+						</div>
+
+					</div>
+
+					<div class="section-white-bg-area" id="arguments">
+
+						<h2>Migration arguments</h2>
+						<div class="manual">
+
+						<p>Study areas can differ considerably. The arguments within <code>migration()</code> allow you to capture that diversity!</p>
+
+<pre><code class="language-r">
+migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, minimum.detections = 2, 
+          start.time = NULL, stop.time = NULL, speed.method = c("last to first", "first to first"), 
+          speed.warning = NULL, speed.error = NULL, jump.warning = 2, jump.error = 3, 
+          inactive.warning = NULL, inactive.error = NULL, exclude.tags = NULL, override = NULL, report = FALSE,
+          auto.open = TRUE, discard.orphans = FALSE, save.detections = FALSE, if.last.skip.section = TRUE, 
+          replicates = NULL, disregard.parallels = TRUE, GUI = c("needed", "always", "never"),
+          save.tables.locally = FALSE, detections.y.axis = c("stations", "arrays"))
+</pre></code>
+
+						<p>Below are listed only new arguments that do not exist in <a href = "manual-explore.html#general-arguments">explore</a>.</p>
+
+
+						<h3>section.order</h3>
+
+						<p>For the <code>migration()</code> analysis, the order of the study area sections must reflect the expected order in which your animals will cross them. If a <code>section.order</code> is not provided, actel will order the sections by their appearance in the spatial.csv file. However, if you want to alter this default order, you can specify a given order using this argument. E.g. if you expect your animals to move from the river, to a fjord and ultimately to the sea (and you have receivers in all these ecosystems), then <code>section.order = c("River", "Fjord", "Sea")</code>.</p>
+
+
+						<p>In the other hand, if you expect your animals to migrate upstream, then <code>section.order = c("Sea", "Fjord", "River")</code>. To learn more about how to organise your study area in an actel-friendly way, have a look at [this manual page.](a-1_study_area.html)</p>
+
+						<h3>success.arrays</h3>
+
+						<p>
+						If a tag is last detected at an array listed in <code>success.arrays</code>, the respective animal will be considered to have successfully crossed the study area. By default, the last array of your study area is considered a success array. However, if you are not sure about your last array's efficiency, you can define multiple success arrays (e.g. <code>success.arrays = c("Sea1", "Sea2")</code> ).</p>
+
+
+						<div class="callout">
+						  <div class="callout-header">Note:</div>
+							  <div class="callout-container">
+							    <p>In multi-branch study areas with multiple endings, the last array of each ending is, by default, considered a success array.</p>
+							  </div>
+							</div>
+						</pre>
+
+
+						<h3>if.last.skip.section</h3>
+
+						<p>This option is best explained with examples. Let us assume we have a study area with four arrays: River1, River2, Fjord1 and Fjord2. Now, we have a tag that was last detected at River2. Should this animal be considered to have disappeared in the river or in the fjord? It comes down to how your stations are deployed in the field, and this is what <code>if.last.skip.section</code> is controlling for. Lets have a look at the two maps below.
+						</p>
+
+
+
+
+
+						<div class = "row">
+							<div class="image-margins col-md-6">
+								<img src="assets/images/manual/if_last_skip_section_true.svg" alt="drawing">
+							</div>
+							<div class="image-margins col-md-6">
+								<img src="assets/images/manual/if_last_skip_section_false.svg" alt="drawing">
+							</div>
+						</div>
+
+
+
+
+						<p>On study area **A**, it seems reasonable that a tag last detected at River2 has likely died in the fjord, before reaching Fjord1. In this case, <code>if.last.skip.section = TRUE</code>.</p>
+
+
+
+						<p>However, on study area **B**, if a tag was last detected at River2, it most likely died somewhere in the river. In this case, <code>if.last.skip.section = FALSE</code>.</p>
+
+
+
+						<h3>replicates</h3>
+
+						<p>TOne of the main drawbacks of array efficiency calculations is that it can be tricky to estimate efficiency for arrays which have no valid efficiency peers (i.e. no other arrays that can be used as quality checks). However, if these "isolated" arrays are composed by two lines of receivers, one line can be used as a replicate of the other, which in turn allows for the estimation of intra-array efficiency. If this is your case, then you should make use of the <code>replicates</code> argument.</p>
+
+
+						<div class="callout">
+						  <div class="callout-header">Note:</div>
+							  <div class="callout-container">
+							    <p>Array replication should only be performed if the replicate stations cover the same extent of the migration route section as the opposite stations, and only if the two lines of receivers are close to each other (i.e. one can assume 0% mortality between them). Have a look at the figures below for some examples.</p>
+							  </div>
+							</div>
+						</pre>
+
+
+
+
+						<div class = "row">
+							<div class="image-margins col-md-6">
+								<img src="assets/images/manual/replicates_A.svg" alt="drawing">
+							</div>
+							<div class="image-margins col-md-6">
+								<img src="assets/images/manual/replicates_B.svg" alt="drawing">
+							</div>
+						</div>
+
+						<div class = "row">
+							<div class="image-margins col-md-6">
+								<img src="assets/images/manual/replicates_C.svg" alt="drawing">
+							</div>
+							<div class="image-margins col-md-6">
+								<img src="assets/images/manual/replicates_D.svg" alt="drawing">
+							</div>
+						</div>
+
+
+
+
+						<h3>Setting up the replicates argument</h3>
+
+
+
+						<p>You **must use the stations standard names** (i.e. St.10, St.12) when referring to replicates. If you are not sure what the Standard names are, you can run <code>loadSpatial()</code> in the same folder as your spatial.csv file or <code>loadSpatial(file = "path/to/spatial.csv")</code> to check them out (see the "Standard.name" column).</p>
+
+						<p>Once you know which replicates you want to list for your array(s), you can include them in the analysis. Lets imagine you want to use stations St.1 and St.2 as replicates for the array River1, and St.3 as a replicate for array River3. This is how they should be listed:</p>
+
+						<pre><code class="language-r">migration([...], estimates = list(River1 = c("St.1", "St.2"), River3 = "St.3"))</code></pre>
+
+						<p>Where [...] stands for other arguments you want to specify in the function.</p>
+
+						<p>It is important that you list replicates using the <code>list(Array = "Replicate")</code> construction. Keep this in mind while you prepare the code.</p>
+
+
+
+
+
+						<h3>disregard.parallels</h3>
+
+						<p>This argument controls whether or not the presence of parallel arrays (in multi-branch analyses) should potentially lead to the invalidation of efficiency peers. This argument is a bit tough to explain in few words, so I recommend that you [have a look at how efficiency is calculated in migration()](c-3_migration_efficiency.html#cjs-and-multiple-branches).</p>
+
+						<p>Now that you know how to run the migration analysis, you may want to:
+						</p>
+
+						<p>__[Learn more about what migration() is doing](b-1_explore_processes.html)__
+						</p>
+						<p>__[Learn more about the results of migration()](b-2_explore_results.html)__
+						</p>
+
+					</div>
+				</div>
+			</section>
+
+		<!-- End Actions -->
+		</main>
+	<!-- End main content -->	
+	<!-- Start footer -->
+		<footer id="st-footer">
+			<div class="container">
+			<!-- Start Disclaimer Modal -->
+				<div class="modal fade" id="DisclaimerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered mw-100 w-75" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title">Copyright/Disclaimer Information</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+							  <div class="container-fluid">
+									  <div class="row middle-row">
+									  	<h5>Disclaimer</h5>
+											<p>SMOLTRACK accepts no responsibility for and excludes all liability in connection with browsing the website, use of information on the website and downloading any material from the website including but not limited to any liability for errors, inaccuracies, omissions or defamatory or misleading statements. SMOLTRACK reserves the right, in its sole discretion and without any obligation, to make improvements to, or correct any errors or omissions in any portion of the information displayed on the website.</p>
+											<p>The contents presented in the SMOLTRACK website are for general information only. No reliance should be placed upon the contents of the website. Advice and verification should be sought through our contacting information.</p>
+											<h5>Linking to Third Party Sites</h5>
+											<p>SMOLTRACK assumes no responsibility for the contents of linked websites. The inclusion of any link should not be taken as an endorsement of any kind by SMOLTRACK of the linked website or any association with its operators. Further, SMOLTRACK has no control over the availability of the linked pages.</p>
+											<h5>Copyright Notice</h5>
+											<p>Material on this website, including text and images, is protected by copyright. It may not be copied, reproduced, republished, downloaded, posted, broadcast or transmitted in any way except for your own personal, non-commercial use. Prior written consent of the copyright holder must be obtained for any other use of material. Copyright in all materials and/or works comprising or contained within this website remains with SMOLTRACK and other copyright owner(s) as specified. No part of this site or sub-domains of this site may be distributed or copied for any commercial purpose.</p>
+								    </div>
+						    </div>
+					      <div class="modal-footer">
+								  <button class="btn btn-secondary" onclick="location.href='mailto:smoltrack@gmail.com';">Contact us<i class="fa fa-envelope" style="padding-left: 10px"></i></button>
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</div>
+			<!-- End Disclaimer Modal -->
+				<div class="st-footer-area">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="st-footer-left">
+								<p class="st-copy-right">actel: Simplifying acoustic telemetry data analysis</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="st-footer-right">
+								<div class="st-social-media">
+									<a href="mailto:hflavio@wlu.ca" target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i></a>
+									<a href="https://ecoevo.social/@HugoMFlavio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-mastodon"></i></a>
+									<!-- <a href="#"><i class="fa fa-youtube"></i></a> -->
+									<button id="DisclaimerBtn" type="button" class="st-disclaimer-btn" data-toggle="modal" data-target="#DisclaimerModal">
+									  Terms of Use
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	<!-- End footer -->	
+	<!-- Start JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+		<!-- Slick slider -->
+	    <script type="text/javascript" src="assets/js/slick.min.js"></script>
+   	<!-- Ajax contact form  -->
+	    <script type="text/javascript" src="assets/js/app.js"></script>
+  	<!-- Modal popup -->
+	    <script type="text/javascript" src="assets/js/modal.js"></script>
+    <!-- Custom js -->
+			<script type="text/javascript" src="assets/js/custom.js"></script>
+			<script type="text/javascript" src="assets/js/navBar.js"></script>
+
+		<!-- Code colouring -->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+			<script>hljs.highlightAll();</script>
+
+		<!-- Live reload (For testing) -->
+			<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+  <!-- End JavaScript -->
+	</div>
+  </body>
+<!-- End Body -->
+</html>
+
+
+

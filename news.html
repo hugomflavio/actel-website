@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start Head -->
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" content="R package actel.">
+
+    <title>actel: News</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="assets/images/actel_favicon.ico"/>
+    <!-- Font Awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- Slick slider -->
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- Modal popup -->
+    <link href="assets/css/modal.css" rel="stylesheet">
+
+    <!-- Main Style -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/section_image_bg.css" rel="stylesheet">
+    <link href="assets/css/basic_typography.css" rel="stylesheet">
+    <link href="assets/css/dropdown_menu.css" rel="stylesheet">
+    <link href="assets/css/tables.css" rel="stylesheet">
+    <link href="assets/css/buttons.css" rel="stylesheet">
+    <link href="assets/css/size_responsiveness.css" rel="stylesheet">
+    <link href="assets/css/prism.css" rel="stylesheet">
+
+    <!-- Fonts -->
+
+    <!-- Poppins For Title -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+ 
+		<!-- navBar  -->
+    <link href="assets/css/navBar_for_white_bg.css" rel="stylesheet">
+    <link href="assets/css/navBar-second_for_white_bg.css" rel="stylesheet">
+	</head>
+<!-- End Head -->
+<!-- Start Body -->
+  <body>
+  <div class="page-container">	
+  <!--START SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#">
+      <i class="fa fa-angle-up"></i>
+    </a>
+  <!-- END SCROLL TOP BUTTON -->
+  <!-- Start NavBar -->
+		<div class="navBar" id="navBar">
+		  <a href="home.html">Home</a>
+		  <a href="news.html"><strong>News</strong></a>
+		  <button onclick="toogleManualNavBarResponsive()">Manual <i class="fa-solid fa-caret-down"></i></button>
+		  <a href="mailto:hflavio@wlu.ca" onclick="closeNavBarDropdown()">Need help?<i class="fa fa-envelope" style="padding-left: 10px"></i></a>
+		  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleNavBarResponsive()"><i class="fa fa-bars"></i></a>
+		</div>
+	<!-- End NavBar -->
+  <!-- Start manual NavBar -->
+		<div class="navBar-second" id="navBar-manual">
+		  <a href="manual-home.html">Section index</a>
+		  <a href="manual-data.html">Input data</a>
+		  <a href="manual-explore.html"><code>explore()</code></a>
+		  <a href="manual-migration.html"><code>migration()</code></a>
+		  <a href="manual-residency.html"><code>residency()</code></a>
+		  <a href="manual-manual.html">Manual mode</a>
+		  <a href="manual-beyond.html">Beyond the three analyses</a>
+		  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleManualNavBarResponsive()"><i class="fa-solid fa-arrow-left"></i></a>
+		</div>
+	<!-- End manual NavBar -->
+	<!-- Start Main Content -->
+		<main>
+		<!-- Start About -->
+			<section class="section-white-bg">
+				<div class="container">
+					
+					<div class="col-md-12 section-white-bg-area">
+
+						<h2>News</h2>
+
+						<p>Find out the main highlights of each update.</p>
+
+						<div class="manual">
+											
+
+
+
+
+
+							<h2>Development (available on <a href="https://github.com/hugomflavio/actel/"><u>GitHub</u></a>)</h2>
+							<p><strong>Fixes:</strong></p>
+							<ul>
+							<li>Prevent crash in migration if an array has 0 efficiency and there are no arrays coming before it.</li>
+							<li>Prevent crash if the dot file/string line breaks are coded as <code>\r\n</code>.</li>
+							<li>Prevent crash while printing circular plots for the reports on Macs where the svg engines are not working.</li>
+							<li>Prevent crash in residency() if one group has no valid detections at all.</li>
+							<li>Fix bug in plotRatios() brought up in issue <a href="https://github.com/hugomflavio/actel/issues/77" data-hovercard-type="issue" data-hovercard-url="/hugomflavio/actel/issues/77/hovercard">#77</a> which would occur when the user specified a section for which not all groups were detected.</li>
+							<li>Prevent crashes in residency() when the data has an unusually high percentage of exact-time detections (e.g. midnight).</li>
+							<li>Prevent crash if only some tags have multiple sensors and Sensor.unit is only included for those tags.</li>
+							<li>Prevent crash if the study area/population is so large that it clashes with ggplot's size limit failsafes.</li>
+							<li>Fix message overflow reported in issue <a href="https://github.com/hugomflavio/actel/issues/78" data-hovercard-type="issue" data-hovercard-url="/hugomflavio/actel/issues/78/hovercard">#78</a>.</li>
+							</ul>
+							<p><strong>Changes:</strong></p>
+							<ul>
+							<li>Removed deprecated argument <code>plot.detections.by</code>.</li>
+							<li><code>minimum.detections</code> has been replaced by <code>min.total.detections</code> and <code>min.per.event</code>.</li>
+							<li><code>section.minimum</code> has been replaced by <code>section.warning</code> and <code>section.error</code>.</li>
+							</ul>
+							<p><strong>Enhancements:</strong></p>
+							<ul>
+							<li>New <code>Code.space</code> column in the biometrics allows the user to specificy the code space of the target tags.</li>
+							<li>New arguments in plotArray(): <code>by.group</code> and <code>y.style</code>. See function documentation for more details.</li>
+							<li>Include preload() log in reports where preloaded data is used.</li>
+							<li>plotRatios() can now subset multiple groups and sections simultaneously. The user can also decide to either colour the plot by group or by section using the new <code>col.by</code> argument (issue <a href="https://github.com/hugomflavio/actel/issues/77" data-hovercard-type="issue" data-hovercard-url="/hugomflavio/actel/issues/77/hovercard">#77</a>)).</li>
+							</ul>
+						</div>
+
+						<div class="manual">
+							<h2>actel 1.2.1 (Available on <a href="https://cran.r-project.org/package=actel"><u>CRAN</u></a>)</h2>
+							<p><strong>Fixes:</strong></p>
+							<ul>
+							<li>Prevent crash in residency if the overall data period starts in winter time but the data for a given fish starts in summer time.</li>
+							<li>Prevent crash in residency caused by missing "save.tables.locally" argument.</li>
+							<li>Fix bug related to wrong type of detections object in preload().</li>
+							<li>Fix bad formatting of the summary section in reports produced in Linux OS's.</li>
+							</ul>
+							<p><strong>Changes:</strong></p>
+							<ul>
+							<li>The argument <code>plot.detections.by</code> in functions explore(), migration() and residency() has been renamed to <code>detections.y.axis</code>.</li>
+							<li>The argument <code>type</code> in the function plotDetections() has been renamed to <code>y.axis</code>.</li>
+							</ul>
+							<p><strong>Enhancements:</strong></p>
+							<ul>
+							<li>Verify that deployments do not end before they start.</li>
+							<li>Improve verification of station and array names, to avoid troublesome characters slipping through and potentially crashing the analyses.</li>
+							<li>The function plotDetections() has been expanded with the following arguments: <code>section.alias</code>, <code>x.label.format</code>, <code>only.valid</code> and <code>like.migration</code>.</li>
+							</ul>
+						</div>
+						
+						<div class="manual">
+							
+							<h2>actel 1.2.0</h2>
+							<p><strong>Fixes:</strong></p>
+							<ul>
+							<li>Prevent warning during printing of the progression flowchart, related to overlapping array names (that could also lead to an actual error).</li>
+							<li>Fix undesired behaviour in unknown receiver mechanisms and improve unknown handling.</li>
+							<li>Prevent crash in array efficiency estimation if release sites have spaces.</li>
+							<li>Prevent wrong output in array efficiency estimations if array names are contained within each other.</li>
+							<li>Prevent missing arrays when finding array paths due to overlapping array names.</li>
+							<li>Prevent crash in distancesMatrix if spatial contains a "longitude" or "latitude" column.</li>
+							<li><strong>Fix silent bug that could cause array efficiency estimates to be misplaced in the output.</strong></li>
+							<li>Prevent crash during circular plot saving caused by illegal characters in the file name.</li>
+							</ul>
+							<p><strong>Enhancements:</strong></p>
+							<ul>
+							<li>New functionality: expand events and edit the validity of individual detections.</li>
+							<li>Added Section information to the detections and the movement tables.</li>
+							<li>Automatically convert "-" to NA in the Data column of Thelma log files.</li>
+							<li>Automatically rename Y axis in plotDetections to "Array" if type = "arrays".</li>
+							<li>Added possibility to save orphan detection files for later inspection.</li>
+							<li>Include detections source file in a new "Source.file" column.</li>
+							<li>New argument 'save.tables.locally' allows the user to save temporary tables in the current working directory. Particularly useful for Mac users that cannot activate the graphical user interface.</li>
+							<li>Improve job log recovery method so it is not as intrusive. Including new function recoverLog().</li>
+							<li>Only display GUI windows once they are ready.</li>
+							<li>Check for impassable jumps between release and first event too.</li>
+							<li>Array live times are now calculated and included in the 'arrays' object.</li>
+							<li>The 'deployments' object has been extended and now includes array and standard station name.</li>
+							<li>actel can now dynamically check for array live times when checking jump distances, to avoid triggering warnings and errors simply because some arrays were not active.</li>
+							<li>New <code>plotLive()</code> function allows the user to plot the periods during which each array was active. The option 'show.stations' can be used to plot each individual station live time as well.</li>
+							<li>Group warnings if more than four of the same type of warnings shows up for any given tag.</li>
+							<li>The argument <code>plot.detections.by</code> now defaults to 'auto', so actel can try to optimize space use in the detection plots.</li>
+							<li>Included citation information for the recently accepted paper describing actel.</li>
+							</ul>
+						</div>
+						
+						<div class="manual">
+							<h2>actel 1.1.1</h2>
+							<p><strong>Fixes:</strong></p>
+							<ul>
+							<li>Prevent crash if data used as input for <code>preload()</code> contains factors.</li>
+							<li>Prevent crash during individual plot printing if number of stations is higher than 29.</li>
+							<li>Prevent bad structuring of the legend in individual plots if <code>plot.detections.by = 'arrays'</code>.</li>
+							<li>Prevent crash of CJS functions when running tags with multiple sensors.</li>
+							<li>Prevent CJS crash due to overlapping array names.</li>
+							<li>Prevent crash if spatial has release sites, but biometrics doesn't (in CJS calculations of migration).</li>
+							<li>Fixed a bug where the sensor data would get scrambled when reading standard format detection files.</li>
+							<li>Fixed visual bug where the progress bar for sensor plots would not reach 100%.</li>
+							</ul>
+							<p><strong>Changes:</strong></p>
+							<ul>
+							<li><strong><code>plotMoves()</code> has been renamed to <code>plotDetections()</code></strong></li>
+							<li>In the residency analysis, the following output <strong>objects have changed name</strong>:
+							<ul>
+							<li><code>daily.ratios</code> is now <code>time.ratios</code></li>
+							<li><code>daily.positions</code> is now <code>time.positions</code></li>
+							</ul>
+							</li>
+							<li>In the residency analysis report, the section 'Section progression' has been renamed to 'Global residency'.</li>
+							</ul>
+							<p><strong>Enhancements:</strong></p>
+							<ul>
+							<li>Never show unknown events during movement table display.</li>
+							<li>Show how many invalid events were omitted in the message that opens movement events.</li>
+							<li>Expand unknown receiver options to allow discarding unknown detections and repeating the same action for all occurrences.</li>
+							<li>Improve error messages when something fails during detections loading.</li>
+							<li>Improve detection file recognition mechanics.</li>
+							<li>New function <code>plotSensors()</code> can be used to plot the sensor data for each tag.</li>
+							<li>Sensor plots are now painted by array or section (matching the detection plots).</li>
+							<li>New function <code>plotMoves()</code> can be used to plot the movement evolution of multiple tags simultaneously.</li>
+							<li>New function <code>plotArray()</code> can be used to plot the simultaneous number of fish present at a subset of arrays or,
+							if <code>cumulative = TRUE</code>, the cumulative number of individual fish to have reached that subset of arrays per unit of time.</li>
+							<li>New argument in the <code>residency()</code> analysis: <code>timestep</code> allows the user to decide whether residency calculations should be done on a daily basis (default) or an hourly basis (at cost of computing time).</li>
+							<li>New fail-safe prevents unhandled function failure if arrays were accidentally assigned to more than one section.</li>
+							<li>Introduced fail-safes so report compiling does not fail when R is not being able to produce SVG graphics.</li>
+							<li>Improved cleanliness by moving temporary report files to a dedicated actel folder.</li>
+							<li>New function <code>plotResidency()</code> can be used to plot the individual residency for each fish.</li>
+							<li>The column order in global.ratios now follows the section order.</li>
+							<li>New output in the residency analysis: group.ratios (similar to global.ratios, but per group).</li>
+							<li>New function <code>plotRatios()</code> can be used to plot the global and group residency.</li>
+							<li>Improve handling of very long legends in the global residency plots.</li>
+							<li>Display times as hh:mm:ss in the movement tables to avoid ambiguity in interpretation.</li>
+							<li>Colour the SEM ranges in the circular plots (matching the respective groups). The level of darkening can be controlled with the new <code>mean.range.darken.factor</code> argument in <code>plotTimes()</code>.</li>
+							</ul>
+						</div>
+						
+						<div class="manual">
+							<h2>actel 1.1.0</h2>
+							<p><strong>Fixes:</strong></p>
+							<ul>
+							<li>Prevent crash if all detections for a given stray tag were removed during detection quality checks.</li>
+							<li>Prevent migration crash if all movement events are rendered invalid before section movements are created.</li>
+							<li>Prevent crash related with circular plotting when running an analysis on more than eight fish groups.</li>
+							<li>Prevent bug in older R versions where actel did not display all table rows, for long tables displayed in the console.</li>
+							<li><strong>Fixed 'last to last' speed calculations</strong>. A bug was found where this speed method was accidentally matching first stations for distance calculation, rather than last stations.</li>
+							<li>Fix bug where valid.movements would retain the invalid speed values if the fish no longer moved between arrays.</li>
+							<li>Fix bug where the wrong tags would be stored in stray_tags.csv.</li>
+							<li>Fig bug where stray tags from previous runs would leak into stray_tags.csv.</li>
+							</ul>
+							<p>Changes</p>
+							<ul>
+							<li><code>stripCodeSpaces()</code> has been replaced with <code>extractSignals()</code>.</li>
+							<li><strong>Sections are now set up using a 'Section' column in the spatial.csv file</strong>. The 'sections' argument has been deprecated. See the updated vignettes for details.</li>
+							<li><strong>Arrays can now be named freely</strong> (short names are still recommended).</li>
+							<li>Perform quality checks on the 'replicates' argument earlier in the analyses.</li>
+							<li>User decisions no longer have default options.</li>
+							<li>Users must now list <strong>only</strong> the tag signals in the 'override' argument.</li>
+							</ul>
+							<p><strong>Enhancements:</strong></p>
+							<ul>
+							<li>The shapefiles of the study areas can now be water or land polygons. Use the new argument "type" in <code>loadShape()</code> to switch from land shapefiles (the default) to water shapefiles.</li>
+							<li>Paint groups consistently in circular plots.</li>
+							<li>Improved handling of long array lists in individual detection plots.</li>
+							<li>Display event number on inactiveness checks.</li>
+							<li>New argument <code>discard.first</code> allows the user to discard detections that happen before a given amount of time has passed after release.</li>
+							<li>New function <code>extractCodeSpaces()</code> has been implemented.</li>
+							<li>New <code>preload()</code> function allows advanced users to run actel without requiring input files. See more in the new dedicated vignette.</li>
+							<li>New argument <code>section.order</code> allows the user to specify the order by which the sections should be listed.</li>
+							<li><code>plotTimes()</code> has been expanded with new arguments and better compatibility for multiple groups.</li>
+							<li>New argument <code>plot.detections.by</code> allows the user to plot the detections by array, rather than by station. Applied both to the analyses and to <code>plotMoves()</code>.</li>
+							<li>User decisions can now be followed by a in-line comment (started with "#"). Additionally, actel automatically adds default comments to decisions so these are easier to read through in the job log.</li>
+							<li>Message that opens movement events now includes the respective tag and the type of movements displayed (section or array movements).</li>
+							<li>Include user comments in the txt job logs.</li>
+							<li>In case of error, the user can now save a copy of the log up to the point where the function crashed.</li>
+							<li>Verify number of columns on all detection files.</li>
+							<li>Run quality checks on standard detection files.</li>
+							<li>New <code>getSpeeds()</code> function allows the user to quickly extract all speed information from the analyses.</li>
+							</ul>
+						</div>
+						
+						<div class="manual">
+							<h2>actel 1.0.0</h2>
+							<p><strong>Fixes:</strong></p>
+							<ul>
+							<li>Sort deployment rows by start time. Avoids false triggering of redeployment-before-retrieval errors.</li>
+							<li>Prevent failure to identify receivers if the model-serial combination has two or more "-" characters.</li>
+							<li>Prevent residence crash if no fish entered a given section.</li>
+							<li>Prevent crash if study area only has one array.</li>
+							<li>Fix replicates argument formulation in the log's function call carbon copy.</li>
+							<li>Prevent crash if array names contain regex characters.</li>
+							<li>Fix bug causing crash when attempting to save a movements table to a temporary file.</li>
+							</ul>
+							<p><strong>Changes:</strong></p>
+							<ul>
+							<li>maximum efficiency estimates in residency now only take into account known missed events and recorded events in the denominator (previously, potentially missed events were being included as well).</li>
+							<li>GUI interaction mechanisms were changed as a consequence of updating from package gWidgets to gWidgets2.</li>
+							<li>The argument 'path' has been removed from <code>explore</code>, <code>migration</code> and <code>residency</code>. The user must now move to the target directory using <code>setwd()</code> before running the analyses.</li>
+							<li>Analysis files are saved in a temporary folder and are only made permanent by user request.</li>
+							<li>The 'report' argument now defaults to FALSE. By setting 'report' to TRUE, the user acknowledges that a file will be written in the current working directory.</li>
+							<li>Auxiliary files to the report are now saved in a temporary directory. The user can still access the report figures by right-clicking them in the html report and saving them.</li>
+							<li>actel no longer saves compiled detections to the user's working directory by default. A new argument 'save.detections' (defaults to FALSE) was added to allow users to mimic the old behaviour.</li>
+							<li>actel no longer saves the stray tags summary to the user's working directory by default. If there are stray tags in the data, the users will be asked if they would like to save a copy of the summary.</li>
+							<li>transitionLayer no longer saves the output automatically into the working directory.</li>
+							<li>distancesMatrix now receives the transition layer as an R object rather than a file name.</li>
+							<li>distancesMatrix now requires user confirmation before writing a 'distances.csv' file into the working directory.</li>
+							<li>createMatrix and completeMatrix now work with R objects rather than files. The user must manually save the function output to a 'distances.csv' file to include it in the next analysis.</li>
+							<li>The possible values of speed.method have been changed to 'last to first' and 'last to last', for a more logical interpretation of the results. The explore vignette has been updated accordingly.</li>
+							<li>Separated part of <code>transitionLayer</code> into a preceding function <code>loadShape</code>.</li>
+							<li><code>exampleWorkspace</code> and <code>createWorkspace</code> now require a target directory.</li>
+							</ul>
+							<p><strong>Enhancements:</strong></p>
+							<ul>
+							<li>Perform early quality checks on the content of 'sections' before advancing with migration and residency analysis.</li>
+							<li>Allow user to hide release sites from the study area diagrams.</li>
+							<li>Improve spatial.csv vs spatial.txt mismatch error messaging by showing missing arrays.</li>
+							<li>Improve colour and caption handling on individual residency plots for study areas with many sections.</li>
+							<li>Improve handling of spatial file in distancesMatrix (including new fail-safes).</li>
+							<li>Added support for tags that emit multiple signals (i.e. multi-sensor tags).</li>
+							<li>Plot sensor data in the reports.</li>
+							<li>Allow intra-array efficiency to be calculated even if no inter-array efficiency could be calculated.</li>
+							<li>Allow the GUI to pop up if the number of lines to display goes over getOptions("max.print").</li>
+							<li>Hide biometrics' section from the report if no biometric data was found.</li>
+							<li>New <code>advEfficiency</code> function allows user to calculate more robust efficiency estimates.</li>
+							<li>Improved release.overview and group.overview objects so they can be used as an input to advEfficiency().</li>
+							<li>New <code>plotTimes</code> function allows the user to create circular plots of specific subsets of the time data, with the ability to include night shades too.</li>
+							<li><code>getTimes</code> and <code>timesToCircular</code> are now exported, allowing the user to quickly format the input for <code>plotTimes</code>.</li>
+							<li>A new page has been included in the vignettes aiming to explore what can be done with the results of actel's analyses.</li>
+							<li>Included usage examples on exported functions.</li>
+							<li>Verify the names of the release site arrays as soon as the spatial.csv is loaded.</li>
+							<li>Added support for timestamps using a "T" separator between date and time in the biometrics and deployments files.</li>
+							<li>new 'discard.orphans' argument allows the user to automatically discard all detections that do not fall within receiver deployment periods.</li>
+							<li>Users can now create and use a generic detections file. Details for the format of this file are provided in the "Detections" section of vignette 1.0.</li>
+							<li>migration() has been upgraded to be capable of handling backwards movements. The status.df has also been improved, and a new graphic was included to the report (last array).</li>
+							<li>new <code>plotMoves</code> function allows the user to create personalised detection plots for specific tags.</li>
+							<li>EPSGcode argument has been removed from all distances matrix related functions. actel now looks for the coordinate system within the shape file supplied.</li>
+							<li>distances matrix functions can now work with degree-based coordinate systems too.</li>
+							</ul>
+						</div>
+						
+						<div class="manual">
+							<h2>actel 0.1.3</h2>
+							<p><strong>Fixes:</strong></p>
+							<ul>
+							<li>Force R to assume detection files are separated by commas (prevents occasional Thelma log crash).</li>
+							<li>Fix bug where fish whose data started in summer time and extended into winter time would cause one day to be lost in the daily positions during residency analysis.</li>
+							<li>Prevent arrays from having maximum estimated fish passing through greater than previous arrays (unless new fish are released).</li>
+							<li>Fix internal bug where efficiency matrices did not have "1" at Release for all fish (did not impact results).</li>
+							<li>Fix bug where arrays with no detections for a group*release combination would cause skewed estimates.</li>
+							<li>Fix estimation of passed fish when using intra-array estimates.</li>
+							<li>Fix split CJS's not receiving information about intra-array estimates.</li>
+							<li>Avoid crash if a fish makes a U turn without being detected in all sections.</li>
+							<li>Avoid crash if group names have '.' characters in them.</li>
+							<li>Avoid crash if some group names are entirely contained within other groups.</li>
+							<li>Fix bug where 'disregard.parallels' was ironically disregarded and parallels always blocked peer assignment.</li>
+							<li>Prevent crash if the spatial.csv file cannot be updated due to being open elsewhere.</li>
+							<li>Fix bug where the presence of multiple instantaneous shifts in section would mess up the residency lists.</li>
+							<li>Fix bug preventing distancesMatrix from recognising the transition layer object.</li>
+							<li>Fix bug where the temporary detections object would be overwritten during inactiveness checks with a distance matrix present.</li>
+							<li>Fix bug causing speed calculations  to crash in the presence of unknown detections.</li>
+							<li>Fix bug where the Invalid.detections and Invalid.events columns in the status.df of residency would always return 0.</li>
+							<li>Prevent invalid detections from being considered during intra-array efficiency estimations.</li>
+							<li>Fix bug where fish with only one movement event would not count towards efficiency calculations.</li>
+							<li>Fix very specific bug where 8 shaped study areas would not have the bottleneck array accounted as a "known" failure in case a fish moved from one side of the constriction to the other without being detected.</li>
+							</ul>
+							<p><strong>Changes:</strong></p>
+							<ul>
+							<li><code>array.overview</code> is now called <code>group.overview</code>.</li>
+							<li>Fish that never entered a section now have NA total and average times for that section during residency analysis. This allows to distinguish between fish that never entered a section (NA time) and fish that only had one detection at a section (0 time).</li>
+							</ul>
+							<p><strong>Enhancements:</strong></p>
+							<ul>
+							<li>The object <code>detections</code> now contains a "Valid" column, similarly to the <code>movements</code> objects.</li>
+							<li>Invalid detections are now painted in grey in the individual detection plots.</li>
+							<li>Check for duplicated detections and give the user a chance to clear them out before continuing.</li>
+							<li>Prevent unhandled crashes if the 'replicates' argument is badly structured.</li>
+							<li>Show number of released fish per release location in the release sites table.</li>
+							<li>Detailed progression per group and release site is now exported through a <code>release.overview</code> object.</li>
+							<li>Prevent migration from continuing if some arrays are not associated to a section.</li>
+							<li>Warn user if override is requested for a fish that is not detected.</li>
+							<li>Improve mechanics behind suggestions to linearise movements.</li>
+							<li>Movement tables can now be visualised in a new window with the argument GUI.</li>
+							<li>Improve handling of partially empty groups and release sites in the biometrics file.</li>
+							<li>Improve flexibility in handling shape files with dimensions incompatible with the requested pixel size.</li>
+							<li>Improve the distances matrix so it can cope with unspecified release sites.</li>
+							<li>transitionLayer can now take into account the station positions and expand the study area as needed.</li>
+							<li>transitionLayer now has a "buffer" argument, which can be used to expand the study area beyond the limits of the shape file.</li>
+							<li>distancesMatrix will now warn the user if some stations are completely cut off from the rest (i.e. there is no water path).</li>
+							<li>Reports are now opened using utils::browseURL, allowing the report to be open even when the computer is not connected to the internet.</li>
+							<li>Sensor values are now transported through the analysis and returned in the valid detections (for Vemco loggers only for now).</li>
+							<li>Ensure the legend in the residency graphics follows the order specified in the sections argument.</li>
+							<li>Improve Thelma .csv file handling for files exported with new column structure.</li>
+							<li>Allow for multiple expected first arrays (e.g. if fish are released in a lake whose exits are covered with receivers).</li>
+							</ul>
+						</div>
+						
+						<div class="manual">
+							<h2>actel 0.1.2</h2>
+							<p><strong>Fixes:</strong></p>
+							<ul>
+							<li>Fix mechanisms that deal with unknown receivers</li>
+							<li>Edge arrays are now recognized if sections are provided</li>
+							<li>The columns "Backwards.movements" and "Backwards.movements" now display correct values</li>
+							<li>Prevent crash if inactive.warning is set but inactive.error is left null (applicable for speed checks as well)</li>
+							<li>Prevent crash when calculating multi-way efficiency estimations for fish that jumped at release</li>
+							<li>Prevent crash during residency analysis if a fish had more than one detection but all at the exact same time</li>
+							<li>Prevent crash when loading empty detection files</li>
+							<li>Display correct event numbers and names when speed warnings are triggered</li>
+							</ul>
+							<p><strong>Changes:</strong></p>
+							<ul>
+							<li>'maximum.time' has been renamed to 'max.interval'</li>
+							<li>'tz.study.area' has been renamed to 'tz'</li>
+							<li>'start.timestamp' has been renamed to 'start.time'</li>
+							<li>'end.timestamp' has been renamed to 'stop.time'</li>
+							<li>After a transition period, <code>actel</code> function has been removed</li>
+							<li>'cautious.assignment' has been removed from the migration analysis</li>
+							<li>Analysis run with 'override' are no longer saved with a "_corrected" appendix</li>
+							</ul>
+							<p><strong>Enhancements:</strong></p>
+							<ul>
+							<li>'tz' is now checked against the output of <code>OlsonNames</code> to ensure a valid time zone is entered.</li>
+							<li>messages and warnings are now printed using <code>message</code> and <code>warning</code></li>
+							<li>Stop if any of the input files has duplicated column names</li>
+							<li>Warn user if success.arrays is not defined in <code>migration</code></li>
+							<li>'minimum.detections' is now available in all functions.</li>
+							<li>'override' is now available in all functions, and allows the user to directly invalidate specific events.</li>
+							<li>'Detections' column in the object <em>status.df</em> (migration analysis) has been split into 'Valid.detections' and 'Invalid.detections'.</li>
+							<li>Package-level documentation has been implemented (can be found using ?actel).</li>
+							<li><code>explore</code>, <code>migration</code> and <code>residency</code> documentation has been expanded.</li>
+							<li>Force all individual residency plots to include all used locations in the caption, to ensure locations always show up with the same colour.</li>
+							<li>Stations are now grouped by array in the individual plots, following the array order provided either by the spatial.csv file or the spatial.txt file.</li>
+							<li>Improved links between the report plots and the R objects by naming the objects containing the data used in the plots.</li>
+							</ul>
+						</div>
+						
+						<div class="manual">
+							<h2>actel 0.1.1</h2>
+							<p><strong>Fixes:</strong></p>
+							<ul>
+							<li>Make checkInactiveness start counting time in the right event.</li>
+							<li>Remove spaces in bio's release sites before matching with stations' standard names.</li>
+							</ul>
+							<p><strong>Enhancements:</strong></p>
+							<ul>
+							<li>explore(), migration() and residency() now output auxiliary information for the upcoming RSP functions.</li>
+							</ul>
+  
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- End Actions -->
+		</main>
+	<!-- End main content -->	
+	<!-- Start footer -->
+		<footer id="st-footer">
+			<div class="container">
+			<!-- Start Disclaimer Modal -->
+				<div class="modal fade" id="DisclaimerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered mw-100 w-75" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title">Copyright/Disclaimer Information</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+							  <div class="container-fluid">
+									  <div class="row middle-row">
+									  	<h5>Disclaimer</h5>
+											<p>SMOLTRACK accepts no responsibility for and excludes all liability in connection with browsing the website, use of information on the website and downloading any material from the website including but not limited to any liability for errors, inaccuracies, omissions or defamatory or misleading statements. SMOLTRACK reserves the right, in its sole discretion and without any obligation, to make improvements to, or correct any errors or omissions in any portion of the information displayed on the website.</p>
+											<p>The contents presented in the SMOLTRACK website are for general information only. No reliance should be placed upon the contents of the website. Advice and verification should be sought through our contacting information.</p>
+											<h5>Linking to Third Party Sites</h5>
+											<p>SMOLTRACK assumes no responsibility for the contents of linked websites. The inclusion of any link should not be taken as an endorsement of any kind by SMOLTRACK of the linked website or any association with its operators. Further, SMOLTRACK has no control over the availability of the linked pages.</p>
+											<h5>Copyright Notice</h5>
+											<p>Material on this website, including text and images, is protected by copyright. It may not be copied, reproduced, republished, downloaded, posted, broadcast or transmitted in any way except for your own personal, non-commercial use. Prior written consent of the copyright holder must be obtained for any other use of material. Copyright in all materials and/or works comprising or contained within this website remains with SMOLTRACK and other copyright owner(s) as specified. No part of this site or sub-domains of this site may be distributed or copied for any commercial purpose.</p>
+								    </div>
+						    </div>
+					      <div class="modal-footer">
+								  <button class="btn btn-secondary" onclick="location.href='mailto:smoltrack@gmail.com';">Contact us<i class="fa fa-envelope" style="padding-left: 10px"></i></button>
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</div>
+			<!-- End Disclaimer Modal -->
+				<div class="st-footer-area">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="st-footer-left">
+								<p class="st-copy-right">actel: Simplifying acoustic telemetry data analysis</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="st-footer-right">
+								<div class="st-social-media">
+									<a href="mailto:hflavio@wlu.ca" target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i></a>
+									<a href="https://ecoevo.social/@HugoMFlavio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-mastodon"></i></a>
+									<!-- <a href="#"><i class="fa fa-youtube"></i></a> -->
+									<button id="DisclaimerBtn" type="button" class="st-disclaimer-btn" data-toggle="modal" data-target="#DisclaimerModal">
+									  Terms of Use
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	<!-- End footer -->	
+	<!-- Start JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+		<!-- Slick slider -->
+	    <script type="text/javascript" src="assets/js/slick.min.js"></script>
+   	<!-- Ajax contact form  -->
+	    <script type="text/javascript" src="assets/js/app.js"></script>
+  	<!-- Modal popup -->
+	    <script type="text/javascript" src="assets/js/modal.js"></script>
+    <!-- Custom js -->
+			<script type="text/javascript" src="assets/js/custom.js"></script>
+			<script type="text/javascript" src="assets/js/navBar.js"></script>
+
+			<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+  <!-- End JavaScript -->
+	</div>
+  </body>
+<!-- End Body -->
+</html>
+
+
+

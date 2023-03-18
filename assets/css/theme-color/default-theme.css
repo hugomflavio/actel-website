@@ -1,0 +1,45 @@
+
+/*=======================================
+Template Design By MarkUps	
+Author URI : http://www.markups.io/
+========================================*/
+
+a:hover,
+a:focus,
+.st-learn-more-btn,
+.st-visit-partner-btn,
+.st-copy-right a:hover,
+.st-copy-right a:focus,
+.st-send-msg-btn:hover,
+.st-send-msg-btn:focus,
+.st-client-quote,
+.st-clients-slider .slick-prev, 
+.st-clients-slider .slick-next,
+.st-clients-slider .slick-prev::before, 
+.st-clients-slider .slick-next::before,
+.my-actions-single-icon {
+	color: #37b721;
+}
+
+.my-actions-header-icon {
+  background: #37b721;
+}
+
+.st-send-msg-btn,
+.st-send-msg-btn:focus,
+.st-register-btn:hover,
+.st-register-btn:focus {
+	border: 1px solid #37b721;
+	background-color: #37b721;
+}
+
+.slick-prev::before {
+    font-family: FontAwesome;
+    padding: 0 3px 0;
+    content: "\f104";
+}  
+.slick-next::before {
+    font-family: FontAwesome;
+    padding: 0 0 0 3px;
+    content:  "\f105";
+}      

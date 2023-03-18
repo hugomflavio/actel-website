@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start Head -->
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" content="R package actel.">
+
+    <title>actel: Home</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="assets/images/actel_favicon.ico"/>
+    <!-- Font Awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- Slick slider -->
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- Modal popup -->
+    <link href="assets/css/modal.css" rel="stylesheet">
+
+    <!-- Main Style -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/section_image_bg.css" rel="stylesheet">
+    <link href="assets/css/basic_typography.css" rel="stylesheet">
+    <link href="assets/css/tables.css" rel="stylesheet">
+    <link href="assets/css/buttons.css" rel="stylesheet">
+    <link href="assets/css/size_responsiveness.css" rel="stylesheet">
+
+    <!-- Fonts -->
+
+    <!-- Poppins For Title -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+ 
+		<!-- navBar  -->
+    <link href="assets/css/navBar.css" rel="stylesheet">
+    <link href="assets/css/navBar-second.css" rel="stylesheet">
+	</head>
+<!-- End Head -->
+<!-- Start Body -->
+  <body>
+  <div class="page-container">	
+  <!--START SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#">
+      <i class="fa fa-angle-up"></i>
+    </a>
+	<!-- END SCROLL TOP BUTTON -->
+  <!-- Start NavBar -->
+		<div class="navBar" id="navBar">
+		  <a href="home.html"><strong>Home</strong></a>
+		  <a href="news.html">News</a>
+		  <button onclick="toogleManualNavBarResponsive()">Manual <i class="fa-solid fa-caret-down"></i></button>
+		  <a href="mailto:hflavio@wlu.ca" onclick="closeNavBarDropdown()">Need help?<i class="fa fa-envelope" style="padding-left: 10px"></i></a>
+		  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleNavBarResponsive()"><i class="fa fa-bars"></i></a>
+		</div>
+	<!-- End NavBar -->
+  <!-- Start manual NavBar -->
+		<div class="navBar-second" id="navBar-manual">
+		  <a href="manual-home.html">Section index</a>
+		  <a href="manual-data.html">Input data</a>
+		  <a href="manual-explore.html"><code>explore()</code></a>
+		  <a href="manual-migration.html"><code>migration()</code></a>
+		  <a href="manual-residency.html"><code>residency()</code></a>
+		  <a href="manual-manual.html">Manual mode</a>
+		  <a href="manual-beyond.html">Beyond the three analyses</a>
+		  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleManualNavBarResponsive()"><i class="fa-solid fa-arrow-left"></i></a>
+		</div>
+	<!-- End manual NavBar -->
+
+	  <!-- Start splash screen -->
+		<section class="section-image-bg">
+			<div class="container">
+				<div class="section-image-bg-area section-image-bg-content">
+						<img 
+							src="assets/images/actel_logo.svg" 
+							alt="logo img"
+							heigh="250px"
+							width="250px"
+							vspace="20px"
+						>
+						
+
+						<h1>Simplifying acoustic telemetry data analysis</h1>
+
+						<p>Designed for studies where animals tagged with acoustic tags are expected to move through receiver arrays. Combines the advantages of automatic sorting and checking of animal movements with the possibility for user intervention on tags that deviate from expected behaviour.</p>
+
+						<img src="https://www.r-pkg.org/badges/version/actel" alt="[package version]">
+						<img src="https://cranlogs.r-pkg.org/badges/actel" alt="[cranlogs is down]">
+						<img src="https://cranlogs.r-pkg.org/badges/grand-total/actel" alt="[cranlogs is down]">
+						<img src="https://codecov.io/github/hugomflavio/actel/branch/master/graphs/badge.svg", alt="[code coverage]">
+
+
+						<div class="home-scrolldown-area">
+							<a href="#what-is" class="home-scrolldown" ><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+						</div>
+
+				</div>
+			</div>
+		</section>
+	<!-- End Header -->
+	<!-- Start Main Content -->
+		<main>
+		<!-- Start About -->
+			<section class = "section-white-bg", id="what-is">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="section-white-bg-area", >
+
+								<h2>What is the R package actel?</h2>
+								<div class="section-white-bg-header">
+								
+									<p>
+										Some more text at the top.
+									</p>
+
+									<p>
+										If you are using acoustic telemetry to track animals as they move inside a study area or as they migrate somewhere, actel is the package for you. 
+										By bringing together the study area configuration and the recorded detections, actel provides a systematic way of analysing animal migration and residency data.
+									</p>
+
+									<img src="assets/images/outputs/mb_arrays.svg" alt="drawing" width="870"/>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="section-white-bg-area">
+
+								<h2>Choose the analysis that fits your study</h2>
+								<div class="about-functions">
+									<div class="row">
+										<div class="col-md-4">
+											<div class="about-single">
+												<div class="image-margins">
+													<img 
+														src="assets/images/about/explore_logo.svg" 
+														alt="logo img"
+														heigh="200px"
+														width="200px"
+													>
+												</div>
+												<h3>Explore</h3>
+												<p> <code>explore()</code> allows you to quickly get a summary of your data. You can use <code>explore()</code> to get a general feel for the study results, and check if the input files are behaving as expected. It is also a good candidate if you just want to validate your detections for later use in other analyses.</p>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="about-single">
+												<div class="image-margins">
+													<img 
+														src="assets/images/about/migration_logo.svg" 
+														alt="logo img"
+														heigh="200px"
+														width="200px"
+													>
+												</div>
+												<h3>Migration</h3>
+												<p>The <code>migration()</code> analysis runs the same initial checks as <code>explore()</code>, but on top of it, it analyses the animal behaviour. By selecting the arrays that lead to success, you can define whether or not your animals survived the migration. Additional plots help you find out if some animal/tag has been acting odd. Multiple options allow you to tweak the analysis to fit your study perfectly.</p>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="about-single">
+												<div class="image-margins">
+													<img 
+														src="assets/images/about/residency_logo.svg" 
+														alt="logo img"
+														heigh="200px"
+														width="200px"
+													>
+												</div>
+												<h3>Residency</h3>
+												<p>The <code>residency()</code> analysis runs the same initial checks as <code>explore()</code>, but, similarly to migration, explores particular points of the animal behaviour. If you want to know where your animals were in each day of the study, how many animals were in each section each day, and other residency-focused variables, this is the analysis you are looking for!</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="section-white-bg-area">
+
+								<h2>A variety of outputs</h2>
+								<div class="about-outputs">
+									<div class="row">
+										<div class="col-md-12">
+											<!-- <div class="about-single"> -->
+											<div class="about">
+												<p>
+													To truly learn how to operate actel, you must read the package vignettes. These have been arranged so that you can prepare your analysis as you learn; quite soon you will get your first results! Here are some examples: 
+												</p>
+
+												<h3>Movement tables:</h3>
+
+												<div style="overflow-x:auto;">
+													<table>
+														<tr><th>Array</th><th>Detections</th><th>First station</th><th>Last station</th><th>First time</th><th>Last time</th><th>Time travelling</th><th>Time on array</th></tr>
+														<tr><td>River1</td><td>14</td><td>St.1</td><td>St.2</td><td>2019-05-15 10:30:00</td><td>2019-05-15 13:00:00</td><td>25:20:14</td><td>2:30:00</td></tr>
+														<tr><td>River2</td><td>3</td><td>St.4</td><td>St.4</td><td>2019-05-15 13:50:00</td><td>2019-05-15 14:40:00</td><td>0:50:00</td><td>0:50:00</td></tr>
+														<tr><td>River3</td><td>8</td><td>St.5</td><td>St.6</td><td>2019-05-15 16:00:00</td><td>2019-05-15 16:20:00</td><td>1:20:00</td><td>0:20:00</td></tr>
+														<tr><td>Fjord2</td><td>21</td><td>St.10</td><td>St.11</td><td>2019-05-16 15:10:00</td><td>2019-05-16 18:00:00</td><td>22:50:00</td><td>2:50:00</td></tr>
+														<tr><td>Sea1</td><td>1</td><td>St.18</td><td>St.18</td><td>2019-05-18 09:45:00</td><td>2019-05-18 09:45:00</td><td>15:45:00</td><td>0:00:00</td></tr>
+													</table>
+												</div>
+
+												<h3>Detection graphics</h3>
+												<div class="image-margins">
+													<img src="assets/images/outputs/R64K-4521.png" alt="drawing" width="400"/> <img src="assets/images/outputs/R64K-4526.png" alt="drawing" width="400"/>
+												</div>
+
+												<h3>Times of arrival and summary information</h3>
+												<div class="image-margins">
+													<img src="assets/images/outputs/times_River3.svg" alt="drawing" width="410"/> <img src="assets/images/outputs/LaTeX_example_survival.svg" alt="drawing" height="370"/>
+												</div>
+
+												<h3>Array efficiency and tag progression</h3>
+												<div class="image-margins">												
+													<img src="assets/images/outputs/mb_efficiency.svg" alt="drawing" width="870"/>
+												</div>
+
+												<h3>Individual residency</h3>
+												<div class="image-margins">
+													<img src="assets/images/outputs/readme_individual_residency.png" alt="drawing" width="870"/>
+												</div>
+
+												<h3>Global residency</h3>
+												<div class="image-margins">
+													<img src="assets/images/outputs/readme_global_residency.png" alt="drawing" width="870"/>
+												</div>
+											
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>
+		<!-- End Actions -->
+		</main>
+	<!-- End main content -->	
+	<!-- Start footer -->
+		<footer id="st-footer">
+			<div class="container">
+			<!-- Start Disclaimer Modal -->
+				<div class="modal fade" id="DisclaimerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered mw-100 w-75" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title">Copyright/Disclaimer Information</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+							  <div class="container-fluid">
+									  <div class="row middle-row">
+									  	<h5>Disclaimer</h5>
+											<p>SMOLTRACK accepts no responsibility for and excludes all liability in connection with browsing the website, use of information on the website and downloading any material from the website including but not limited to any liability for errors, inaccuracies, omissions or defamatory or misleading statements. SMOLTRACK reserves the right, in its sole discretion and without any obligation, to make improvements to, or correct any errors or omissions in any portion of the information displayed on the website.</p>
+											<p>The contents presented in the SMOLTRACK website are for general information only. No reliance should be placed upon the contents of the website. Advice and verification should be sought through our contacting information.</p>
+											<h5>Linking to Third Party Sites</h5>
+											<p>SMOLTRACK assumes no responsibility for the contents of linked websites. The inclusion of any link should not be taken as an endorsement of any kind by SMOLTRACK of the linked website or any association with its operators. Further, SMOLTRACK has no control over the availability of the linked pages.</p>
+											<h5>Copyright Notice</h5>
+											<p>Material on this website, including text and images, is protected by copyright. It may not be copied, reproduced, republished, downloaded, posted, broadcast or transmitted in any way except for your own personal, non-commercial use. Prior written consent of the copyright holder must be obtained for any other use of material. Copyright in all materials and/or works comprising or contained within this website remains with SMOLTRACK and other copyright owner(s) as specified. No part of this site or sub-domains of this site may be distributed or copied for any commercial purpose.</p>
+								    </div>
+						    </div>
+					      <div class="modal-footer">
+								  <button class="btn btn-secondary" onclick="location.href='mailto:hflavio@wlu.ca';">Contact us<i class="fa fa-envelope" style="padding-left: 10px"></i></button>
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</div>
+			<!-- End Disclaimer Modal -->
+				<div class="st-footer-area">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="st-footer-left">
+								<p class="st-copy-right">actel: Simplifying acoustic telemetry data analysis</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="st-footer-right">
+								<div class="st-social-media">
+									<a href="mailto:hflavio@wlu.ca" target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i></a>
+									<a href="https://ecoevo.social/@HugoMFlavio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-mastodon"></i></a>
+									<!-- <a href="#"><i class="fa fa-youtube"></i></a> -->
+									<button id="DisclaimerBtn" type="button" class="st-disclaimer-btn" data-toggle="modal" data-target="#DisclaimerModal">
+									  Terms of Use
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	<!-- End footer -->	
+	<!-- Start JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+		<!-- Slick slider -->
+	    <script type="text/javascript" src="assets/js/slick.min.js"></script>
+   	<!-- Ajax contact form  -->
+	    <script type="text/javascript" src="assets/js/app.js"></script>
+  	<!-- Modal popup -->
+    <!-- Custom js -->
+			<script type="text/javascript" src="assets/js/custom.js"></script>
+			<script type="text/javascript" src="assets/js/navBar.js"></script>
+
+			<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+  <!-- End JavaScript -->
+	</div>
+  </body>
+<!-- End Body -->
+</html>
+
+
+

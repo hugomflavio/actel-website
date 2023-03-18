@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start Head -->
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" content="R package actel.">
+
+    <title>actel: Manual</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="assets/images/actel_favicon.ico"/>
+    <!-- Font Awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- Slick slider -->
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- Modal popup -->
+    <link href="assets/css/modal.css" rel="stylesheet">
+
+    <!-- Main Style -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/section_image_bg.css" rel="stylesheet">
+    <link href="assets/css/basic_typography.css" rel="stylesheet">
+    <link href="assets/css/dropdown_menu.css" rel="stylesheet">
+    <link href="assets/css/tables.css" rel="stylesheet">
+    <link href="assets/css/buttons.css" rel="stylesheet">
+    <link href="assets/css/size_responsiveness.css" rel="stylesheet">
+    <link href="assets/css/prism.css" rel="stylesheet">
+
+    <!-- Fonts -->
+
+    <!-- Poppins For Title -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+ 
+		<!-- navBar  -->
+    <link href="assets/css/navBar_for_white_bg.css" rel="stylesheet">
+    <link href="assets/css/navBar-second_for_white_bg.css" rel="stylesheet">
+	</head>
+<!-- End Head -->
+<!-- Start Body -->
+  <body>
+  <div class="page-container">	
+  <!--START SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#">
+      <i class="fa fa-angle-up"></i>
+    </a>
+  <!-- END SCROLL TOP BUTTON -->
+  <!-- Start NavBar -->
+		<div class="navBar" id="navBar">
+		  <a href="home.html">Home</a>
+		  <a href="news.html">News</a>
+		  <button onclick="toogleManualNavBarResponsive()"><strong>Manual</strong> <i class="fa-solid fa-caret-down"></i></button>
+		  <a href="mailto:hflavio@wlu.ca" onclick="closeNavBarDropdown()">Need help?<i class="fa fa-envelope" style="padding-left: 10px"></i></a>
+		  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleNavBarResponsive()"><i class="fa fa-bars"></i></a>
+		</div>
+	<!-- End NavBar -->
+  <!-- Start manual NavBar -->
+		<div class="navBar-second" id="navBar-manual">
+		  <a href="manual-home.html">Section index</a>
+		  <a href="manual-data.html"><strong>Input data</strong></a>
+		  <a href="manual-explore.html"><code>explore()</code></a>
+		  <a href="manual-migration.html"><code>migration()</code></a>
+		  <a href="manual-residency.html"><code>residency()</code></a>
+		  <a href="manual-manual.html">Manual mode</a>
+		  <a href="manual-beyond.html">Beyond the three analyses</a>
+		  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleManualNavBarResponsive()"><i class="fa-solid fa-arrow-left"></i></a>
+		</div>
+	<!-- End manual NavBar -->
+	<!-- Start Main Content -->
+		<main>
+		<!-- Start About -->
+			<section class="section-white-bg">
+				<div class="container">
+					
+					<div class="col-md-12 section-white-bg-area">
+
+						<h2>Telling actel what your study area looks like</h2>
+						<div class="manual">
+							<p>
+								To be able to process your data, actel must understand how your study area works. To do this, actel relies on two things: the study area sections and the receiver arrays. There are three levels of organization in an actel study area: stations, arrays and sections,. Sections are composed by one or more arrays, arrays are composed by one ore more stations, and each station can have one or more receivers deployed in it.
+							</p>
+
+							<p>Here is a visual example of a study area with an overlay of the respective arrays and sections:</p>
+
+							<div class="image-margins">
+								<img src="assets/images/manual/study_area.svg" alt="drawing"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<section class="section-white-bg">
+				<div class="container">
+					
+					<div class="col-md-12 section-white-bg-area">
+
+						<h2>Stations</h2>
+						<div class="manual">
+						
+							<p>
+								Stations are geographical locations where one or more receivers have been deployed over the course of your study. The stations pinpoint the deployment locations on the map, and allow actel to make the link between receiver detections and their respective arrays. The stations must have unique names, so that the receiver deployments can be allocated to a specific station, and are assigned to their respective arrays and sections using the <em>spatial.csv</em> file. 
+							</p>
+
+							<p>You can find some examples below.</p>
+
+							<h3>Release sites</h3>
+
+							<p>Release sites are a special form of station. Used to pinpoint the release locations of the tagged animals, release sites do not have receivers associated to them. Additionally, instead of being allocated to an array, they indicate which array is expected to be the first to detect the released animals. If you are not sure which array is expected to detect your animals first (i.e. upon release, animals can move to multiple arrays), you can tell actel to expect a first detection at multiple arrays. This has important consequences for array efficiency estimation, so it is important to get this right. Some examples are provided further down.</p>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<section class="section-white-bg">
+				<div class="container">
+					
+					<div class="col-md-12 section-white-bg-area">
+
+						<h2>Arrays</h2>
+						<div class="manual">											
+							<p>
+								Arrays are the functional movement unit for actel. They determine groups of stations that, together, represent a point of change in the animal position. In the study area above, there are seven arrays, which are grouped into three sections. Arrays can be named freely, and must be connected to their respective sections using the <em>spatial.csv</em> file.  
+							</p>
+
+							<h3>Avoid overlapping arrays</h3>
+
+							<p>When a tag moves from one array to another, a new movement event is created (you will learn more about movement events later on). This means that, if you have two stations close to each other, but listed in two different arrays, you can end up with many 'false' movement events (i.e. the tag is just standing still within range of both arrays). Here is an example:</p>
+							
+							<div style="overflow-x:auto;">
+								<table><tr><th>Array</th><th>Detections</th><th>First station</th><th>Last station</th><th>First time</th><th>Last time</th><th>Time travelling</th></tr><tr><td>Sea2</td><td>1</td><td>St.17</td><td>St.17</td><td>2018-04-23 05:00:45</td><td>2018-04-23 05:00:45</td><td>0:00</td></tr><tr><td>Sea1</td><td>1</td><td>St.15</td><td>St.15</td><td>2018-04-23 05:00:53</td><td>2018-04-23 05:00:53</td><td>0:00</td></tr><tr><td>Sea2</td><td>1</td><td>St.17</td><td>St.17</td><td>2018-04-23 05:01:11</td><td>2018-04-23 05:01:11</td><td>0:00</td></tr><tr><td>Sea1</td><td>1</td><td>St.15</td><td>St.15</td><td>2018-04-23 05:01:19</td><td>2018-04-23 05:01:19</td><td>0:00</td></tr><tr><td>Sea2</td><td>1</td><td>St.17</td><td>St.17</td><td>2018-04-23 05:01:54</td><td>2018-04-23 05:01:54</td><td>0:00</td></tr><tr><td>Sea1</td><td>1</td><td>St.15</td><td>St.15</td><td>2018-04-23 05:02:02</td><td>2018-04-23 05:02:02</td><td>0:00</td></tr></table>
+							</div>
+
+							<p>Stations 15 and 17 are very close to each other, but were placed in different arrays. That in turn led to the creation of numerous movement events with only one detection, with nearly no time travelling between them. This tag ended up having 58 movement events, during most of which it was most likely just standing still.</p>
+
+							<p>As a rule of thumb, if two stations' ranges are likely to overlap, you should consider assigning them to the same array:</p>
+
+							<div class="row">
+								<div class="col-md-6 image-margins">
+									<img src="assets/images/manual/arrays_good.svg" alt="drawing"/>
+								</div>
+
+								<div class="col-md-6 image-margins">
+									<img src="assets/images/manual/arrays_bad.svg" alt="drawing"/>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+
+			<section class="section-white-bg">
+				<div class="container">
+					
+					<div class="col-md-12 section-white-bg-area">
+
+						<h2>Sections</h2>
+						<div class="col-md-12 manual">
+											
+							<p>The sections divide your study area in big blocks, for which you would like specific metrics to be calculated (e.g. residency time, survival, etc.). In the example above, there are three sections: River, Fjord and Sea. The sections must be filled in in the 'Section' column of the <em>spatial.csv</em> file.</p>
+
+							<p>When running a <code>migration()</code> analysis, the order of the sections is relevant and represents the order in which you expect your animals will move. By default, actel will order the sections by the order in which they appear in the spatial.csv file. However, you can force a specific order using the <code>section.order</code> argument. For example, if you expect your animals to move from the river to a fjord and ultimately to the sea (and you have receiver arrays in all these sections), then <code>section.order = c("River", "Fjord", "Sea")</code>. In the other hand, if you expect your animals to migrate upstream, then <code>section.order = c("Sea", "Fjord", "River")</code>.</p>
+
+							<p>For the residency analysis, the order of the sections is not relevant, except for plotting and column order purposes. Like above, actel can sort out the order by itself, or you can specify a specific order using the <code>section.order</code> argument.</p>
+
+							<p>The <code>explore()</code> analysis does not take sections into consideration.</p>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section-white-bg">
+				<div class="container">
+					
+					<div class="col-md-12 section-white-bg-area">
+
+						<h2>Rivers with multiple parallel channels</h2>
+						<div class="col-md-12 manual">
+											
+							<p> If your study area includes multiple pathways that the animals may take, you must tell actel how to connect the arrays. By default, arrays are sorted in a linear order according to the spatial.csv file. To instruct actel to act otherwise, you must create a '<strong>spatial.txt</strong>' file. The spatial.txt file is very simple; all you need to do is connect your arrays in pairs. <a href="manual-data.html#spatial-txt">You can learn more about spatial.txt files here.</a></p>
+												
+							<p>Now you know how to organise your study area in a way that actel will understand!</p>
+
+							<p>**<a href="javascript:history.back()">Return to previous page</a>**</p>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<section class="section-white-bg">
+				<div class="container">
+					
+					<div class="col-md-12 section-white-bg-area">
+
+						<h2>Examples</h2>
+
+						<div class="col-md-12 manual">
+						<h3>Single channel</h3>
+											
+							<p>Let's imagine the following study area, where the red dots represent receiver stations. The first thing you will want to do is give individual names to your stations:</p>
+
+							<div class="image-margins">
+							<img src="assets/images/manual/spatialcsv_a2.svg" alt="drawing"/>
+							</div>
+
+							<p>Then, you need to decide how these stations should be organized into arrays. In this case, let's say each station is its own array:</p>
+
+							<div class="image-margins">
+							<img src="assets/images/manual/spatialcsv_a3.svg" alt="drawing"/>
+							</div>
+
+							<p>Then, you need to decide how many sections there are in your study area. In this case, one section (e.g. "River") would probably be the best fit, but let's say we have two sections, for the sake of the exercise:</p>
+
+							<div class="image-margins">
+							<img src="assets/images/manual/spatialcsv_a4.svg" alt="drawing"/>
+							</div>
+
+							<p>Now that you know your stations, arrays, and sections, you can start filling up the spatial.csv file. Because each array is composed by a single station, you can simply use the station names as array names (avoid using spaces or special characters in array names). Station 'A' will belong to the array 'A', which belongs to section 'Up'; station 'D' belongs to the array 'D' and section 'Down', etc:</p>
+
+							<div style="overflow-x:auto;">
+								<table><tr><th>Station.name</th><th>Array</th><th>Section</th><th>Type</th></tr><tr><td>A</td><td>A</td><td>Up</td><td>Hydrophone</td></tr><tr><td>B</td><td>B</td><td>Up</td><td>Hydrophone</td></tr><tr><td>C</td><td>C</td><td>Down</td><td>Hydrophone</td></tr><tr><td>D</td><td>D</td><td>Down</td><td>Hydrophone</td></tr><tr><td>E</td><td>E</td><td>Down</td><td>Hydrophone</td></tr></table>
+							</div>
+
+							<p>Now onwards to the release sites. If you only have one release site at the top of the study area, i.e.:</p>
+
+							<div class="image-margins">
+								<img src="assets/images/manual/spatialcsv_a5.svg" alt="drawing"/>
+							</div>
+
+							<p>Then you are sure that the animals are expected to be first detected at array A:</p>
+
+							<div style="overflow-x:auto;">
+								<table><tr><th>Station.name</th><th>Array</th><th>Section</th><th>Type</th></tr><tr><td>RS1</td><td>A</td><td></td><td>Release</td></tr></table>
+							</div>
+
+							<p>However, you can also have animals released somewhere in the middle of the study area, i.e.:</p>
+
+							<div class="image-margins">
+							<img src="assets/images/manual/spatialcsv_a6.svg" alt="drawing"/>
+							</div>
+
+							<p>In this case, if you know that your animals are expected to move in a specific direction (i.e. a migration scenario), then we could say that there is only one expected first array (array D, if the animal is migrating left to right):</p>
+
+							<div style="overflow-x:auto;">
+								<table><tr><th>Station.name</th><th>Array</th><th>Section</th><th>Type</th></tr><tr><td>RS2</td><td>D</td><td></td><td>Release</td></tr></table>
+							</div>
+
+							<p>However, if you do not know which direction the animals will take (i.e. a residency scenario), then the animal is just as likely to be first detected at array D as it is to be detected at array C. To account for this, you must include both arrays in the spatial.csv file, separating them with a "\|".</p>
+
+							<div style="overflow-x:auto;">
+								<table><tr><th>Station.name</th><th>Array</th><th>Section</th><th>Type</th></tr><tr><td>RS2</td><td>C|D</td><td></td><td>Release</td></tr></table>
+							</div>
+
+							<p>You can now combine the stations and the release sites to obtain your spatial.csv file:</p>
+
+							<div style="overflow-x:auto;">
+								<table><tr><th>Station.name</th><th>Array</th><th>Section</th><th>Type</th></tr><tr><th>A</th><th>A</th><th>Up</th><th>Hydrophone</th></tr><tr><td>B</td><td>B</td><td>Up</td><td>Hydrophone</td></tr><tr><td>C</td><td>C</td><td>Up</td><td>Hydrophone</td></tr><tr><td>D</td><td>D</td><td>Down</td><td>Hydrophone</td></tr><tr><td>E</td><td>E</td><td>Down</td><td>Hydrophone</td></tr><tr><td>RS1</td><td>A</td><td></td><td>Release</td></tr><tr><td>RS2</td><td>C|D</td><td></td><td>Release</td></tr></table>
+							</div>
+
+						</div>
+
+						<div class="col-md-12 manual">
+						<h3>Complex study area:</h3>
+
+
+							<p>Let's now imagine a more complex study area, like the one below:</p>
+
+							<div class="image-margins">
+								<img src="assets/images/manual/spatialcsv_b1.svg" alt="drawing"/>
+							</div>
+
+							<p>Like before, you need to name your stations, group them into arrays, and define your study area sections:</p>
+
+
+							<div class="image-margins">
+								<img src="assets/images/manual/spatialcsv_b2.svg" alt="drawing"/>
+							</div>
+
+							<p>We can then start filling in the spatial.csv file:</p>
+
+							<div style="overflow-x:auto;">
+								<table><tr><th>Station.name</th><th>Array</th><th>Section</th><th>Type</th></tr><tr><td>A</td><td>North</td><td>Lake</td><td>Hydrophone</td></tr><tr><td>B</td><td>West</td><td>Lake</td><td>Hydrophone</td></tr><tr><td>C</td><td>East1</td><td>Lake</td><td>Hydrophone</td></tr><tr><td>D</td><td>East2</td><td>Lake</td><td>Hydrophone</td></tr><tr><td>E</td><td>R1</td><td>River</td><td>Hydrophone</td></tr><tr><td>F</td><td>R2</td><td>River</td><td>Hydrophone</td></tr><tr><td>G</td><td>R2</td><td>River</td><td>Hydrophone</td></tr></table>
+							</div>
+
+							<p>Now let's assume the animals are released inside the lake:</p>
+
+							<div class="image-margins">
+							<img src="assets/images/manual/spatialcsv_b3.svg" alt="drawing"/>
+							</div>
+
+							<p>In this case, regardless of the analysis you are running (migration or residency), there is uncertainty in the first expected array. If you expect that the animals will be migrating from the Lake to the River, you should state that the expected first arrays are either East1 or East2. If you are running a residency analysis, then it may make more sense to consider all Lake arrays as potential first arrays.</p>
+
+							<p>So, if you know your animals are moving to the river:</p>
+
+							<div style="overflow-x:auto;">
+								<table>
+									<tr><th>Station.name</th><th>Array</th><th>Section</th><th>Type</th></tr>
+									<tr><td>RS1</td><td>East1|East2</td><td></td><td>Release</td></tr>
+								</table>
+							</div>
+
+							<p>If you don't know where the animals will go to:</p>
+
+							<div style="overflow-x:auto;">
+								<table>
+									<tr><th>Station.name</th><th>Array</th><th>Section</th><th>Type</th></tr>
+									<tr><td>RS1</td><td>North|West|East1|East2</td><td></td><td>Release</td></tr>
+								</table>
+							</div>
+
+
+							<p>Like before, you can now compile the full spatial.csv file:</p>
+
+							<div style="overflow-x:auto;">
+								<table><tr><th>Station.name</th><th>Array</th><th>Section</th><th>Type</th></tr><tr><td>A</td><td>North</td><td>Lake</td><td>Hydrophone</td></tr><tr><td>B</td><td>West</td><td>Lake</td><td>Hydrophone</td></tr><tr><td>C</td><td>East1</td><td>Lake</td><td>Hydrophone</td></tr><tr><td>D</td><td>East2</td><td>Lake</td><td>Hydrophone</td></tr><tr><td>E</td><td>R1</td><td>River</td><td>Hydrophone</td></tr><tr><td>F</td><td>R2</td><td>River</td><td>Hydrophone</td></tr><tr><td>G</td><td>R2</td><td>River</td><td>Hydrophone</td></tr><tr><td>RS1</td><td>Lake1|Lake2|Lake3|Lake4</td><td></td><td>Release</td></tr></table>
+							</div>
+
+							<p>Since this study area is not linear, you would be required to write a spatial.txt file to tell actel how to link the arrays. <a href="manual-data.html#spatial-txt">You can learn more about spatial.txt files here.</a></p>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+		<!-- End Actions -->
+		</main>
+	<!-- End main content -->	
+	<!-- Start footer -->
+		<footer id="st-footer">
+			<div class="container">
+			<!-- Start Disclaimer Modal -->
+				<div class="modal fade" id="DisclaimerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered mw-100 w-75" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title">Copyright/Disclaimer Information</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+							  <div class="container-fluid">
+									  <div class="row middle-row">
+									  	<h5>Disclaimer</h5>
+											<p>SMOLTRACK accepts no responsibility for and excludes all liability in connection with browsing the website, use of information on the website and downloading any material from the website including but not limited to any liability for errors, inaccuracies, omissions or defamatory or misleading statements. SMOLTRACK reserves the right, in its sole discretion and without any obligation, to make improvements to, or correct any errors or omissions in any portion of the information displayed on the website.</p>
+											<p>The contents presented in the SMOLTRACK website are for general information only. No reliance should be placed upon the contents of the website. Advice and verification should be sought through our contacting information.</p>
+											<h5>Linking to Third Party Sites</h5>
+											<p>SMOLTRACK assumes no responsibility for the contents of linked websites. The inclusion of any link should not be taken as an endorsement of any kind by SMOLTRACK of the linked website or any association with its operators. Further, SMOLTRACK has no control over the availability of the linked pages.</p>
+											<h5>Copyright Notice</h5>
+											<p>Material on this website, including text and images, is protected by copyright. It may not be copied, reproduced, republished, downloaded, posted, broadcast or transmitted in any way except for your own personal, non-commercial use. Prior written consent of the copyright holder must be obtained for any other use of material. Copyright in all materials and/or works comprising or contained within this website remains with SMOLTRACK and other copyright owner(s) as specified. No part of this site or sub-domains of this site may be distributed or copied for any commercial purpose.</p>
+								    </div>
+						    </div>
+					      <div class="modal-footer">
+								  <button class="btn btn-secondary" onclick="location.href='mailto:smoltrack@gmail.com';">Contact us<i class="fa fa-envelope" style="padding-left: 10px"></i></button>
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</div>
+			<!-- End Disclaimer Modal -->
+				<div class="st-footer-area">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="st-footer-left">
+								<p class="st-copy-right">actel: Simplifying acoustic telemetry data analysis</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="st-footer-right">
+								<div class="st-social-media">
+									<a href="mailto:hflavio@wlu.ca" target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i></a>
+									<a href="https://ecoevo.social/@HugoMFlavio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-mastodon"></i></a>
+									<!-- <a href="#"><i class="fa fa-youtube"></i></a> -->
+									<button id="DisclaimerBtn" type="button" class="st-disclaimer-btn" data-toggle="modal" data-target="#DisclaimerModal">
+									  Terms of Use
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	<!-- End footer -->	
+	<!-- Start JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+		<!-- Slick slider -->
+	    <script type="text/javascript" src="assets/js/slick.min.js"></script>
+   	<!-- Ajax contact form  -->
+	    <script type="text/javascript" src="assets/js/app.js"></script>
+  	<!-- Modal popup -->
+	    <script type="text/javascript" src="assets/js/modal.js"></script>
+    <!-- Custom js -->
+			<script type="text/javascript" src="assets/js/custom.js"></script>
+			<script type="text/javascript" src="assets/js/navBar.js"></script>
+
+			<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+  <!-- End JavaScript -->
+	</div>
+  </body>
+<!-- End Body -->
+</html>
+
+
+

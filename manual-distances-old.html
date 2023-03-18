@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start Head -->
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" content="R package actel.">
+
+    <title>actel: Manual</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="assets/images/actel_favicon.ico"/>
+    <!-- Font Awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- Slick slider -->
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- Modal popup -->
+    <link href="assets/css/modal.css" rel="stylesheet">
+
+    <!-- Main Style -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/section_image_bg.css" rel="stylesheet">
+    <link href="assets/css/basic_typography.css" rel="stylesheet">
+    <link href="assets/css/dropdown_menu.css" rel="stylesheet">
+    <link href="assets/css/tables.css" rel="stylesheet">
+    <link href="assets/css/buttons.css" rel="stylesheet">
+    <link href="assets/css/size_responsiveness.css" rel="stylesheet">
+    <link href="assets/css/prism.css" rel="stylesheet">
+
+    <!-- Fonts -->
+
+    <!-- Poppins For Title -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+ 
+		<!-- navBar  -->
+    <link href="assets/css/navBar_for_white_bg.css" rel="stylesheet">
+    <link href="assets/css/navBar-second_for_white_bg.css" rel="stylesheet">
+
+	  <!-- Code colouring -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+
+	</head>
+<!-- End Head -->
+<!-- Start Body -->
+  <body>
+  <div class="page-container">	
+  <!--START SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#">
+      <i class="fa fa-angle-up"></i>
+    </a>
+  <!-- END SCROLL TOP BUTTON -->
+  <!-- Start NavBar -->
+		<div class="navBar" id="navBar">
+		  <a href="home.html">Home</a>
+		  <a href="news.html">News</a>
+		  <button onclick="toogleManualNavBarResponsive()"><strong>Manual</strong> <i class="fa-solid fa-caret-down"></i></button>
+		  <a href="mailto:hflavio@wlu.ca" onclick="closeNavBarDropdown()">Need help?<i class="fa fa-envelope" style="padding-left: 10px"></i></a>
+		  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleNavBarResponsive()"><i class="fa fa-bars"></i></a>
+		</div>
+	<!-- End NavBar -->
+  <!-- Start manual NavBar -->
+		<div class="navBar-second" id="navBar-manual">
+		  <a href="manual-home.html">Section index</a>
+		  <a href="manual-data.html"><strong>Input data</strong></a>
+		  <a href="manual-explore.html"><code>explore()</code></a>
+		  <a href="manual-migration.html"><code>migration()</code></a>
+		  <a href="manual-residency.html"><code>residency()</code></a>
+		  <a href="manual-manual.html">Manual mode</a>
+		  <a href="manual-beyond.html">Beyond the three analyses</a>
+		  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleManualNavBarResponsive()"><i class="fa-solid fa-arrow-left"></i></a>
+		</div>
+	<!-- End manual NavBar -->
+	<!-- Start Main Content -->
+	<main>
+		<section class="section-white-bg">
+			<div class="container">
+					
+				<div class="col-md-12 section-white-bg-area">
+
+					<div class="callout">
+					  <div class="callout-header"> <strong>CAREFUL, THIS METHOD IS DEPRECATED!</strong></div>
+					  <div class="callout-container">
+					    <p>This is the old method for calculating distances (actel 1.2.1 and lower).</p>
+					    <p><a href="manual-distances.html"><u>Click here to switch to the new method instead.</u></a></p>
+					  </div>
+					</div>
+
+
+					<h2>What is the distances matrix?</h2>
+					<div class="manual">
+								
+						<p>
+							A distances matrix is a table that contains information on  the distance (in metres) between every pair of spatial elements in your study area (i.e. your receiver stations and your release sites). It looks like the table below:
+						</p>
+
+						<div style="overflow-x: auto;">
+							<table>
+								<tr><th></th><th>St.1</th><th>St.2</th><th>St.3</th><th>St.4</th><th>St.5</th><th>St.6</th><th>Release</th></tr>
+								<tr><th>St.1</th><td>0</td><td>1366</td><td>3417</td><td>6912</td><td>8863</td><td>9272</td><td>2229</td></tr>
+								<tr><th>St.2</th><td>1366</td><td>0</td><td>2051</td><td>5545</td><td>7497</td><td>7906</td><td>3569</td></tr>
+								<tr><th>St.3</th><td>3417</td><td>2051</td><td>0</td><td>3528</td><td>5479</td><td>5888</td><td>5621</td></tr>
+								<tr><th>St.4</th><td>6912</td><td>5545</td><td>3528</td><td>0</td><td>1963</td><td>2372</td><td>9115</td></tr>
+								<tr><th>St.5</th><td>8863</td><td>7497</td><td>5479</td><td>1963</td><td>0</td><td>408</td><td>11067</td></tr>
+								<tr><th>St.6</th><td>9272</td><td>7906</td><td>5888</td><td>2372</td><td>408</td><td>0</td><td>11476</td></tr>
+								<tr><th>Release</th><td>2229</td><td>3569</td><td>5621</td><td>9115</td><td>11067</td><td>11476</td><td>0</td></tr>
+							</table>
+						</div>
+
+					<div class="callout">
+					  <div class="callout-header"> Note:</div>
+					  <div class="callout-container">
+					    <p>The matrix is symmetric (i.e. the entries of the matrix are symmetric with respect to the main diagonal).</p>
+					    <p>The diagonal line is composed of 0's as it represents the distance between an element and itself.</p>
+					    <p>You <strong>must</strong> have at least one release site, and the names of the release sites must be identical to those in your 'spatial.csv' and your 'biometrics.csv'.</p>
+					  </div>
+					</div>
+
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section-white-bg">
+			<div class="container">
+					
+				<div class="col-md-12 section-white-bg-area">
+
+					<h2>Creating your distances matrix</h2>
+					<div class="manual">
+								
+						<p>
+							There are two ways to create a distance matrix for actel: manually, or automatically. While the manual way is more prone to errors and can be tedious, the automatic way can take some time and requires some GIS knowledge. It is up to you to decide which way to use:
+						</p>
+												
+					</div>
+
+					<div class="manual">
+						<h3>The manual way</h3>
+
+						<p>The manual way is simple. In your R session, move to the folder where you have your spatial file, and run the command <code>emptyMatrix</code>. This will read your spatial data and create a matrix that is in accordance with it. It is important that you create your template this way, as the column and row names of the distance matrix are essential for actel to recognise the data. Below is an example of a distances matrix created by <code>emptyMatrix</code>.</p>
+
+						<div style="overflow-x: auto;">
+							<table>
+								<tr><th></th><th>St.1</th><th>St.2</th><th>St.3</th><th>St.4</th><th>St.5</th><th>St.6</th><th>Release</th></tr>
+								<tr><th>St.1</th><td>0</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><th>St.2</th><td></td><td>0</td><td></td><td></td><td></td><td></td><td></td></tr>
+								<tr><th>St.3</th><td></td><td></td><td>0</td><td></td><td></td><td></td><td></td></tr>
+								<tr><th>St.4</th><td></td><td></td><td></td><td>0</td><td></td><td></td><td></td></tr>
+								<tr><th>St.5</th><td></td><td></td><td></td><td></td><td>0</td><td></td><td></td></tr>
+								<tr><th>St.6</th><td></td><td></td><td></td><td></td><td></td><td>0</td><td></td></tr>
+								<tr><th>Release</th><td></td><td></td><td></td><td></td><td></td><td></td><td>0</td></tr>
+								</table>
+						</div>
+
+						<p>You can find the correspondence between the standard names (e.g. "St.1", "St.2") and your receivers by running <code>loadSpatial()</code> (see the 'Standard.name' column).</p>
+
+						<p>Now, you can either fill in the matrix directly in R or save it and edit it a spreadsheet editor (make sure to save the row names too!). To simplify the task, you can fill in the upper diagonal-half of the matrix, reload into R if you used an external editor, and then run <code>completeMatrix</code> on the edited object.</p>
+
+						<p>Here is how it works:</p>
+
+						<ol>
+							<li>Fill in the top part of the matrix:
+
+								<div style="overflow-x: auto;">
+									<table>
+										<tr><th></th><th>St.1</th><th>St.2</th><th>St.3</th><th>St.4</th><th>St.5</th><th>St.6</th><th>Release</th></tr>
+										<tr><th>St.1</th><td>0</td><td>1366</td><td>3417</td><td>6912</td><td>8864</td><td>9273</td><td>2230</td></tr>
+										<tr><th>St.2</th><td></td><td>0</td><td>2051</td><td>5546</td><td>7498</td><td>7906</td><td>3570</td></tr>
+										<tr><th>St.3</th><td></td><td></td><td>0</td><td>3528</td><td>5480</td><td>5889</td><td>5621</td></tr>
+										<tr><th>St.4</th><td></td><td></td><td></td><td>0</td><td>1963</td><td>2372</td><td>9116</td></tr>
+										<tr><th>St.5</th><td></td><td></td><td></td><td></td><td>0</td><td>409</td><td>11068</td></tr>
+										<tr><th>St.6</th><td></td><td></td><td></td><td></td><td></td><td>0</td><td>11476</td></tr>
+										<tr><th>Release</th><td></td><td></td><td></td><td></td><td></td><td></td><td>0</td></tr>
+									</table>
+								</div>
+
+							</li>
+
+							<li>Run <code>completeMatrix()</code> on the half-filled matrix:
+
+								<div style="overflow-x: auto;">
+									<table>
+										<tr><th></th><th>St.1</th><th>St.2</th><th>St.3</th><th>St.4</th><th>St.5</th><th>St.6</th><th>Release</th></tr>
+										<tr><th>St.1</th><td>0</td><td>1366</td><td>3417</td><td>6912</td><td>8864</td><td>9273</td><td>2230</td></tr>
+										<tr><th>St.2</th><td>1366</td><td>0</td><td>2051</td><td>5546</td><td>7498</td><td>7906</td><td>3570</td></tr>
+										<tr><th>St.3</th><td>3417</td><td>2051</td><td>0</td><td>3528</td><td>5480</td><td>5889</td><td>5621</td></tr>
+										<tr><th>St.4</th><td>6912</td><td>5546</td><td>3528</td><td>0</td><td>1963</td><td>2372</td><td>9116</td></tr>
+										<tr><th>St.5</th><td>8864</td><td>7498</td><td>5480</td><td>1963</td><td>0</td><td>409</td><td>11068</td></tr>
+										<tr><th>St.6</th><td>9273</td><td>7906</td><td>5889</td><td>2372</td><td>409</td><td>0</td><td>11476</td></tr>
+										<tr><th>Release</th><td>2230</td><td>3570</td><td>5621</td><td>9116</td><td>11068</td><td>11476</td><td>0</td></tr>
+									</table>
+								</div>
+
+							</li>
+
+							<li>Save the complete matrix as 'distances.csv' in the folder that has the remaining actel data.
+
+							</li>
+						</ol>
+
+								<div class="callout">
+								  <div class="callout-header"> Note:</div>
+								  <div class="callout-container">
+								    <p>The distance values <strong>must</strong> be in metres!</p>
+								  </div>
+								</div>
+
+
+					</div>
+
+					<div class="manual">
+						<h3>The automatic way</h3>
+
+						<p>As your studies start having more and more receivers, it might get complicated to find and write down the distances between every single combination of receivers and release sites. To avoid doing this manually, you can get R to do it for you. To get R to compute the distances for you, you will need:</p>
+
+						<ul class="fa-ul">
+							<li><i class="fa-li fa fa-angle-right manual-list-icon"></i> A shapefile with a land polygon of your study area.</li>
+							<li><i class="fa-li fa fa-angle-right manual-list-icon"></i> The coordinates of your receivers and release sites in <strong>the same coordinate system as the shapefile</strong>.</li>
+						</ul>
+
+						If you are not familiar with shapefiles and GIS, it might be a good idea to ask for a colleague's help.
+					</div>
+
+					<div class="manual">
+						<h4>Preparing the shapefile</h4>
+
+						<p>To begin, you need to create a shapefile that extends over all your receivers and release sites. This shapefile is expected to contain polygons of the land masses, which means that your rivers, lakes, fjords and any water bodies must be "empty space". The width of your water channels is important, as the shapefile will be converted into a raster later on (i.e. a image made of pixels). If your pixels represent squares of 30 by 30 metres, and your channel width originally was of five metres, then the river path will be lost during the conversion process. Try to ensure, as best as possible, that the corners of your shapefile are aligned (i.e. the shape as a rectangular/quadrangular form).</p>
+
+						<div class="callout">
+						  <div class="callout-header"> Note:</div>
+						  <div class="callout-container">
+						    <p>Make sure that the shapefile is in the same coordinate system as the points in your spatial file!</p>
+						  </div>
+						</div>
+
+
+						<p>Below is an example of the study area in the left, and the respective shapefile in the right:</p>
+
+						<div class="row">
+							<div class="image-margins col-md-6"><img src="assets/images/manual/distances_shape_1.png" alt="drawing"/></div>
+							<div class="image-margins col-md-6"><img src="assets/images/manual/distances_shape_2.png" alt="drawing"/></div>
+						</div>
+
+						<p>Once you have your shapefile ready, copy the shapefile and respective auxiliary files to the folder where you have your 'spatial.csv'. Do make sure to copy the auxiliary files, as they contain information regarding the coordinate system of the shapefile!</p>
+					</div>
+
+					<div class="manual">
+						<h4>Preparing the spatial.csv file</h4>
+						
+						<p>In your spatial file, you must include two columns with the coordinates for your receiver stations and release sites. These coordinates **must** be in the same coordinate system as the shapefile you just created before. Later on, you will need to know the *column names* of the columns that contain the X and Y coordinates.</p>
+					</div>
+					
+					<div class="manual">
+						<h4>Importing the shapefile and preparing it</h4>
+						
+						<p>Now that both your shapefile and your spatial.csv file are ready, lets get back to R. The first thing you need to do is import your shapefile and convert to a raster. I have created a function that can perform these steps for you, called <code>loadShape()</code>.</p>
+
+						<pre><code class="language-r">base.raster <- loadShape(shape, size, spatial, coord.x, coord.y, buffer)</code></pre>
+
+						<ol>
+							<li>The <code>shape</code> is the name of your shapefile, including the ".shp" extension. </li>
+							<li>The <code>size</code> determines the size of the raster's pixels.</strong>.
+								<ul>
+									<li>For example, if <code>size = 20</code>, then each pixel will have 20 by 20 meters. </li>
+									<li>Keep in mind that your pixel size must allow R to still capture the presence of your river channels. If the river channels are too slim, you can go back to your shapefile and artificially enlarge them.</li>
+								</ul>
+							</li>
+							<li>The <code>coord.x</code> and <code>coord.y</code> allow actel to search your spatial.csv file and match the station positions with the extent of the shapefile. Write the names of the columns containing the x and y coordinates in these two arguments to activate these checks.</li>
+							<li>The <code>buffer</code> allows you to request an expansion of the shapefile limits (can come in handy to ensure your stations are not cut-off from each other).</li>
+						</ol>
+
+						<p>Once the shapefile is successfully loaded, you can have a quick look at the resulting raster by running <code>raster::plot()</code>; i.e.:</p>
+
+						<pre><code class="language-r">raster::plot(base.raster)</code></pre>
+
+						<p>This should show you a plot where only the water areas are painted. Some water may show up around the edges of the original shapefile due to the range adjustments made by loadShape. Converting a shapefile into a raster can take a while, specially if the original shapefile is very big and the pixel size is low.</p>
+
+					</div>
+
+					<div class="manual">
+						<h4>Creating a transition layer</h4>
+
+						<p>A transition layer is an object that allows R to estimate least cost paths between two locations. Using the raster generated above, creating a transition layer is straight forward:</p>
+
+						<pre><code class="language-r">t.layer <- transitionLayer(base.raster, directions = 16)</code></pre>
+
+						The <code>directions</code> determine the complexity of R's distance tracking techniques. It can take one of four values: four, eight or sixteen, defaulting to the latter.
+
+						<ul>
+					    <li>If <code>directions = 4</code>, the animal can only in the direction of the cardinal winds (North, South, East and West). </li>
+					    <li>If <code>directions = 8</code>, the animal can also move in a intercardinal wind direction (Northeast, Northwest, Southeast and Southwest). </li>
+					    <li>If <code>directions = 16</code>, then the animal can also move in the eight half-winds' directions.</li>
+					  </ul>
+
+    				<p>Increasing the <code>directions</code> improves the distance estimation fidelity, but also increases computation time.</p>
+
+						<p>Transition layers can take a long time to compute, especially for larger rasters, so you may have to bear with your computer for a bit here. To avoid having to go through this process multiple times, it may be a good idea to save the output of loadShape and transitionLayer in a separate RData file, for later use.</p>
+					
+					</div>
+
+					<div class="manual">
+						<h4>Creating the distances matrix</h4>
+
+						<p>Once you have your transition layer, you can use it to calculate multiple distances matrices, as long as the target objects fall within the extent of the original shapefile, and all targets are within water. To create your distances matrix, you must run <code>distancesMatrix()</code> in the same working directory as your 'spatial.csv' file. This will allow it you automatically load the spatial file into the function environment.</p>
+
+						<pre><code class="language-r">dist.mat <- distancesMatrix(t.layer, coord.x, coord.y)</code></pre>
+
+						<p>The <code>t.layer</code> is the transition layer you just calculated. Fill in the column names of the X and Y coordinates of your 'spatial.csv' file in <code>coord.x</code> and <code>coord.y</code>. When you run this command, actel will ask you if you want to save the output to a 'distances.csv' file. Alternatively, you can check the output within R and then save the matrix yourself!</p>
+
+						<p>Actel will automatically recognise the 'distances.csv' file and activate speed calculations in your next analysis!</p>
+
+								<div class="callout">
+								  <div class="callout-header"> Note:</div>
+								  <div class="callout-container">
+								    <p> It is important that you check the results of this process by inspecting your distances matrix. If the distances do not look correct, you may have accidentally done something wrong in the steps above.</p>
+								  </div>
+								</div>
+
+<p>Here is a minimal example:</p>
+
+<pre><code class="language-r"># move to a temporary directory to avoid
+# overwriting local files
+old.wd <- getwd()
+setwd(tempdir())
+
+# Fetch the location of actel's example files
+aux <- system.file(package = "actel")[1]
+
+# deploy the example spatial.csv file
+file.copy(paste0(aux, "/example_spatial.csv"), "spatial.csv")
+
+# import the example shapefile and use the spatial.csv file to check
+# the extents.
+base.raster <- loadShape(path = aux, shape = "example_shapefile.shp", 
+                         coord.x = "x", coord.y = "y", size = 20)
+
+# You can have a look at the resulting raster by running
+raster::plot(base.raster)
+# There should be two small islands in the bottom left area
+
+# Build the transition layer
+t.layer <- transitionLayer(base.raster)
+
+# compile the distances matrix. Columns x and y in the spatial dataframe
+# contain the coordinates of the stations and release sites.
+dist.mat <- distancesMatrix(t.layer, coord.x = 'x', coord.y = 'y')
+
+# check out the output:
+dist.mat
+
+# And return to your old working directory once done :)
+setwd(old.wd)
+rm(old.wd)
+</code></pre>
+
+<p>Remember that you can find more information about each of these functions by visiting their help pages. You can access the help pages by running <code>?loadShape</code>, <code>?transitionLayer</code> or <code>?distancesMatrix</code>.</p>
+
+</div>
+
+				</div>
+			</div>
+		</section>
+
+	</main>
+	<!-- End main content -->	
+	<!-- Start footer -->
+		<footer id="st-footer">
+			<div class="container">
+			<!-- Start Disclaimer Modal -->
+				<div class="modal fade" id="DisclaimerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered mw-100 w-75" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title">Copyright/Disclaimer Information</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+							  <div class="container-fluid">
+									  <div class="row middle-row">
+									  	<h5>Disclaimer</h5>
+											<p>SMOLTRACK accepts no responsibility for and excludes all liability in connection with browsing the website, use of information on the website and downloading any material from the website including but not limited to any liability for errors, inaccuracies, omissions or defamatory or misleading statements. SMOLTRACK reserves the right, in its sole discretion and without any obligation, to make improvements to, or correct any errors or omissions in any portion of the information displayed on the website.</p>
+											<p>The contents presented in the SMOLTRACK website are for general information only. No reliance should be placed upon the contents of the website. Advice and verification should be sought through our contacting information.</p>
+											<h5>Linking to Third Party Sites</h5>
+											<p>SMOLTRACK assumes no responsibility for the contents of linked websites. The inclusion of any link should not be taken as an endorsement of any kind by SMOLTRACK of the linked website or any association with its operators. Further, SMOLTRACK has no control over the availability of the linked pages.</p>
+											<h5>Copyright Notice</h5>
+											<p>Material on this website, including text and images, is protected by copyright. It may not be copied, reproduced, republished, downloaded, posted, broadcast or transmitted in any way except for your own personal, non-commercial use. Prior written consent of the copyright holder must be obtained for any other use of material. Copyright in all materials and/or works comprising or contained within this website remains with SMOLTRACK and other copyright owner(s) as specified. No part of this site or sub-domains of this site may be distributed or copied for any commercial purpose.</p>
+								    </div>
+						    </div>
+					      <div class="modal-footer">
+								  <button class="btn btn-secondary" onclick="location.href='mailto:smoltrack@gmail.com';">Contact us<i class="fa fa-envelope" style="padding-left: 10px"></i></button>
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</div>
+			<!-- End Disclaimer Modal -->
+				<div class="st-footer-area">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="st-footer-left">
+								<p class="st-copy-right">actel: Simplifying acoustic telemetry data analysis</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="st-footer-right">
+								<div class="st-social-media">
+									<a href="mailto:hflavio@wlu.ca" target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i></a>
+									<a href="https://ecoevo.social/@HugoMFlavio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-mastodon"></i></a>
+									<!-- <a href="#"><i class="fa fa-youtube"></i></a> -->
+									<button id="DisclaimerBtn" type="button" class="st-disclaimer-btn" data-toggle="modal" data-target="#DisclaimerModal">
+									  Terms of Use
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	<!-- End footer -->	
+	<!-- Start JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+		<!-- Slick slider -->
+	    <script type="text/javascript" src="assets/js/slick.min.js"></script>
+   	<!-- Ajax contact form  -->
+	    <script type="text/javascript" src="assets/js/app.js"></script>
+  	<!-- Modal popup -->
+	    <script type="text/javascript" src="assets/js/modal.js"></script>
+    <!-- Custom js -->
+			<script type="text/javascript" src="assets/js/custom.js"></script>
+			<script type="text/javascript" src="assets/js/navBar.js"></script>
+
+			<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+		<!-- Code colouring -->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+			<script>hljs.highlightAll();</script>
+
+  <!-- End JavaScript -->
+	</div>
+  </body>
+<!-- End Body -->
+</html>
+
+
+

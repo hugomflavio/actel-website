@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start Head -->
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" content="R package actel.">
+
+    <title>actel: Manual</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="assets/images/actel_favicon.ico"/>
+    <!-- Font Awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- Slick slider -->
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- Modal popup -->
+    <link href="assets/css/modal.css" rel="stylesheet">
+
+    <!-- Main Style -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/section_image_bg.css" rel="stylesheet">
+    <link href="assets/css/basic_typography.css" rel="stylesheet">
+    <link href="assets/css/dropdown_menu.css" rel="stylesheet">
+    <link href="assets/css/tables.css" rel="stylesheet">
+    <link href="assets/css/buttons.css" rel="stylesheet">
+    <link href="assets/css/size_responsiveness.css" rel="stylesheet">
+    <link href="assets/css/prism.css" rel="stylesheet">
+
+    <!-- Fonts -->
+
+    <!-- Poppins For Title -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+ 
+		<!-- navBar  -->
+    <link href="assets/css/navBar_for_white_bg.css" rel="stylesheet">
+    <link href="assets/css/navBar-second_for_white_bg.css" rel="stylesheet">
+
+    <!-- Code colouring -->
+		<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+
+	</head>
+<!-- End Head -->
+<!-- Start Body -->
+  <body>
+  <div class="page-container">	
+  <!--START SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#">
+      <i class="fa fa-angle-up"></i>
+    </a>
+  <!-- END SCROLL TOP BUTTON -->
+  <!-- Start NavBar -->
+		<div class="navBar" id="navBar">
+		  <a href="home.html">Home</a>
+		  <a href="news.html">News</a>
+		  <button onclick="toogleManualNavBarResponsive()"><strong>Manual</strong> <i class="fa-solid fa-caret-down"></i></button>
+		  <a href="mailto:hflavio@wlu.ca" onclick="closeNavBarDropdown()">Need help?<i class="fa fa-envelope" style="padding-left: 10px"></i></a>
+		  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleNavBarResponsive()"><i class="fa fa-bars"></i></a>
+		</div>
+	<!-- End NavBar -->
+  <!-- Start manual NavBar -->
+		<div class="navBar-second" id="navBar-manual">
+		  <a href="manual-home.html">Section index</a>
+		  <a href="manual-data.html">Input data</a>
+		  <a href="manual-explore.html"><code><strong>explore()</strong></code></a>
+		  <a href="manual-migration.html"><code>migration()</code></a>
+		  <a href="manual-residency.html"><code>residency()</code></a>
+		  <a href="manual-manual.html">Manual mode</a>
+		  <a href="manual-beyond.html">Beyond the three analyses</a>
+		  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleManualNavBarResponsive()"><i class="fa-solid fa-arrow-left"></i></a>
+		</div>
+	<!-- End manual NavBar -->
+<!-- Start Main Content -->
+		<main>
+		<!-- Start About -->
+			<section class="section-white-bg">
+				<div class="container">
+			
+					<div class="section-white-bg-area">
+
+						<h2>The <code>explore()</code> function</h2>
+						<div class="manual">
+									
+							<p>
+								The arguments in the <code>explore()</code> function are transversal to the <a href=""><code><u>migration()</u></code></a> and <a href=""><code><u>residency()</u></code></a> functions.
+
+							</p>
+
+							<p>Although there are many arguments available, you do <em>not</em> need to start working with all of them right away. This is because many of these arguments have default values. If you want to make a quick check of your study, just run <code>explore()</code> with a <code>tz</code> argument in the same directory as your data and you will be ready to get some results!
+							</p>
+
+							<p>E.g.:</p>
+							<pre><code class="language-r">explore(tz = "Europe/London")</code></pre>
+
+							<p>Curious about how <code>explore()</code> processes your data? Have a look <a href="manual-explore-processes.html"><u>under the hood!</u></a>
+							</p>
+
+							<p>Need help going through the output of <code>explore()</code>? Find more details <a href="manual-explore-results.html"><u>here.</u></a>
+							</p>
+						</div>
+
+					</div>
+
+					<div class="section-white-bg-area" id="general-arguments">
+
+						<h2>General arguments</h2>
+						<div class="manual">
+
+							<p>All the arguments of <code>explore()</code>, which also exist in <code>migration()</code> and <code>residency()</code>, are explained below.</p>
+
+<pre><code class="language-r">explore(tz, max.interval = 60, minimum.detections = 2, start.time = NULL, stop.time = NULL,
+  speed.method = c("last to first", "first to first"), speed.warning = NULL, 
+  speed.error = NULL, jump.warning = 2, jump.error = 3, inactive.warning = NULL, 
+  inactive.error = NULL, exclude.tags = NULL, override = NULL, report = FALSE, 
+  auto.open = TRUE, discard.orphans = FALSE, discard.first = NULL, discard.orphans = FALSE, 
+  save.detections = FALSE, GUI = c("needed", "always", "never"), save.tables.locally = FALSE,
+  detections.y.axis = c("stations", "arrays"))
+</pre></code>
+
+							<h3>tz</h3>
+
+							<p>Receivers usually work in Coordinated Universal Time (UTC). Although this is nice to integrate data from multiple receivers, depending on where you are working, it may mean that the receivers' time is actually displaced from the daytime in your study area. To correct for this, you must include your time zone in this field. For example, to analyse a study performed in Denmark, we must use <code>tz = "Europe/Copenhagen"</code>.</p>
+
+							<p>Time zones can be complicated business, so to help you out, you can search <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" target="_blank"><u>this wiki page</u></a> or the output of <code>OlsonNames()</code> for the time zone code which you should use.</p>
+
+							<div class="callout">
+							  <div class="callout-header">Note:</div>
+								  <div class="callout-container">
+								    <p>This time zone <strong>must</strong> match the time zone of the release times listed in the <a href="manual-data.html#biometrics-file"><u>biometrics file</u></a> and in the <a href="manual-data.html#deployments-file"><u>deployments file</u></a>.</p>
+								  </div>
+								</div>
+							</pre>
+
+
+							<h3>max.interval</h3>
+
+							<p>If an animal is detected multiple times in one array without being detected in other arrays, these detections are grouped into a single event, assuming that the time difference between two consecutive detections does not exceed <code>max.interval</code> (which is <strong>set in minutes</strong>). Should the time between detections exceed <code>max.interval</code>, a new movement event will be created, in the same receiver array.</p>
+
+							<p>In the example below, you can see how the same detections can be interpreted as a different number of movement events depending on whether we set <code>max.interval</code> to <strong>a)</strong> 120 minutes, <strong>b)</strong> 60 minutes or <strong>c)</strong> 30 minutes.</p>
+
+							<div class="image-margins">
+							<img src="assets/images/manual/maximum_time.svg" alt="drawing" width="1200"/>
+							</div>
+
+							<p><strong>Movements table for example a:</strong></p>
+
+							<table><tr><th>Array</th><th>Detections</th><th>First station</th><th>Last station</th><th>First time</th><th>Last time</th><th>Time travelling</th><th>Time on array</th></tr><tr><td>Array1</td><td>14</td><td>St.1</td><td>St.1</td><td>2019-05-15 12:00:00</td><td>2019-05-15 19:45:00</td><td>NA</td><td>7:45:00</td></tr></table>
+
+							<p><strong>Movements table for example b:</strong></p>
+
+							<table><tr><th>Array</th><th>Detections</th><th>First station</th><th>Last station</th><th>First time</th><th>Last time</th><th>Time travelling</th><th>Time on array</th></tr><tr><td>Array1</td><td>7</td><td>St.1</td><td>St.1</td><td>2019-05-15 12:00:00</td><td>2019-05-15 14:40:00</td><td>NA</td><td>2:40:00</td></tr><tr><td>Array1</td><td>6</td><td>St.1</td><td>St.1</td><td>2019-05-15 16:00:00</td><td>2019-05-15 18:00:00</td><td>1:20:00</td><td>2:00:00</td></tr><tr><td>Array1</td><td>1</td><td>St.1</td><td>St.1</td><td>2019-05-15 19:45:00</td><td>2019-05-15 19:45:00</td><td>1:45:00</td><td>0:00:00</td></tr></table>
+
+							<p><strong>Movements table for example c:</strong></p>
+
+							<table><tr><th>Array</th><th>Detections</th><th>First station</th><th>Last station</th><th>First time</th><th>Last time</th><th>Time travelling</th><th>Time on array</th></tr><tr><td>Array1</td><td>4</td><td>St.1</td><td>St.1</td><td>2019-05-15 12:00:00</td><td>2019-05-15 13:00:00</td><td>NA</td><td>1:00:00</td></tr><tr><td>Array1</td><td>3</td><td>St.1</td><td>St.1</td><td>2019-05-15 13:50:00</td><td>2019-05-15 14:40:00</td><td>0:50:00</td><td>0:50:00</td></tr><tr><td>Array1</td><td>2</td><td>St.1</td><td>St.1</td><td>2019-05-15 16:00:00</td><td>2019-05-15 16:20:00</td><td>1:20:00</td><td>0:20:00</td></tr><tr><td>Array1</td><td>4</td><td>St.1</td><td>St.1</td><td>2019-05-15 17:10:00</td><td>2019-05-15 18:00:00</td><td>0:50:00</td><td>0:50:00</td></tr><tr><td>Array1</td><td>1</td><td>St.1</td><td>St.1</td><td>2019-05-15 19:45:00</td><td>2019-05-15 19:45:00</td><td>1:45:00</td><td>0:00:00</td></tr></table>
+
+							<h3>minimum.detections</h3>
+
+							<p>This argument controls how many times a tag must be registered to be considered valid, if there is only one movement event. Lets have a look at an example: Tag 1234 only has one movement event at <strong>River1</strong>, with <strong>one</strong> detection. If <code>minimum.detections = 1</code>, this movement is considered <strong>valid</strong> , and the tag is considered to have passed through <strong>River1</strong> and then disappeared. If <code>minimum.detections = 2</code>, this movement is considered <strong>invalid</strong> (i.e. could be the result of error detections), and the tag is considered to have been lost after release. If a tag has more than one movement event, then the <code>minimum.detections</code> argument no longer plays a role. 
+							</p>
+							<p>For example, if tag 5678 has two movement events at <strong>River1</strong>, both with one detection (i.e. two detections in total), these movements are considered valid even if <code>minimum.detections = 3</code>. This is because it is unlikely that an erroneous signal which matches a target tag would be recorded on two or more occasions separated in time and/or space.
+							</p>
+
+
+							<h3>start.time and stop.time</h3>
+
+							<p>Sometimes your receivers contain much more detection data than what you are interested in, which can increase the time it takes to process all the detections. By including a <code>start.time</code> and/or an <code>stop.time</code>, you can trim the detection data to those target times.
+							</p>
+
+							<p>This is particularly relevant if, for example, you used some of your tags as testers before the study started, or if you used 
+							one of the receivers to activate and test the tags. A tag being detected before the respective animal being released is a major issue, and actel will complain about that:
+							</p>
+
+<pre><code class="language-r">Error: Tag R64K-1111 was detected before being released!
+  Release time: 2018-04-10 12:00:00
+  First detection time: 2018-04-10 09:33:02
+  Number of detections before release: 1
+
+You may either:
+  a) Stop the analysis and check the data;
+  b) Discard the before-release detections and continue.
+
+Decision:(a/b/comment) 
+</pre></code>
+
+							<p>When you get an error like this, it is <strong>highly recommended</strong> that you check potential errors in the input files before discarding data.
+							</p>
+
+
+
+							<div class="callout">
+							  <div class="callout-header">Note:</div>
+								  <div class="callout-container">
+								    <p>The timestamps <strong>must</strong> be written in <strong>yyyy-mm-dd hh:mm:ss</strong> format, in the same time zone as your study area. Curious about that "comment" option in the decision? [Read more about it here](c-1_migration_processes.html#leaving-comments-for-later)</p>
+								  </div>
+								</div>
+							</pre>
+
+
+							<h3>speed.method</h3>
+
+							<p>When calculating movement speeds from one array to the next, it is important to know if actel should count the time <strong>from the last detection</strong> in the previous array <strong>to the first detection</strong> in the target array, or if you want actel to count the time <strong>from the last detection</strong> in the previous array  <strong>to the last detection</strong> in the target array. This is what <code>speed.method</code> is doing. You can choose one of "last to first" or "last to last". The example below illustrates the difference between both methods:
+							</p>
+
+
+							<div class="image-margins">
+							<img src="assets/images/manual/speed_method.svg" alt="drawing" width="1200"/>
+							</div>
+
+
+							<div class="callout">
+							  <div class="callout-header">Note:</div>
+								  <div class="callout-container">
+								    <p>If you do not supply a distance matrix, speeds cannot be calculated. Instead, the time difference will be displayed.</p>
+								  </div>
+								</div>
+							</pre>
+
+
+							<p>There are two main consequences of choosing different options for speed.method. The first is that the "average.speed.m.s" column in the movement events will reflect the respective "Speed to X" in the graphic above. The second is only relevant during the migration analysis: if speed.method = "first to last", speed will be displayed in two columns in the <code>status.df</code> object: "Average.speed.to.[Section]" and "Average.speed.in.[Section]"; while if speed.method = "last to last", only the "Average.speed.to.[Section]" will be generated.
+							</p>
+
+
+							<h3>speed.warning and speed.error</h3>
+
+							<p>These two variables control the speed checks. By default, they are NULL, and no speed checks are performed. actel will let you know this happened with the following message:
+							</p>
+
+							<pre><code class="language-r">M: 'speed.warning'/'speed.error' were not set, skipping speed checks.</pre></code>
+
+							<p>However, if you include a distances matrix in the analysis, you can specify the maximum expected speed for your animals, in metres per second. If a tag goes over these values, [warnings and user interaction will be activated, as necessary.](b-1_explore_processes.html#average-speed)
+							</p>
+
+							<p>Speed checks cannot be performed without a distance matrix. If you attempt to do this, actel will complain:
+							</p>
+
+							<pre><code class="language-r">Warning: 'speed.warning'/'speed.error' were set, but a valid distance matrix is not present. Aborting speed checks.
+							</pre></code>
+
+							<h3>jump.warning and jump.error</h3>
+
+							<p>During the course of a study, tags can (hopefully not too often) pass through a receiver array undetected. However, if this happens consecutively for more than one array, then perhaps something fishy is going on. Was your animal eaten by a bird? Was there something wrong with the arrays? Whatever the cause, there is a point after which you get suspicious. The <code>jump.warning</code> and <code>jump.error</code> arguments control how suspicious you want to be.
+							</p>
+
+							<p>You can have a look at [these arguments in action here.](b-1_explore_processes.html#jumping-arrays)
+							</p>
+
+
+							<h3>inactive.warning and inactive.error</h3>
+
+							<p>These two variables control the inactiveness checks. <code>inactive.warning</code> and <code>inactive.error</code> must be set in days. That is, if <code>inactive.warning = 2</code>, any tag that is deemed inactive for two days or more will trigger a warning. By default, they are NULL, and no inactiveness checks are performed. Actel will let you know this happened with the following message:
+							</p>
+
+							<pre><code class="language-r">M: 'inactive.warning'/'inactive.error' were not set, skipping inactivity checks.</pre></code>
+
+							<p>Although it is not a requirement, inactiveness checks work best if a distances matrix is present. If you choose to run inactiveness checks without a distances matrix, actel will remind you of this with the following message:
+							</p>
+							<pre><code class="language-r">M: Running inactiveness checks without a distance matrix. Performance may be limited.</pre></code>
+
+							<p>You can learn more about [how the inactiveness checks operate here.](b-1_explore_processes.html#inactiveness)
+							</p>
+
+							<h3>exclude.tags</h3>
+
+							<p>It is possible for a stray tag with the same signal as one of your tags to enter the study area. Although this is unexpected, it would mean you could end up with two tags that differ only in code spaces. As actel works based on the tag signals alone, it does not know which tag is yours, and which is a stray, so you must intervene. If this happens, the following error is issued:
+							</p>
+
+<pre><code class="language-r">Error: One or more signals match more than one tag in the detections! Showing relevant signals/tags.
+   Signal 1081 was found on tags A69-1601-1081, R64K-1081.
+Error in checkDupSignals(input = my.list, bio = bio, tag.list = tags$list) : 
+  Fatal exception found. Stopping analysis.
+</pre></code>
+
+							<p>As you can see above, signal 1081 appears both in tags A69-1601-1081 and R64K-1081. As you should be able to identify your tag between the two, you can exclude the other tag and re-start the analysis. Once you do that, actel will let you know the problem is solved:
+							</p>
+
+							<pre><code class="language-r">M: Excluding tag(s) A69-1601-1081 from the analysis per used command (detections removed: 1, respectively).</pre></code>
+
+							<p>If more than one tag causes trouble, you can list multiple tags to be excluded, like this: <code>exclude.tags = c("A69-1601-1081", "A69-1601-1220")</code>.
+							</p>
+
+							<h3>override</h3>
+
+							<p>Once you finish your analysis, you should go through the generated outputs and check for any strange behaviour. We will discuss this in more detail [later on](b-2_explore_results.html), but for now the important message is that, if you would like to <strong>manually change the results for any set of tags</strong> , you can list their respective signals in <code>override</code> to trigger full manual mode (e.g. <code>override = c(1234, 1405)</code>).
+							</p>
+
+							<p>When you list tags in <code>override</code>, actel will recognise them and enter full manual mode when it is their turn to be analysed. You will know this is happening when you see the following message:
+							</p>
+
+							<pre><code class="language-r">M: Override has been triggered for tag R64K-1234. Entering full manual mode.</pre></code>
+
+							<p>You can find more information on [how to operate full manual mode here](e-0_manual_mode.html).</p>
+
+
+							<h3>report</h3>
+
+							<p>The <code>report</code> option activates a series of print functions that draw tables and figures for later integration in an html report. When you activate this option, actel assembles the [html report](b-2_explore_results.html#actel_explore_report.html-if-report-true) and stores it in your working directory. If you already have a report in your working directory, actel will create a new file with a different name.
+							</p>
+							<p>Here are some graphic examples:
+							</p>
+
+							<div class="row">
+								<div class="col-md-6">
+								<div class="image-margins">
+								<img src="assets/images/manual/example_survival.svg" alt="drawing" height="350px"/>
+								</div>
+								</div>
+								<div class="col-md-6">
+								<div class="image-margins">
+								<img src="assets/images/manual/R64K-4526.png" alt="drawing" height="350px"/>
+								</div>
+								</div>
+							</div>
+
+
+							<h3>auto.open</h3>
+
+							<p>When the <code>report</code> option is activated, <code>auto.open</code> comes into play. If <code>auto.open</code> is TRUE (the default), then actel will automatically open your web browser and open the report as soon as it is completed!
+							</p>
+
+							<h3>discard.orphans</h3>
+
+							<p>This is a flow optimization argument. When actel finds detections outside of the receiver deployment periods, or that were recorded before their respective animals were released, by default, actel will ask the user what to do (discard those detections or stop the analysis so the user can check the data). However, you can tell actel to automatically discard any orphan detections by setting <code>discard.orphans</code> to TRUE.
+							</p>
+
+							<h3>discard.first</h3>
+
+							<p>This argument allows you to discard any detections that happen too soon after the animal was released. You may want to do this to ensure your results are not biased by post-handling disturbance effects. <code>discard.first</code> is set in hours, but if for example you want to set a time in days, you can always state that <code>discard.first = 24 * 7</code> (for seven days in this case).
+							</p>
+
+							<h3>save.detections</h3>
+
+							<p>Detections can take a long time to compile. To save some time when importing the detections, you can set <code>save.detections</code> to TRUE and actel will save an 'actel.detections.RData' file in your current working directory (or in the detections sub-directory) for later use. This option is particularly useful when handling very large detection datasets.
+							</p>
+
+							<h3>GUI</h3>
+
+							<p>actel comes with a graphical interface intended to allow users to deal with very long movement tables that would otherwise overflow R's output limits. However, this graphical interface requires additional packages installed, so it may not always be an option to rely on it. This is where <code>GUI</code> comes in. Defaulting to 'needed', the graphical user interface will only kick in for very long tables. The other two options are 'always' and 'never', both of which are self explanatory.
+							</p>
+							<p>If you cannot run the GUI on your computer and are faced with a very long table, do not worry! actel has a fall-back system, where the table is saved to a temporary file, which you can open in an external program such as Microsoft Excel of LibreOffice Calc. Have a look at the movements table there, let R know what you want to do, close the file and the analysis will continue automatically. This option requires a bit more work, but at least you can still complete your analysis :)
+							</p>
+
+							<h3>save.tables.locally</h3>
+
+							<p>If actel is unable to access the GUI, long tables will be saved to temporary files (as mentioned above). By default, these tables are saved into R's temporary directory. However, in some cases (particularly in MacOS), this temporary folder can be hard to find. You can set <code>save.tables.locally = TRUE</code> to have temporary tables saved in your current work directory, rather than the temporary folder. These temporary tables will be deleted once they are no longer required.
+							</p>
+
+							<h3>detections.y.axis</h3>
+
+							<p>By default, actel decides whether to plot the detections by station or by array, depending on the number of stations and arrays present in the study area. However, you can force a specific Y axis by setting <code>detections.y.axis</code> to either 'stations' or 'arrays'. Note that this will also affect the sensor data plots, as they are coloured consistently with the detection plots.
+							</p>
+
+							<h3>All done!</h3>
+
+							<p>Now that you know how to run the explore analysis, you may want to:
+							</p>
+							<p>__[Learn more about what explore() is doing](b-1_explore_processes.html)__
+							</p>
+							<p>__[Learn more about the results of explore()](b-2_explore_results.html)__
+							</p>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- End Actions -->
+		</main>
+	<!-- End main content -->	
+	<!-- Start footer -->
+		<footer id="st-footer">
+			<div class="container">
+			<!-- Start Disclaimer Modal -->
+				<div class="modal fade" id="DisclaimerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered mw-100 w-75" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title">Copyright/Disclaimer Information</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+							  <div class="container-fluid">
+									  <div class="row middle-row">
+									  	<h5>Disclaimer</h5>
+											<p>SMOLTRACK accepts no responsibility for and excludes all liability in connection with browsing the website, use of information on the website and downloading any material from the website including but not limited to any liability for errors, inaccuracies, omissions or defamatory or misleading statements. SMOLTRACK reserves the right, in its sole discretion and without any obligation, to make improvements to, or correct any errors or omissions in any portion of the information displayed on the website.</p>
+											<p>The contents presented in the SMOLTRACK website are for general information only. No reliance should be placed upon the contents of the website. Advice and verification should be sought through our contacting information.</p>
+											<h5>Linking to Third Party Sites</h5>
+											<p>SMOLTRACK assumes no responsibility for the contents of linked websites. The inclusion of any link should not be taken as an endorsement of any kind by SMOLTRACK of the linked website or any association with its operators. Further, SMOLTRACK has no control over the availability of the linked pages.</p>
+											<h5>Copyright Notice</h5>
+											<p>Material on this website, including text and images, is protected by copyright. It may not be copied, reproduced, republished, downloaded, posted, broadcast or transmitted in any way except for your own personal, non-commercial use. Prior written consent of the copyright holder must be obtained for any other use of material. Copyright in all materials and/or works comprising or contained within this website remains with SMOLTRACK and other copyright owner(s) as specified. No part of this site or sub-domains of this site may be distributed or copied for any commercial purpose.</p>
+								    </div>
+						    </div>
+					      <div class="modal-footer">
+								  <button class="btn btn-secondary" onclick="location.href='mailto:smoltrack@gmail.com';">Contact us<i class="fa fa-envelope" style="padding-left: 10px"></i></button>
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</div>
+			<!-- End Disclaimer Modal -->
+				<div class="st-footer-area">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="st-footer-left">
+								<p class="st-copy-right">actel: Simplifying acoustic telemetry data analysis</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="st-footer-right">
+								<div class="st-social-media">
+									<a href="mailto:hflavio@wlu.ca" target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i></a>
+									<a href="https://ecoevo.social/@HugoMFlavio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-mastodon"></i></a>
+									<!-- <a href="#"><i class="fa fa-youtube"></i></a> -->
+									<button id="DisclaimerBtn" type="button" class="st-disclaimer-btn" data-toggle="modal" data-target="#DisclaimerModal">
+									  Terms of Use
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	<!-- End footer -->	
+	<!-- Start JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+		<!-- Slick slider -->
+	    <script type="text/javascript" src="assets/js/slick.min.js"></script>
+   	<!-- Ajax contact form  -->
+	    <script type="text/javascript" src="assets/js/app.js"></script>
+  	<!-- Modal popup -->
+	    <script type="text/javascript" src="assets/js/modal.js"></script>
+    <!-- Custom js -->
+			<script type="text/javascript" src="assets/js/custom.js"></script>
+			<script type="text/javascript" src="assets/js/navBar.js"></script>
+
+		<!-- Code colouring -->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+			<script>hljs.highlightAll();</script>
+
+		<!-- Live reload (For testing) -->
+			<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+  <!-- End JavaScript -->
+	</div>
+  </body>
+<!-- End Body -->
+</html>
+
+
+
