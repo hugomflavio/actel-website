@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start Head -->
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" content="R package actel.">
+
+    <title>explore() processes</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="assets/images/actel_favicon.ico"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- Slick slider -->
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- Modal popup -->
+    <link href="assets/css/modal.css" rel="stylesheet">
+
+    <!-- Main Style -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/section_image_bg.css" rel="stylesheet">
+    <link href="assets/css/basic_typography.css" rel="stylesheet">
+    <link href="assets/css/dropdown_menu.css" rel="stylesheet">
+    <link href="assets/css/tables.css" rel="stylesheet">
+    <link href="assets/css/buttons.css" rel="stylesheet">
+    <link href="assets/css/size_responsiveness.css" rel="stylesheet">
+    <link href="assets/css/prism.css" rel="stylesheet">
+
+    <!-- Fonts -->
+
+    <!-- Poppins For Title -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+ 
+    <!-- navBar  -->
+    <link href="assets/css/navBar_for_white_bg.css" rel="stylesheet">
+    <link href="assets/css/navBar-second_for_white_bg.css" rel="stylesheet">
+
+    <!-- Code colouring -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+
+  </head>
+<!-- End Head -->
+<!-- Start Body -->
+  <body>
+  <div class="page-container">  
+  <!--START SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#">
+      <i class="fa fa-angle-up"></i>
+    </a>
+  <!-- END SCROLL TOP BUTTON -->
+  <!-- Start NavBar -->
+    <div class="navBar" id="navBar">
+      <a href="index.html">Home</a>
+      <a href="news.html">News</a>
+      <button onclick="toogleManualNavBarResponsive()"><strong>Manual</strong> <i class="fa-solid fa-caret-down"></i></button>
+      <a href="mailto:hflavio@wlu.ca" onclick="closeNavBarDropdown()">Need help?<i class="fa fa-envelope" style="padding-left: 10px"></i></a>
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleNavBarResponsive()"><i class="fa fa-bars"></i></a>
+    </div>
+  <!-- End NavBar -->
+  <!-- Start manual NavBar -->
+    <div class="navBar-second" id="navBar-manual">
+      <a href="manual-index.html">Section index</a>
+      <a href="manual-data.html">Input data</a>
+      <a href="manual-explore.html"><code><strong>explore()</strong></code></a>
+      <a href="manual-migration.html"><code>migration()</code></a>
+      <a href="manual-residency.html"><code>residency()</code></a>
+      <a href="manual-manual.html">Manual mode</a>
+      <a href="manual-beyond.html">Beyond the three analyses</a>
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleManualNavBarResponsive()"><i class="fa-solid fa-arrow-left"></i></a>
+    </div>
+  <!-- End manual NavBar -->
+<!-- Start Main Content -->
+    <main>
+    <!-- Start About -->
+      <section class="section-white-bg">
+        <div class="container">
+      
+          <div class="section-white-bg-area">
+
+            <h2>How does <code>explore()</code> work?</h2>
+            <div class="manual">
+                  
+              <p>
+                This page details what happens to your data as it goes through the analysis.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="section-white-bg-area" id="first-checks">
+
+            <h2>Making sure everything checks out</h2>
+            <div class="manual">
+
+              <p>The first thing actel does is import your data. This also includes all of your detection files, which can take a bit of time. Then, actel performs many verifications to make sure everything is all right. As the list of checks is long, I will not explore each one of them in detail here. Should something be out of the ordinary, actel will let you know with a warning or an error message, depending on the severity of the issue.</p>
+
+            </div>
+
+          </div>
+
+          <div class="section-white-bg-area" id="organizing-detections">
+
+            <h2>Organising the detections</h2>
+            <div class="manual">
+
+              <p>Once everything is in place, actel will start by:</p>
+
+              <ul class="fa-ul">
+                <li>Splitting the detections by transmitter</li>
+                <li>Match the signals listed in the biometrics,</li>
+                <li>Keep only the detections useful for the study.</li>
+              </ul>
+
+              <p>It is at this point that the argument <a href="manual-explore.html#exclude.tags"><code>exclude.tags</code></a> comes in:</p>
+
+              <p>Actel uses the tag's signal to find your animal. However, if two tags with the same signal but different code spaces show up at your study area, actel will not know which one to choose. Should this happen, you must specify which tag <strong>should be excluded</strong> in the <code>exclude.tags</code> argument and restart the analysis. You can <a href="manual-explore.html#exclude.tags"><code>find an example here.</code></a></p>
+
+              <p>Once the detections are sorted and validated, actel is ready to start compiling movement events.</p>
+
+              <div class="callout">
+                <div class="callout-header">Note:</div>
+                <div class="callout-container">
+                  <p>If your detections contain data from stray tags (i.e. tags that do not belong to your study), actel will ask you if you would like to save a summary of this to a "stray_tags.csv" file.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="section-white-bg-area" id="creating-movements">
+
+            <h2>From detections to movements</h2>
+            <div class="manual">
+
+<p>The process of compiling movement events is entirely automatic, and the outcome depends on two things:</p>
+
+<p><strong>Arrays:</strong> When a tag moves from one receiver array to another, a new movement event is created. These arrays are defined by you in the <a href="manual-data.html#spatial-file">spatial file</a>, so it is worth it to spend some time thinking about how you want to arrange your receivers.</p>
+
+<p><strong><code>max.interval</code></strong>: This argument controls the creation of multiple events for consecutive detections on the same receiver array. You can <a href="manual-explore.html#max.interval">find more information about this argument</a> .</p>
+
+<p>By the end of this process, you will have a list containing the movement events for each of the target tags that were detected during the study.</p>
+
+            </div>
+          </div>
+
+
+          <div class="section-white-bg-area" id="event-quality">
+
+            <h2>Checking event quality</h2>
+            <div class="manual">
+
+              <p>Upon finishing the movement event creation, actel checks the movement events to look out for strange behaviour. If something looks odd, you are given a chance to invalidate specific movement events, so that invalid detections can be discarded.</p>
+
+              <div class="callout">
+                <div class="callout-header">Note:</div>
+                <div class="callout-container">
+                  <p>Rendering a movement event invalid <strong>does not make it disappear</strong>. However, subsequent steps in the analysis will know that the <strong>event should not be considered</strong> (hence the "Valid" column).</p>
+                </div>
+              </div>
+
+              <h3>Impassables</h3>
+
+              <p>As you probably know by now, you can [define unidirectional connections between <a href="manual-data.html#barriers">arrays</a>. This tells actel that something (e.g. a weir or dam) prevents the animal from moving in a particular direction. Let's see the examples below, with arrays A, B and C:</p>
+
+              <div class="row">
+                <div class="image-margins col-md-6">
+                  <img src="assets/images/manual/impassables_a.svg" alt="drawing"/>
+                </div>
+                <div class="image-margins col-md-6">
+                  <img src="assets/images/manual/impassables_b.svg" alt="drawing"/>
+                </div>
+              </div>
+
+              <p>In example 1, animals can pass from A to C and C to A freely. However, they can only pass from B to C, as the way in the opposite direction (C to B) is blocked by a weir. If a tag has a detection in C and then in B, actel will assume the animal passed through A undetected.</p>
+
+              <p>On the other hand, in example 2, the way from C to A is also blocked by a weir. If a tag is detected in C and afterwards either in A or B, actel will complain, as there is no viable way for the respective animal to move between both arrays.</p>
+
+              <p>This is the respective warning:</p>
+
+<pre>
+
+Warning: Tag R64K-1234 made an impassable jump: It is not possible to go from array C to A.
+         Please resolve this either by invalidating events or by adjusting your 'spatial.txt' file and restarting.
+
+Opening valid movement table for inspection:
+
+[...]
+
+Note: You can select event ranges by separating them with a ':' and/or multiple events at once by separating them with a space or a comma.
+Events to be rendered invalid: 
+
+</pre>
+
+
+              <p>As the warning says, you then have two options: Invalidate events until the impassable exception is resolved, or re-structure your spatial.txt file.</p>
+
+
+
+              <h3>Jumping arrays</h3>
+
+<p>If the tag has been jumping around (i.e. passing through multiple arrays undetected), actel will issue warnings and prompt user intervention, depending on <a href="manual-explore.html#jump.parameters">the values set for <code>jump.warning</code> and <code>jump.error</code></a>.</p>
+
+<p>Let's have a look at the examples below:</p>
+
+                <div class="image-margins">
+                  <img src="assets/images/manual/jump_examples.svg" alt="drawing"/>
+                </div>
+
+<p>Assuming <code>jump.warning = 2</code> and <code>jump.error = 3</code>, examples <strong>1</strong> and <strong>2</strong> would pass through the analysis without raising any flags (<strong>1</strong> as a perfect situation and <strong>2</strong> showing an efficiency flaw in array C). </p>
+
+<p>However, in example <strong>3</strong>, the jump size is equal to <code>jump.warning</code>, but lower than <code>jump.error</code>. When this happens, actel will display a warning:</p>
+
+<pre>
+
+Warning: Tag R64K-1234 jumped through 2 arrays in events 1 -> 2 (A -> D).
+
+</pre>
+
+<p>Then, actel would continue the analysis. This warning is issued whenever the jump size equals or is greater than <code>jump.warning</code>. Lastly, in example <strong>4</strong>, the jump size is equal to the <code>jump.error</code>. When this happens, actel issues a warning like the one above, and on top of that allows the user to intervene:</p>
+
+<pre>
+
+Warning: Tag R64K-1234 jumped through 3 arrays in events 1 -> 2 (A -> E).
+M: Opening movement table of tag R64K-2791 for inspection:
+[...]
+Would you like to render any movement event invalid, or expand an event?(y/n/comment)
+
+</pre>
+
+<p>From here, you can inspect the movement table and find out if some events should be removed from the analysis.</p>
+
+
+
+              <h3>Average speed</h3>
+
+
+<p>If you include a <a href="manual-data.html#distances-matrix">distance matrix</a> in the analysis, you can specify the maximum expected speed for your animals using <a href="manual-data.html#speed.parameters">speed.warning and speed.error</a>. Doing so will trigger the speed checks, where the average speed between each movement event is compared to the specified arguments.</p>
+
+<p>If the average speed is higher than <code>speed.warning</code>, a warning is triggered:</p>
+
+<pre>
+
+Warning: Tag R64K-1234 had an average speed of 1.3 m/s from valid event 3 to 4 (Array1 -> Array2).
+
+</pre>
+
+<p>If, on top of this, any of the average speeds is higher than <code>speed.error</code>, user interaction is suggested:</p>
+
+<pre>
+
+Warning: Tag R64K-1234 had an average speed of 1.3 m/s from valid event 5 to 6 (Array4 -> Array5).
+M: Opening valid movements table of tag R64K-1234 for inspection:
+
+[...]
+
+Would you like to render any movement event invalid, or expand an event?(y/n/comment) 
+
+</pre>
+
+<p>From here you can then decide whether or not some movement events should be excluded.</p>
+
+
+              <h3>Inactiveness</h3>
+
+<p>Specifying a value for <a href="manual-explore.html#inactive.parameters">inactive.warning and/or inactive.error</a> will trigger the inactiveness checks. These differ depending on whether or not you included a distance matrix in the analysis.</p>
+
+Inactiveness checks are performed in the tail of the movement events. That is, actel grabs the events in the last array and analyses those. Let's have a look at the example below, and assume <code>inactive.warning</code> and <code>inactive.error</code> were both set to 3 days.
+
+<table><tr><th>Array</th><th>Detections</th><th>First station</th><th>Last station</th><th>First time</th><th>Last time</th><th>Time travelling</th><th>Time on array</th></tr><tr><td>A</td><td>4</td><td>St.1</td><td>St.2</td><td>2019-05-15 12:00:00</td><td>2019-05-15 13:00:00</td><td>NA</td><td>1:00:00</td></tr><tr><td>B</td><td>3</td><td>St.3</td><td>St.4</td><td>2019-05-16 13:50:00</td><td>2019-05-16 14:40:00</td><td>24:50:00</td><td>0:50:00</td></tr><tr><td><strong>C</strong></td><td>2</td><td>St.5</td><td>St.6</td><td>2019-05-17 16:00:00</td><td>2019-05-17 16:20:00</td><td>25:20:00</td><td>0:20:00</td></tr><tr><td><strong>C</strong></td><td>4</td><td>St.6</td><td>St.5</td><td>2019-05-17 17:10:00</td><td>2019-05-17 18:00:00</td><td>0:50:00</td><td>0:50:00</td></tr><tr><td><strong>C</strong></td><td>1</td><td>St.5</td><td>St.5</td><td>2019-05-20 19:45:00</td><td>2019-05-20 19:45:00</td><td>73:45:00</td><td>0:00:00</td></tr></table>
+
+<p>In this case, the last three events are valid candidates for inactiveness. Actel will then check the time difference between the first detection at event 3 and the last detection at event 5. Should this difference be larger than <code>inactive.warning</code>, actel will proceed to the next step, which depends on whether the distances.matrix is present.</p>
+
+
+<h4>If a distances matrix is present</h4>
+
+<p>Actel will gather all the stations where these last detections occurred and check if they are less than 1500 metres a part. If this is true, then there is a valid case for inactivity, and a warning will be issued:</p>
+
+<pre>
+
+Warning: Tag R64K-1234 was detected 7 times at stations less than 1.5 km apart in array 'C' (St.5, St.6), over 3.07 days and then disappeared. Could it be inactive?
+
+</pre>
+
+<h4>If a distances matrix is NOT present</h4>
+
+<p>Actel will count the number of individual stations in which the tag was detected. If there are three or less individual stations, there is a valid case for inactivity, and a similar warning will be issued:</p>
+
+<pre>
+
+Warning: Tag R64K-1234 was detected 7 times at three or less stations of array 'C' (St.5, St.6) over 3.07 days and then disappeared. Could it be inactive?
+
+</pre>
+
+<p>Since <code>inactive.error</code> was also set to three, this situation would trigger the possibility for user interaction:</p>
+
+<pre>
+
+M: Opening valid movement table of tag R64K-1234 for inspection. Inactiveness started on event [#] (2019-05-17):
+
+[...]
+
+Would you like to render any movement event invalid, or expand an event?(y/n/comment) 
+
+</pre>
+
+<p>From here you could then decide if some events should be removed.</p>
+
+
+<h4>What if the tag reached the array, moved about a bit, and only then stopped moving?</h4>
+
+<p>If the tag was active in array C, then it is possible that the initial detections will be in receivers located further away than 1500 metres, or in more than three unique receivers. To search for this cases, actel iterates the process above, removing one event from the top at a time, for as long as the period of residency at the array is higher than <code>inactive.warning</code>.</p>
+
+<p>This means that, even if there are detections at many stations at the first events under scrutiny, potential inactiveness can still be detected at the trailing events.</p>
+
+
+            </div>
+          </div>
+
+          <div class="section-white-bg-area" id="first-detections">
+
+            <h2>Time of first detection at each array</h2>
+            <div class="manual">
+
+
+<p>The last thing <code>explore()</code> does is find out the time of first detection at each array, for each tag. This information is then used to plot <a href="manual-explore-results.html#times">circular graphics in the report</a>, and is also returned within R as an output of the function.</p>
+
+            </div>
+          </div>
+
+          <div class="section-white-bg-area" id="explore-ends-here">
+
+            <h2>The <code>explore()</code> analysis ends here</h2>
+            <div class="manual">
+
+
+<p>Upon finishing the analysis, if you <code>report = TRUE</code>, the html report generated will give you an idea of what your data looks like. You may now be interested in having a more <a href="manual-explore-results.html">detailed look at the outputs of the explore()</a>.</p>
+
+<p>To advance into more detailed analyses, you can proceed either to the <a href="manual-migration.html"><code>migration()</code> analysis</a> or to the <a href="manual-residency.html"><code>residency()</code> analysis</a>. These will use the movement events created here to extract more complex metrics!</p>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    <!-- End Actions -->
+    </main>
+  <!-- End main content --> 
+  <!-- Start footer -->
+    <footer id="st-footer">
+      <div class="container">
+      <!-- Start Disclaimer Modal -->
+        <div class="modal fade" id="DisclaimerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered mw-100 w-75" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Copyright/Disclaimer Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row middle-row">
+                      <h5>Disclaimer</h5>
+                      <p>SMOLTRACK accepts no responsibility for and excludes all liability in connection with browsing the website, use of information on the website and downloading any material from the website including but not limited to any liability for errors, inaccuracies, omissions or defamatory or misleading statements. SMOLTRACK reserves the right, in its sole discretion and without any obligation, to make improvements to, or correct any errors or omissions in any portion of the information displayed on the website.</p>
+                      <p>The contents presented in the SMOLTRACK website are for general information only. No reliance should be placed upon the contents of the website. Advice and verification should be sought through our contacting information.</p>
+                      <h5>Linking to Third Party Sites</h5>
+                      <p>SMOLTRACK assumes no responsibility for the contents of linked websites. The inclusion of any link should not be taken as an endorsement of any kind by SMOLTRACK of the linked website or any association with its operators. Further, SMOLTRACK has no control over the availability of the linked pages.</p>
+                      <h5>Copyright Notice</h5>
+                      <p>Material on this website, including text and images, is protected by copyright. It may not be copied, reproduced, republished, downloaded, posted, broadcast or transmitted in any way except for your own personal, non-commercial use. Prior written consent of the copyright holder must be obtained for any other use of material. Copyright in all materials and/or works comprising or contained within this website remains with SMOLTRACK and other copyright owner(s) as specified. No part of this site or sub-domains of this site may be distributed or copied for any commercial purpose.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-secondary" onclick="location.href='mailto:smoltrack@gmail.com';">Contact us<i class="fa fa-envelope" style="padding-left: 10px"></i></button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- End Disclaimer Modal -->
+        <div class="st-footer-area">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="st-footer-left">
+                <p class="st-copy-right">actel: Simplifying acoustic telemetry data analysis</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="st-footer-right">
+                <div class="st-social-media">
+                  <a href="mailto:hflavio@wlu.ca" target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i></a>
+                  <a href="https://ecoevo.social/@HugoMFlavio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-mastodon"></i></a>
+                  <!-- <a href="#"><i class="fa fa-youtube"></i></a> -->
+                  <!-- <button id="DisclaimerBtn" type="button" class="st-disclaimer-btn" data-toggle="modal" data-target="#DisclaimerModal">
+                    Terms of Use
+                  </button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  <!-- End footer --> 
+  <!-- Start JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <!-- Slick slider -->
+      <script type="text/javascript" src="assets/js/slick.min.js"></script>
+    <!-- Ajax contact form  -->
+      <script type="text/javascript" src="assets/js/app.js"></script>
+    <!-- Modal popup -->
+      <script type="text/javascript" src="assets/js/modal.js"></script>
+    <!-- Custom js -->
+      <script type="text/javascript" src="assets/js/custom.js"></script>
+      <script type="text/javascript" src="assets/js/navBar.js"></script>
+
+    <!-- Code colouring -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+
+    <!-- Live reload (For testing) -->
+      <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+  <!-- End JavaScript -->
+  </div>
+  </body>
+<!-- End Body -->
+</html>
+
+
+
