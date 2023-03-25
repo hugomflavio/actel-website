@@ -573,13 +573,16 @@ E -- F -- E
 
 </pre>
 
-							<p>The difference here is that, in the spatial.txt for migration, actel expects arrays to connected in a directional way. That means that connecting <code>D -- B</code> and <code>B -- D</code> does not mean the same thing, and it is important that you explicitly state that the animals are as likely to reach B coming from D as they are to reach D coming from B. In other words, you are saying that neither of the movements would be an explicit backwards movement. This will inform actel that D and B are parallel arrays, and that special rules should apply to them. The same goes for C, E and F.
+							<p>The difference here is that, in the spatial.txt for migration, actel expects arrays to connected in a directional way. That means that connecting <code>D -- B</code> and <code>B -- D</code> does not mean the same thing, and it is important that you explicitly state that the animals are as likely to reach B coming from D as they are to reach D coming from B. In other words, you are saying that neither of the movements would be an explicit backwards movement. This will inform actel that D and B are parallel arrays, and that special rules should apply to them. The same goes for C, E and F.</p>
 
 
 
 						</div>
 
 						<div class="manual">
+
+							<div id="barriers" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
 							<h3>Barriers</h3>
 
 							<p>Sometimes it is possible for your animals to go from A to B, but not from B to A. In actel, you can include this information to further refine the analysis. In total, there are three symbols you can use to connect your arrays: <code>--</code>, <code>-></code> or <code><-</code>.</p>
