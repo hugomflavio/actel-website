@@ -97,10 +97,10 @@
 							<p>E.g.:</p>
 							<pre><code class="language-r">explore(tz = "Europe/London")</code></pre>
 
-							<p>Curious about how <code>explore()</code> processes your data? Have a look <a href="manual-explore-processes.html"><u>under the hood!</u></a>
+							<p>Curious about how <code>explore()</code> processes your data? Have a look <a href="manual-explore-processes.html">under the hood!</a>
 							</p>
 
-							<p>Need help going through the output of <code>explore()</code>? Find more details <a href="manual-explore-results.html"><u>here.</u></a>
+							<p>Need help going through the output of <code>explore()</code>? Find more details <a href="manual-explore-results.html">here.</a>
 							</p>
 						</div>
 
@@ -130,12 +130,12 @@
 
 							<div class="callout">
 							  <div class="callout-header">Note:</div>
-								  <div class="callout-container">
-								    <p>This time zone <strong>must</strong> match the time zone of the release times listed in the <a href="manual-data.html#biometrics-file"><u>biometrics file</u></a> and in the <a href="manual-data.html#deployments-file"><u>deployments file</u></a>.</p>
-								  </div>
-								</div>
-							</pre>
+							  <div class="callout-container">
+							    <p>This time zone <strong>must</strong> match the time zone of the release times listed in the <a href="manual-data.html#biometrics-file"><u>biometrics file</u></a> and in the <a href="manual-data.html#deployments-file"><u>deployments file</u></a>.</p>
+							  </div>
+							</div>
 
+							<div id="max.interval" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
 							<h3>max.interval</h3>
 
@@ -225,6 +225,7 @@ Decision:(a/b/comment)
 							<p>There are two main consequences of choosing different options for speed.method. The first is that the "average.speed.m.s" column in the movement events will reflect the respective "Speed to X" in the graphic above. The second is only relevant during the migration analysis: if speed.method = "first to last", speed will be displayed in two columns in the <code>status.df</code> object: "Average.speed.to.[Section]" and "Average.speed.in.[Section]"; while if speed.method = "last to last", only the "Average.speed.to.[Section]" will be generated.
 							</p>
 
+							<div id="speed.parameters" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
 							<h3>speed.warning and speed.error</h3>
 
@@ -242,6 +243,7 @@ Decision:(a/b/comment)
 							<pre><code class="language-r">Warning: 'speed.warning'/'speed.error' were set, but a valid distance matrix is not present. Aborting speed checks.
 							</pre></code>
 
+							<div id="jump.parameters" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 							<h3>jump.warning and jump.error</h3>
 
 							<p>During the course of a study, tags can (hopefully not too often) pass through a receiver array undetected. However, if this happens consecutively for more than one array, then perhaps something fishy is going on. Was your animal eaten by a bird? Was there something wrong with the arrays? Whatever the cause, there is a point after which you get suspicious. The <code>jump.warning</code> and <code>jump.error</code> arguments control how suspicious you want to be.
@@ -250,6 +252,7 @@ Decision:(a/b/comment)
 							<p>You can have a look at [these arguments in action here.](b-1_explore_processes.html#jumping-arrays)
 							</p>
 
+							<div id="inactive.parameters" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
 							<h3>inactive.warning and inactive.error</h3>
 
@@ -260,10 +263,13 @@ Decision:(a/b/comment)
 
 							<p>Although it is not a requirement, inactiveness checks work best if a distances matrix is present. If you choose to run inactiveness checks without a distances matrix, actel will remind you of this with the following message:
 							</p>
+
 							<pre><code class="language-r">M: Running inactiveness checks without a distance matrix. Performance may be limited.</pre></code>
 
 							<p>You can learn more about [how the inactiveness checks operate here.](b-1_explore_processes.html#inactiveness)
 							</p>
+
+							<div id="exclude.tags" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
 							<h3>exclude.tags</h3>
 
@@ -440,7 +446,7 @@ Error in checkDupSignals(input = my.list, bio = bio, tag.list = tags$list) :
    	<!-- Ajax contact form  -->
 	    <script type="text/javascript" src="assets/js/app.js"></script>
   	<!-- Modal popup -->
-	    <script type="text/javascript" src="assets/js/modal.js"></script>
+	    <!-- <script type="text/javascript" src="assets/js/modal.js"></script> -->
     <!-- Custom js -->
 			<script type="text/javascript" src="assets/js/custom.js"></script>
 			<script type="text/javascript" src="assets/js/navBar.js"></script>
