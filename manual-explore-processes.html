@@ -134,7 +134,9 @@
             </div>
           </div>
 
-          <div class="section-white-bg-area" id="creating-movements">
+          <div class="section-white-bg-area">
+
+              <div id="creating-movements" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
             <h2>From detections to movements</h2>
             <div class="manual">
@@ -143,7 +145,7 @@
 
 <p><strong>Arrays:</strong> When a tag moves from one receiver array to another, a new movement event is created. These arrays are defined by you in the <a href="manual-data.html#spatial-file">spatial file</a>, so it is worth it to spend some time thinking about how you want to arrange your receivers.</p>
 
-<p><strong><code>max.interval</code></strong>: This argument controls the creation of multiple events for consecutive detections on the same receiver array. You can <a href="manual-explore.html#max.interval">find more information about this argument</a> .</p>
+<p><strong><code>max.interval</code></strong>: This argument controls the creation of multiple events for consecutive detections on the same receiver array. You can <a href="manual-explore.html#max.interval">find more information about this argument</a>.</p>
 
 <p>By the end of this process, you will have a list containing the movement events for each of the target tags that were detected during the study.</p>
 
@@ -202,6 +204,8 @@ Events to be rendered invalid:
               <p>As the warning says, you then have two options: Invalidate events until the impassable exception is resolved, or re-structure your spatial.txt file.</p>
 
 
+              <div id="jumping-arrays" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
 
               <h3>Jumping arrays</h3>
 
@@ -238,10 +242,12 @@ Would you like to render any movement event invalid, or expand an event?(y/n/com
 
 
 
+              <div id="average-speed" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
               <h3>Average speed</h3>
 
 
-<p>If you include a <a href="manual-data.html#distances-matrix">distance matrix</a> in the analysis, you can specify the maximum expected speed for your animals using <a href="manual-data.html#speed.parameters">speed.warning and speed.error</a>. Doing so will trigger the speed checks, where the average speed between each movement event is compared to the specified arguments.</p>
+<p>If you include a <a href="manual-data.html#distances-matrix">distance matrix</a> in the analysis, you can specify the maximum expected speed for your animals using <a href="manual-explore.html#speed.parameters">speed.warning and speed.error</a>. Doing so will trigger the speed checks, where the average speed between each movement event is compared to the specified arguments.</p>
 
 <p>If the average speed is higher than <code>speed.warning</code>, a warning is triggered:</p>
 
@@ -266,6 +272,9 @@ Would you like to render any movement event invalid, or expand an event?(y/n/com
 
 <p>From here you can then decide whether or not some movement events should be excluded.</p>
 
+
+
+              <div id="inactiveness" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
               <h3>Inactiveness</h3>
 
@@ -318,6 +327,31 @@ Would you like to render any movement event invalid, or expand an event?(y/n/com
 <p>If the tag was active in array C, then it is possible that the initial detections will be in receivers located further away than 1500 metres, or in more than three unique receivers. To search for this cases, actel iterates the process above, removing one event from the top at a time, for as long as the period of residency at the array is higher than <code>inactive.warning</code>.</p>
 
 <p>This means that, even if there are detections at many stations at the first events under scrutiny, potential inactiveness can still be detected at the trailing events.</p>
+
+
+            </div>
+          </div>
+
+          <div class="section-white-bg-area">
+
+              <div id="comments" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+            <h2>Leaving comments for later</h2>
+            <div class="manual">
+
+<p>If a tag is causing doubts, you can attach a comment to it at any time. Just reply "comment" to a question when the word "comment" shows up between brackets and the comment dialogue will be triggered:</p>
+
+<pre>
+
+Continue editing last valid events?(y/N/comment) comment
+New comment on tag R64K-4456: Was this animal eaten?
+M: Comment successfully stored, returning to the previous interaction.
+Continue editing last valid events?(y/N/comment) 
+
+</pre>
+
+<p>You can then find all your comments in the <a href="manual-explore-results.html#report">html report</a>! Additionally, when you run <code>migration()</code> or <code>residency()</code>, the comments are also stored in the <code>status.df</code> object.</p>
+
 
 
             </div>

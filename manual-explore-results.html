@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start Head -->
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" content="R package actel.">
+
+    <title>explore() processes</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="assets/images/actel_favicon.ico"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- Slick slider -->
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- Modal popup -->
+    <link href="assets/css/modal.css" rel="stylesheet">
+
+    <!-- Main Style -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/section_image_bg.css" rel="stylesheet">
+    <link href="assets/css/basic_typography.css" rel="stylesheet">
+    <link href="assets/css/dropdown_menu.css" rel="stylesheet">
+    <link href="assets/css/tables.css" rel="stylesheet">
+    <link href="assets/css/buttons.css" rel="stylesheet">
+    <link href="assets/css/size_responsiveness.css" rel="stylesheet">
+    <link href="assets/css/prism.css" rel="stylesheet">
+
+    <!-- Fonts -->
+
+    <!-- Poppins For Title -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+ 
+    <!-- navBar  -->
+    <link href="assets/css/navBar_for_white_bg.css" rel="stylesheet">
+    <link href="assets/css/navBar-second_for_white_bg.css" rel="stylesheet">
+
+    <!-- Code colouring -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+
+  </head>
+<!-- End Head -->
+<!-- Start Body -->
+  <body>
+  <div class="page-container">  
+  <!--START SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#">
+      <i class="fa fa-angle-up"></i>
+    </a>
+  <!-- END SCROLL TOP BUTTON -->
+  <!-- Start NavBar -->
+    <div class="navBar" id="navBar">
+      <a href="index.html">Home</a>
+      <a href="news.html">News</a>
+      <button onclick="toogleManualNavBarResponsive()"><strong>Manual</strong> <i class="fa-solid fa-caret-down"></i></button>
+      <a href="mailto:hflavio@wlu.ca" onclick="closeNavBarDropdown()">Need help?<i class="fa fa-envelope" style="padding-left: 10px"></i></a>
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleNavBarResponsive()"><i class="fa fa-bars"></i></a>
+    </div>
+  <!-- End NavBar -->
+  <!-- Start manual NavBar -->
+    <div class="navBar-second" id="navBar-manual">
+      <a href="manual-index.html">Section index</a>
+      <a href="manual-data.html">Input data</a>
+      <a href="manual-explore.html"><code><strong>explore()</strong></code></a>
+      <a href="manual-migration.html"><code>migration()</code></a>
+      <a href="manual-residency.html"><code>residency()</code></a>
+      <a href="manual-manual.html">Manual mode</a>
+      <a href="manual-beyond.html">Beyond the three analyses</a>
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleManualNavBarResponsive()"><i class="fa-solid fa-arrow-left"></i></a>
+    </div>
+  <!-- End manual NavBar -->
+<!-- Start Main Content -->
+    <main>
+    <!-- Start About -->
+      <section class="section-white-bg">
+        <div class="container">
+      
+          <div class="section-white-bg-area">
+
+            <h2>What do you get from <code>explore()</code>?</h2>
+            <div class="manual">
+                  
+              <p>
+                This page details all the cool things you get after running the explore analysis.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="section-white-bg-area" id="within-r">
+
+            <h2>Results within R</h2>
+            <div class="manual">
+
+              <p>If you ran the explore function and stored it into an object (i.e. <code>output <- explore(...)</code>), this object will now be a list, containing all the useful results actel has compiled for you:</p>
+
+              <h3>detections</h3>
+
+              <p>The <code>detections</code> list contains the detections found in your detections file which match your target tags, split by each of the tags. This is the base data with which actel worked. Here is an example:</p>
+
+<table><tr><th>Timestamp</th><th>Receiver</th><th>CodeSpace</th><th>Signal</th><th>Transmitter</th><th>Standard.Name</th><th>Array</th></tr><tr><td>2018-04-18 19:07:45</td><td>130763</td><td>R64K</td><td>4701</td><td>R64K-4701</td><td>St.2</td><td>River1</td></tr><tr><td>2018-04-18 19:08:06</td><td>130763</td><td>R64K</td><td>4701</td><td>R64K-4701</td><td>St.2</td><td>River1</td></tr><tr><td>2018-04-18 19:56:39</td><td>130766</td><td>R64K</td><td>4701</td><td>R64K-4701</td><td>St.7</td><td>River1</td></tr><tr><td>2018-04-18 20:01:11</td><td>126324</td><td>R64K</td><td>4701</td><td>R64K-4701</td><td>St.5</td><td>River1</td></tr><tr><td>2018-04-18 20:13:43</td><td>126324</td><td>R64K</td><td>4701</td><td>R64K-4701</td><td>St.5</td><td>River1</td></tr><tr><td>2018-04-18 20:15:11</td><td>126324</td><td>R64K</td><td>4701</td><td>R64K-4701</td><td>St.5</td><td>River1</td></tr></table>
+
+
+
+              <h3>valid.detections</h3>
+
+<p>The <code>valid.detections</code> object only contains the detections that were deemed valid during the analysis.</p>
+
+
+              <h3>spatial</h3>
+
+
+<p>The <code>spatial</code> list contains the stations, release sites and some more summary information. This object may come in handy if you have to go back to your results some time after you completed the analysis, so you can verify the study area design and match the stations names to their locations.</p>
+
+
+              <h3>deployments</h3>
+
+<p>The <code>deployments</code> data frame is similar to t deployments.csv file, with the exception that unique serial numbers have been created for receivers which were deployed more than once.</p>
+
+
+
+              <h3>arrays</h3>
+
+<p>The <code>arrays</code> list contains detailed information for each array: Which arrays are directly before, which arrays are directly after, which arrays are valid efficiency peers, which arrays are directly OR indirectly after, and more.</p>
+
+
+              <h3>movements</h3>
+
+<p>The <code>movements</code> list contains the movement events created during <a href="manual-explore-processes.html#creating-movements">the detection sorting process</a>. These records can become very useful if you need to go back to a given tag and inspect its behaviour in more detail. Here is an example:</p>
+
+
+<table><tr><th>Array</th><th>Detections</th><th>First station</th><th>Last station</th><th>First time</th><th>Last time</th><th>Time travelling</th><th>Time on array</th></tr><tr><td>River1</td><td>92</td><td>St.2</td><td>St.2</td><td>2018-04-18 19:07:45</td><td>2018-04-18 23:27:29</td><td>NA</td><td>4:19:44</td></tr><tr><td>River2</td><td>1</td><td>St.11</td><td>St.11</td><td>2018-04-18 23:49:16</td><td>2018-04-18 23:49:16</td><td>0:21:47</td><td>0:00:00</td></tr><tr><td>River3</td><td>3</td><td>St.12</td><td>St.12</td><td>2018-04-19 01:52:34</td><td>2018-04-19 01:57:01</td><td>2:03:18</td><td>0:04:27</td></tr><tr><td>River4</td><td>10</td><td>St.13</td><td>St.13</td><td>2018-04-19 03:35:44</td><td>2018-04-19 03:42:17</td><td>1:38:43</td><td>0:06:33</td></tr><tr><td>Bay1</td><td>52</td><td>St.16</td><td>St.17</td><td>2018-04-20 05:33:51</td><td>2018-04-20 06:12:20</td><td>25:51:34</td><td>0:38:29</td></tr><tr><td>Bay1</td><td>69</td><td>St.17</td><td>St.16</td><td>2018-04-20 12:00:31</td><td>2018-04-20 13:00:36</td><td>5:48:11</td><td>1:00:05</td></tr></table>
+
+
+              <h3>valid.movements</h3>
+
+<p>The <code>valid.movements</code> represents a refined version of the <code>movements</code> object, where all movements deemed invalid during the analysis were removed.
+</p>
+
+              <div id="times" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>times</h3>
+
+<p>The <code>times</code> data frame contains the timestamps of first valid detection in each array, for each tag. These are used to draw the circular plots in the report (like the ones below), but you can also use them to test for differences between groups!
+</p>
+                <div class="image-margins">
+                  <img src="assets/images/manual/times_Sea1.svg" alt="drawing"/>
+                </div>
+
+              <h3>dist.mat</h3>
+
+<p>If a valid <a href="manual-distances.html">distance matrix</a> was supplied for the analysis, it will be returned together with the results. This allows you to easily check speeds between specific movements of particular interest, and can serve as a basis for other relevant metrics.
+</p>
+
+
+            </div>
+          </div>
+
+          <div class="section-white-bg-area" id="exported">
+
+            <h2>Results in your working directory</h2>
+            <div class="manual">
+
+
+<p>On top of the results stored in your R session, actel saves some additional information in your working directory, if you ask it to:</p>
+
+
+              <h3>actel_explore_results.RData</h3>
+
+<pre>
+
+Would you like to save a copy of the results to actel_explore_results.RData?(y/N) 
+
+</pre>
+
+<p>To make sure that you don't accidentally lose your results, you can save them right away in the current directory. The results present in this file are the same as the ones you obtain directly in your R console (see above).</p>
+
+              <h3>actel.log.txt (if report = FALSE)</h3>
+
+<pre>
+
+Would you like to save a copy of the analysis log to [timestamp].actel.log.txt?(y/N)
+
+</pre>
+
+<p>This log acts as a carbon copy of the analysis. It contains everything: summary information, errors, warnings and messages and the options you have taken while the analysis was running. It is worth keeping it in case you need to find out the reasoning behind some result. To avoid overwriting when conducting multiple analysis, the actel.log.txt file is preceded by the timestamp of when it was created (e.g. '2019-05-14.10.51.40.actel.log.txt').
+</p>
+
+<p>If you are running the analysis with report = TRUE, the log is automatically saved as part of the report.
+</p>
+
+
+              <h3>stray_tags.csv</h3>
+
+<pre>
+
+Stray tags were detected in your study area. Would you like to save a summary to stray_tags.csv?(y/N) 
+
+</pre>
+
+<p>Deployed receivers may pick up stray tags that came in range during the study period. This file contains a brief summary of these tags in the stray_tags.csv file, in case you are interested in knowing more about these tags, or perhaps share the codes with your colleagues.
+</p>
+
+
+              <div id="report" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>actel_explore_report.html (if report = TRUE)</h3>
+
+<p>This is the main non-R output. If you activated the <code>report</code> option, actel will compile an html report for you. For the explore function, this report contains the following sections:</p>
+
+<ol>
+<li>Summary
+
+  <p>Contains brief information on the study. It is useful to check up if anything looks wrong (e.g. the number of target tags, the data range).</p>
+</li>
+<li>Stations, Deployments and Releases
+
+  <p>These sections contain tables listing the stations, deployments and release sites considered for the analysis. Any unknown receivers found during the analysis will also show up here. Since the station names can vary wildly, actel creates standard names for your stations (e.g. "St.1", "St.2"). When looking at the individual detection graphics, you can refer back to the spatial table to match the standard names to the respective station names.</p>
+</li>
+
+<li>Warning messages
+
+  <p>These represent warnings, errors and particularly important messages that were displayed during the analysis. By having them extracted and put together here, you can easily find out what went wrong.</p>
+</li>
+
+<li>User comments
+
+  <p>Should you type in any <a href="manual-explore-processes.html#comments">comments during the analysis</a>, they will be displayed here, so you can quickly remember that lingering detail you didn't want to forget while looking at the tag's movement table.</p>
+</li>
+
+<li>Biometrics
+
+  <p>Actel crawls through you biometrics file in search for columns containing the keywords <strong>length</strong>, <strong>weight</strong> or <strong>mass</strong>. Should it find any matching column, it will print boxplots of the distribution of the selected variables, split by each animal group listed in the same file. This can be very helpful in quickly finding typos in the data (e.g. a displaced decimal separator).</p>
+</li>
+
+<li>Time of arrival at each array
+
+  <p>For each of your study area's arrays, a circular plot will be drawn of the first arrival time of each tag. The tags are grouped by the groups listed in the biometrics.csv file. These plots are saved in .svg format in the Report folder, so you can easily use them elsewhere, if needed.</p>
+</li>
+
+<li>Graphics of detected tags
+
+  <p>This section contains a plot for each of your animals, showing all the detections found in the data for the respective tags. The detections are coloured by array. The vertical black dashed line shows the time of release.</p> 
+  
+  <p>The full dark-grey line moving between detections shows the movement events considered valid, while the dashed dark-grey line shows the movement events considered invalid. The movement event lines move straight between the first and last station of each event (i.e. in-between detections will not be individually linked by the line).</p> 
+
+  <p>Note that the tags where you had to manually intervene during the analysis will be highlighted with a yellow border, and the tags that were manually overridden through the <a href="manual-explore.html#override"><code>override</code> argument</a> will be highlighted with a red border.</p>
+
+  <p>Lastly, the total number of detections for the tag is displayed in the header, between brackets.</p>
+</li>
+
+<li>Sensor data
+
+  <p>If actel finds valid sensor data in the detections, that data will be plotted here per tag. For tags with more than one sensor, two or more panels will be drawn, one for each sensor unit.</p>
+</li>
+  
+<li>Actel log
+
+  <p>This section contains the same information as the actel log saved in your target folder. It is useful to have a look at a few things. For example, the number of target tags, the detection data range or the number of ALS (i.e. receivers) can help you spot any missing data (i.e. if you tagged 100 animals and had only 80 target tags, some tags are missing from your input files!).</p>
+</li>
+</ol>
+
+            </div>
+          </div>
+
+          <div class="section-white-bg-area">
+
+            <h2>What if actel has miss-assigned something?</h2>
+            <div class="manual">
+
+<p>Tags with strange behaviour can be complicated to analyse. While actel's functions have been designed to deal with this as best as possible, you can always <a href="manual-manual.html">enter manual mode</a> if you find out that actel has miss-assigned something. I.e. has a movement event been invalidated that seems valid, or vice-versa? Are part of the movements detected characteristic of predator behaviour?</p>
+
+            </div>
+          </div>
+
+          <div class="section-white-bg-area">
+
+            <h2>More detailed analyses</h2>
+            <div class="manual">
+
+<p>To advance into more detailed analyses, you can proceed either to the <a href="manual-migration.html"><code>migration()</code> analysis</a> or to the <a href="manual-residency.html"><code>residency()</code> analysis</a>. These will use the movement events created here to extract more complex metrics!</p>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    <!-- End Actions -->
+    </main>
+  <!-- End main content --> 
+  <!-- Start footer -->
+    <footer id="st-footer">
+      <div class="container">
+      <!-- Start Disclaimer Modal -->
+        <div class="modal fade" id="DisclaimerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered mw-100 w-75" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Copyright/Disclaimer Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row middle-row">
+                      <h5>Disclaimer</h5>
+                      <p>SMOLTRACK accepts no responsibility for and excludes all liability in connection with browsing the website, use of information on the website and downloading any material from the website including but not limited to any liability for errors, inaccuracies, omissions or defamatory or misleading statements. SMOLTRACK reserves the right, in its sole discretion and without any obligation, to make improvements to, or correct any errors or omissions in any portion of the information displayed on the website.</p>
+                      <p>The contents presented in the SMOLTRACK website are for general information only. No reliance should be placed upon the contents of the website. Advice and verification should be sought through our contacting information.</p>
+                      <h5>Linking to Third Party Sites</h5>
+                      <p>SMOLTRACK assumes no responsibility for the contents of linked websites. The inclusion of any link should not be taken as an endorsement of any kind by SMOLTRACK of the linked website or any association with its operators. Further, SMOLTRACK has no control over the availability of the linked pages.</p>
+                      <h5>Copyright Notice</h5>
+                      <p>Material on this website, including text and images, is protected by copyright. It may not be copied, reproduced, republished, downloaded, posted, broadcast or transmitted in any way except for your own personal, non-commercial use. Prior written consent of the copyright holder must be obtained for any other use of material. Copyright in all materials and/or works comprising or contained within this website remains with SMOLTRACK and other copyright owner(s) as specified. No part of this site or sub-domains of this site may be distributed or copied for any commercial purpose.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-secondary" onclick="location.href='mailto:smoltrack@gmail.com';">Contact us<i class="fa fa-envelope" style="padding-left: 10px"></i></button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- End Disclaimer Modal -->
+        <div class="st-footer-area">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="st-footer-left">
+                <p class="st-copy-right">actel: Simplifying acoustic telemetry data analysis</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="st-footer-right">
+                <div class="st-social-media">
+                  <a href="mailto:hflavio@wlu.ca" target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i></a>
+                  <a href="https://ecoevo.social/@HugoMFlavio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-mastodon"></i></a>
+                  <!-- <a href="#"><i class="fa fa-youtube"></i></a> -->
+                  <!-- <button id="DisclaimerBtn" type="button" class="st-disclaimer-btn" data-toggle="modal" data-target="#DisclaimerModal">
+                    Terms of Use
+                  </button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  <!-- End footer --> 
+  <!-- Start JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <!-- Slick slider -->
+      <script type="text/javascript" src="assets/js/slick.min.js"></script>
+    <!-- Ajax contact form  -->
+      <script type="text/javascript" src="assets/js/app.js"></script>
+    <!-- Modal popup -->
+      <script type="text/javascript" src="assets/js/modal.js"></script>
+    <!-- Custom js -->
+      <script type="text/javascript" src="assets/js/custom.js"></script>
+      <script type="text/javascript" src="assets/js/navBar.js"></script>
+
+    <!-- Code colouring -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+
+    <!-- Live reload (For testing) -->
+      <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+  <!-- End JavaScript -->
+  </div>
+  </body>
+<!-- End Body -->
+</html>
+
+
+
