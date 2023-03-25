@@ -1,4 +1,4 @@
-
+This is the license for the the website template I used.
 
 
 The MIT License (MIT) Copyright (c) 2017 markups.io
