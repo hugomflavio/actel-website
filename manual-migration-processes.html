@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start Head -->
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" content="R package actel.">
+
+    <title>explore() processes</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="assets/images/actel_favicon.ico"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- Slick slider -->
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- Modal popup -->
+    <link href="assets/css/modal.css" rel="stylesheet">
+
+    <!-- Main Style -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/section_image_bg.css" rel="stylesheet">
+    <link href="assets/css/basic_typography.css" rel="stylesheet">
+    <link href="assets/css/dropdown_menu.css" rel="stylesheet">
+    <link href="assets/css/tables.css" rel="stylesheet">
+    <link href="assets/css/buttons.css" rel="stylesheet">
+    <link href="assets/css/size_responsiveness.css" rel="stylesheet">
+    <link href="assets/css/prism.css" rel="stylesheet">
+
+    <!-- Fonts -->
+
+    <!-- Poppins For Title -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+ 
+    <!-- navBar  -->
+    <link href="assets/css/navBar_for_white_bg.css" rel="stylesheet">
+    <link href="assets/css/navBar-second_for_white_bg.css" rel="stylesheet">
+
+    <!-- Code colouring -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+
+  </head>
+<!-- End Head -->
+<!-- Start Body -->
+  <body>
+  <div class="page-container">  
+  <!--START SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#">
+      <i class="fa fa-angle-up"></i>
+    </a>
+  <!-- END SCROLL TOP BUTTON -->
+  <!-- Start NavBar -->
+    <div class="navBar" id="navBar">
+      <a href="index.html">Home</a>
+      <a href="news.html">News</a>
+      <button onclick="toogleManualNavBarResponsive()"><strong>Manual</strong> <i class="fa-solid fa-caret-down"></i></button>
+      <a href="mailto:hflavio@wlu.ca" onclick="closeNavBarDropdown()">Need help?<i class="fa fa-envelope" style="padding-left: 10px"></i></a>
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleNavBarResponsive()"><i class="fa fa-bars"></i></a>
+    </div>
+  <!-- End NavBar -->
+  <!-- Start manual NavBar -->
+    <div class="navBar-second" id="navBar-manual">
+      <a href="manual-index.html">Section index</a>
+      <a href="manual-data.html">Input data</a>
+      <a href="manual-explore.html"><code><strong>explore()</strong></code></a>
+      <a href="manual-migration.html"><code>migration()</code></a>
+      <a href="manual-residency.html"><code>residency()</code></a>
+      <a href="manual-manual.html">Manual mode</a>
+      <a href="manual-beyond.html">Beyond the three analyses</a>
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleManualNavBarResponsive()"><i class="fa-solid fa-arrow-left"></i></a>
+    </div>
+  <!-- End manual NavBar -->
+<!-- Start Main Content -->
+    <main>
+    <!-- Start About -->
+      <section class="section-white-bg">
+        <div class="container">
+      
+          <div class="section-white-bg-area">
+
+            <div class="callout">
+              <div class="callout-header">Note:</div>
+              <div class="callout-container">
+                <p>The processes behind one-way efficiency estimations are explained in a <a href="manual-migration-efficiency.html">dedicated manual page.</a></p>
+              </div>
+            </div>
+
+            <h2>How does <code>migration()</code> work?</h2>
+            <div class="manual">
+                  
+              <p>
+                The initial processes of <code>migration()</code> are the same as those from <a href="manual-explore.html">the <code>explore()</code> function</a>. In this page, only changes/new steps are documented.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="section-white-bg-area" id="movements">
+
+            <h2>Additional movement processes</h2>
+            <div class="manual">
+
+              <p>when it comes to movement validity, during the <code>migration()</code> analysis, actel will now also check if the tag was detected at an array that is not directly or indirectly after its release site. Should this happen, the following warning will be issued:</p>
+
+<pre>
+
+Warning: Tag R64K-1234 was detected in an array that is not after its release site! Opening relevant data for inspection.
+   Release site: Trap
+   Expected first array: River3
+
+[...]
+
+You may either:
+  a) Stop the analysis if the expected first array is wrong;
+  b) Continue as is (does not impact the results);
+  c) Render a movement event invalid, if you are confident it is a false detection.
+
+Decision:(a/b/c/comment)
+
+</pre>
+
+
+            <div class="callout">
+              <div class="callout-header">Note:</div>
+              <div class="callout-container">
+                <p>An array is considered "behind the release site" if it is not part of the arrays to which the release array connects directly or indirectly. You can find the arrays considered directly or indirectly after/below of each array by checking the <a href="manual-explore-results.html#arrays">arrays object</a>.</p>
+              </div>
+            </div>
+
+
+            </div>
+
+          </div>
+
+          <div class="section-white-bg-area" id="section-movements">
+
+            <h2>Section movements</h2>
+            <div class="manual">
+
+              <p>Upon validating the movement events, the migration analysis proceeds to compressing these array-level events into section-level events. These section-level events are then used to access the unidirectionality of movement, from release to the success arrays.</p>
+
+
+              <h3>Backwards movements</h3>
+
+              <p>Tagged animals can move backwards either because they are reluctant of the new environments or because something ate them and you are now tracking the predator. The very first evidence of this is that the arrays to which each movement event belongs will no longer be arranged as expected.</p>
+
+              <p>If this happens, but then the animal continues its journey, then the last movement events on each section will still be ordered as expected. Otherwise, if the animal moves backwards and then never returns, then the last movement events of each section will also be in an unexpected order.</p>
+
+              <p>Let's have a look at two examples:</p>
+
+            <div class="row">
+              <div class="image-margins col-md-6">
+                <img src="assets/images/manual/event_order_a1.svg" alt="drawing"/>
+              </div>
+              <div class="image-margins col-md-6">
+                <img src="assets/images/manual/event_order_b1.svg" alt="drawing"/>
+              </div>
+            </div>
+
+<h4>A) Movement events unordered, but last events ordered</h4>
+
+<p>In this example, the animal starts by moving towards the Fjord, as expected, but then the moves back upstream into the river again. However, the animal then moves back in the expected direction and eventually leaves the study area. In this case, the last event in the Fjord will be after the last event in the River.</p>
+
+<p>These backwards movements imply going to an anterior section. As such, a warning will be issued:</p>
+
+<pre>
+
+Warning: Inter-section backwards movements were detected for tag R64K-4456.
+
+</pre>
+
+<h4>B) Both Movement events and last events are unordered</h4>
+
+<p>In this example, contrary to the above, the animal moves back into the river and then disappears. This means that the last event in the Fjord is actually <strong>before</strong> the last event in the River.</p>
+
+<p>This has both an impact the assignment of the animal's fate. As such, a longer warning will be issued:</p>
+
+<pre>
+
+Warning: Inter-section backwards movements were detected for tag R64K-4526 and the last events are not ordered!
+
+</pre>
+
+<h4>Making movements linear</h4>
+
+<p>While early versions of actel required you to linearise the movements, the migration update introduced on 2020-05-31 gives <code>migration()</code> the power to handle these events. As such, you can choose to leave them as valid, if you think they represent the movements of your target animal, or invalidate them, if these seem like the movements of a predator, for example. Note that, for CJS calculations, only the forward movements are considered! You can read more about the CJS calculations <a href="manual-migration-efficiency.html">here</a>.</p>
+
+<p>Once you have gone through this process for all relevant tags, if any section movement has been deemed invalid, the respective array movements will also be invalidated. Actel will let you know this happened by issuing a message:</p>
+
+<pre>
+
+M: Rendering 1 array movement(s) invalid for tag R64K-4508 as the respective section movements were discarded by the user.
+
+</pre>
+
+           </div>
+          </div>
+
+          <div class="section-white-bg-area">
+
+            <h2>Compiling a timetable</h2>
+            <div class="manual">
+
+<p>Once the movement events have been verified, they will be used to fill in the timetable, which is the most important step of <code>migration()</code>. For each animal, actel will compile a series of metrics  for each of the <a href="manual-study-area.html#sections">study area's sections</a> (e.g. average speed, total time spent, number of entries, etc). Once actel determines when the animals entered and left the study area's sections, it becomes possible to determine the animal's fate. This is where the <a href="manual-migration#success-arrays"><code>success.arrays</code> variable</a> comes in. If the animal was last detected on an one of those arrays, it's fate will be assigned as "Succeeded".</p>
+
+            </div>
+          </div>
+
+
+          <div class="section-white-bg-area">
+
+            <h2>Combining the time data with the biometrics</h2>
+            <div class="manual">
+
+              <p>Finally, actel will automatically combine the time information with the information you included in the biometrics file. This new data frame is called <code>status.df</code>, and will be available to you in the function output.</p>
+
+            </div>
+          </div>
+
+          <div class="section-white-bg-area">
+
+            <h2>Inspecting the results</h2>
+            <div class="manual">
+
+
+<p>Finally, actel will compile some summary tables, prepare the report, and finish up.</p>
+
+<p><a href="manual-migration-results.html">Learn more about the results of <code>migration()</code>.</a></p>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    <!-- End Actions -->
+    </main>
+  <!-- End main content --> 
+  <!-- Start footer -->
+    <footer id="st-footer">
+      <div class="container">
+        <div class="st-footer-area">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="st-footer-left">
+                <p class="st-copy-right">actel: Simplifying acoustic telemetry data analysis</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="st-footer-right">
+                <div class="st-social-media">
+                  <a href="mailto:hflavio@wlu.ca" target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i></a>
+                  <a href="https://ecoevo.social/@HugoMFlavio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-mastodon"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  <!-- End footer --> 
+  <!-- Start JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <!-- Slick slider -->
+      <script type="text/javascript" src="assets/js/slick.min.js"></script>
+    <!-- Ajax contact form  -->
+      <script type="text/javascript" src="assets/js/app.js"></script>
+    <!-- Modal popup -->
+      <script type="text/javascript" src="assets/js/modal.js"></script>
+    <!-- Custom js -->
+      <script type="text/javascript" src="assets/js/custom.js"></script>
+      <script type="text/javascript" src="assets/js/navBar.js"></script>
+
+    <!-- Code colouring -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+
+    <!-- Live reload (For testing) -->
+      <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+  <!-- End JavaScript -->
+  </div>
+  </body>
+<!-- End Body -->
+</html>
+
+
+

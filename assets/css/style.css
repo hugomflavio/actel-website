@@ -26,6 +26,14 @@ Heavily edited
 	margin-bottom: 15px;
 }
 
+.section-white-bg p {
+	text-align: justify;
+	font-size: 15px;
+}
+.section-white-bg a{
+	text-decoration: underline;
+}
+
 .section-white-bg-area {
 	display: inline;
 	float: left;
