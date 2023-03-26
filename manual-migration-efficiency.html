@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start Head -->
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" content="R package actel.">
+
+    <title>migration() efficiency</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="assets/images/actel_favicon.ico"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- Slick slider -->
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- Modal popup -->
+    <link href="assets/css/modal.css" rel="stylesheet">
+
+    <!-- Main Style -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/section_image_bg.css" rel="stylesheet">
+    <link href="assets/css/basic_typography.css" rel="stylesheet">
+    <link href="assets/css/dropdown_menu.css" rel="stylesheet">
+    <link href="assets/css/tables.css" rel="stylesheet">
+    <link href="assets/css/buttons.css" rel="stylesheet">
+    <link href="assets/css/size_responsiveness.css" rel="stylesheet">
+    <link href="assets/css/prism.css" rel="stylesheet">
+
+    <!-- Fonts -->
+
+    <!-- Poppins For Title -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+ 
+    <!-- navBar  -->
+    <link href="assets/css/navBar_for_white_bg.css" rel="stylesheet">
+    <link href="assets/css/navBar-second_for_white_bg.css" rel="stylesheet">
+
+    <!-- Code colouring -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+
+  </head>
+<!-- End Head -->
+<!-- Start Body -->
+  <body>
+  <div class="page-container">  
+  <!--START SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#">
+      <i class="fa fa-angle-up"></i>
+    </a>
+  <!-- END SCROLL TOP BUTTON -->
+  <!-- Start NavBar -->
+    <div class="navBar" id="navBar">
+      <a href="index.html">Home</a>
+      <a href="news.html">News</a>
+      <button onclick="toogleManualNavBarResponsive()"><strong>Manual</strong> <i class="fa-solid fa-caret-down"></i></button>
+      <a href="mailto:hflavio@wlu.ca" onclick="closeNavBarDropdown()">Need help?<i class="fa fa-envelope" style="padding-left: 10px"></i></a>
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleNavBarResponsive()"><i class="fa fa-bars"></i></a>
+    </div>
+  <!-- End NavBar -->
+  <!-- Start manual NavBar -->
+    <div class="navBar-second" id="navBar-manual">
+      <a href="manual-index.html">Section index</a>
+      <a href="manual-data.html">Input data</a>
+      <a href="manual-explore.html"><code>explore()</code></a>
+      <a href="manual-migration.html"><code><strong>migration()</strong></code></a>
+      <a href="manual-residency.html"><code>residency()</code></a>
+      <a href="manual-manual.html">Manual mode</a>
+      <a href="manual-beyond.html">Beyond the three analyses</a>
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleManualNavBarResponsive()"><i class="fa-solid fa-arrow-left"></i></a>
+    </div>
+  <!-- End manual NavBar -->
+<!-- Start Main Content -->
+    <main>
+    <!-- Start About -->
+      <section class="section-white-bg">
+        <div class="container">
+      
+          <div class="section-white-bg-area">
+
+            <h2>Forward efficiency</h2>
+            <div class="manual">
+                  
+              <p>
+                During the migration analysis, actel calculates forward efficiency only, to improve the accuracy of the efficiency measurement. This means that, for each tag, only the first forward movement is considered. Let's have a look at these examples:
+              </p>
+
+              <div class="row">
+                <div class="image-margins col-md-6">
+                  <img src="assets/images/manual/efficiency_a.svg" alt="drawing"/>
+                </div>
+                <div class="image-margins col-md-6">
+                  <img src="assets/images/manual/efficiency_b.svg" alt="drawing"/>
+                </div>
+              </div>
+
+              <p>In example <strong>A</strong>, the tag moved out to the sea, and was detected at the array River1 and Fjord2, but not at Fjord1. This is considered a missed event for Fjord1. Even if the tag then moved backwards and ended up being detected at Fjord1 at a later time (example <strong>B</strong>), since the first expected detection was missed, this tag will still be considered as missed by Fjord1, as far as efficiency calculations are concerned.</p>
+
+              <p>These efficiency calculations are dependant on the way you organise your receivers, so it is important that you <a href="manual-study-area.html">organise your study area in an actel-friendly way</a>.</p>
+
+            </div>
+
+          </div>
+
+          <div class="section-white-bg-area">
+
+              <div id="multiple-branches" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+            <h2>CJS and multiple branches</h2>
+            <div class="manual">
+
+              <p>Actel calculates array efficiency through CJS modelling, based in the equations provided by <a href="https://www.researchgate.net/publication/256443823_Using_mark-recapture_models_to_estimate_survival_from_telemetry_data" target="_blank">Perry et al. (2012)</a>. In short, this implies comparing the individual tags detected at an array with those detected at the arrays that come after that said array.</p>
+
+<p>One of the caveats of the CJS calculations is that if, say, we have arrays A and B, and B is after A, then a tag that is detected at B must have passed through A as well. However, this may not be the case if there are multiple water channels that the animal can go through.</p>
+
+<p>To compensate for this, actel finds valid efficiency peers for each array. That is, arrays that are directly or indirectly after a given array, and to which it is not possible to get to without passing through said array (assuming the tag does not move backwards). Then, actel combines the unique tags detected at all of the efficiency peers of a given array, and uses these combined detections as a single array subsequent to the one being analysed. The individual CJS models are then combined to create the <a href="manual-migration-results.html#overall.cjs"><code>overall.CJS</code> object</a>.</p>
+
+
+
+            </div>
+
+          </div>
+
+          <div class="section-white-bg-area" id="section-movements">
+
+            <h2>Dealing with parallel arrays</h2>
+            <div class="manual">
+
+              <p>Parallel arrays are particularly tricky to deal with, because they do not come before, nor after their neighbours. It is here that <a href="manual-migration.html#disregard-parallels">the argument <code>disregard.parallels</code></a> comes in. Let's have a look at this study area, which has up to three branches.</p>
+
+              <div class="image-margins">
+              <img src="assets/images/manual/one_way_efficiency_a.svg" alt="drawing" width="500"/>
+              </div>
+
+
+<p>With this spatial.txt:</p>
+
+<pre>
+
+A -- B -- C -- G
+A -- D -- E -- G
+D -- F -- G
+D -- B -- D
+C -- E -- C
+C -- F -- C
+E -- F -- E
+
+</pre>
+
+<p>It is particularly relevant to note that <strong>D</strong> and <strong>B</strong> are parallel, and so are <strong>C</strong>, <strong>E</strong> and <strong>F</strong>.</p>
+
+<p>Now let's try to determine the valid efficiency peers of array <strong>D</strong>, first with <code>disregard.parallels = TRUE</code> and then with <code>disregard.parallels = FALSE</code>.</p>
+
+
+              <h3>if disregard.parallels = TRUE</h3>
+
+              <div class="image-margins">
+              <img src="assets/images/manual/one_way_efficiency_b.svg" alt="drawing" width="500"/>
+              </div>
+
+
+              <p>Array <strong>D</strong> has three arrays directly or indirectly after it: <strong>E</strong>, <strong>F</strong> and <strong>G</strong>. When <code>disregard.parallels = TRUE</code>, actel will ask the following question, for each of the arrays coming after <strong>D</strong>: </p>
+
+              <ul>
+                <li>Can an animal get to array [x] without having to pass through array D?</li>
+              </ul>
+
+              <p>This assumes that the animal is expected to move only in one direction (i.e. from release to a success array). If the answer to this question is no, then array [x] is a valid efficiency peer of array <strong>D</strong>. Both arrays <strong>E</strong> and <strong>F</strong> fulfil this requirement, as the only array coming before them is <strong>D</strong> itself. However, array <strong>G</strong> fails this requirement, because the animals can get to array <strong>G</strong> coming from array <strong>C</strong>, which is not connected to array <strong>D</strong>.</p>
+
+              <p>So, if <code>disregard.parallels = TRUE</code>, arrays <strong>E</strong> and <strong>F</strong> are valid efficiency peers of array <strong>D</strong>.</p>
+
+
+              <h3>if disregard.parallels = FALSE</h3>
+
+              <div class="image-margins">
+              <img src="assets/images/manual/one_way_efficiency_c.svg" alt="drawing" width="500"/>
+              </div>
+
+              <p>In this case, since <code>disregard.parallels = FALSE</code>, actel asks an additional question:</p>
+
+              <ul>
+                <li>Can an animal get to array [x] without having to pass through array D?</li>
+                <li>Does array [x] have any parallel arrays which can be reached without passing through array D?</li>
+              </ul>
+
+<p>Again, if the answer to both of these questions is no, then array [x] is a valid efficiency peer for array <strong>D</strong>. As we saw above, arrays <strong>E</strong> and <strong>F</strong> fulfil the first requirement. However, both of these arrays have an extra parallel array (array <strong>C</strong>), and it is possible to reach that array without passing through array <strong>D</strong>. </p>
+
+<p>As such, if <code>disregard.parallels = FALSE</code>, then array <strong>D</strong> no longer has any valid peers.</p>
+
+
+              <h3>So, should you go with TRUE or FALSE?</h3>
+
+              <p>It depends on your study area, and on your animals. If you expect that the tagged animals are likely to move between parallel arrays (e.g. because these arrays are very close to each other), then it may be a good idea to <strong>not</strong> disregard the presence of parallels (i.e. run the analysis with <code>disregard.parallels = FALSE</code>). A practical example would be if you have multiple channels leading to a lake, and you have arrays at each lake entrance. As the animals may have to explore other lake entrances before finding the lake exit, disregarding parallel arrays could potentially lead to underestimations of array efficiency.</p>
+
+              <p>Keep in mind that you can always run the analysis twice, and find out which case fits best your data!</p>
+
+
+           </div>
+          </div>
+
+          <div class="section-white-bg-area">
+
+            <h2>Arrays with no efficiency peers</h2>
+            <div class="manual">
+
+<p>Regardless of the mechanics explained above, arrays <strong>C</strong>, <strong>E</strong>, <strong>F</strong> and <strong>G</strong> would never have any valid efficiency peers. As such, inter-array efficiency cannot be calculated for them using a CJS model. However, you have the chance to calculate intra-array efficiency, if an array is <a href="manual-migration.html#replicates">composed by two lines of receivers</a>. You can find the efficiency peers of each array in the <a href="manual-explore-results.html#arrays"><code>arrays</code> object</a>.</p>
+
+<h3>Intra-array efficiency</h3>
+
+<p>Intra array efficiency calculations are also performed following the equations provided by <a href="https://www.researchgate.net/publication/256443823_Using_mark-recapture_models_to_estimate_survival_from_telemetry_data" target="_blank">Perry et al. (2012)</a>. Specifically, actel splits the array's receivers in "original" and "replicates" (depending on what you specified in the <a href="manual-migration.html#replicates">replicates argument</a>), and compares the tags detected at both of these elements. The results of the intra-array calculations for each array are then stored in the <a href="manual-migration-results.html#intra-array"><code>intra.array.CJS</code> list</a>.</p>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    <!-- End Actions -->
+    </main>
+  <!-- End main content --> 
+  <!-- Start footer -->
+    <footer id="st-footer">
+      <div class="container">
+        <div class="st-footer-area">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="st-footer-left">
+                <p class="st-copy-right">actel: Simplifying acoustic telemetry data analysis</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="st-footer-right">
+                <div class="st-social-media">
+                  <a href="mailto:hflavio@wlu.ca" target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i></a>
+                  <a href="https://ecoevo.social/@HugoMFlavio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-mastodon"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  <!-- End footer --> 
+  <!-- Start JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <!-- Slick slider -->
+      <script type="text/javascript" src="assets/js/slick.min.js"></script>
+    <!-- Ajax contact form  -->
+      <script type="text/javascript" src="assets/js/app.js"></script>
+    <!-- Modal popup -->
+      <script type="text/javascript" src="assets/js/modal.js"></script>
+    <!-- Custom js -->
+      <script type="text/javascript" src="assets/js/custom.js"></script>
+      <script type="text/javascript" src="assets/js/navBar.js"></script>
+
+    <!-- Code colouring -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+
+    <!-- Live reload (For testing) -->
+      <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+  <!-- End JavaScript -->
+  </div>
+  </body>
+<!-- End Body -->
+</html>
+
+
+

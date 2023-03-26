@@ -93,6 +93,12 @@
 							<pre><code class="language-r">migration(tz = "Europe/Copenhagen")</code></pre>
 
 
+							<p>Curious about how <code>migration()</code> processes your data? Have a look <a href="manual-migration-processes.html">under the hood!</a>
+							</p>
+
+							<p>Need help going through the output of <code>migration()</code>? Find more details <a href="manual-migration-results.html">here.</a>
+							</p>
+
 						</div>
 
 					</div>
@@ -122,7 +128,7 @@ migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 						<p>For the <code>migration()</code> analysis, the order of the study area sections must reflect the expected order in which your animals will cross them. If a <code>section.order</code> is not provided, actel will order the sections by their appearance in the spatial.csv file. However, if you want to alter this default order, you can specify a given order using this argument. E.g. if you expect your animals to move from the river, to a fjord and ultimately to the sea (and you have receivers in all these ecosystems), then <code>section.order = c("River", "Fjord", "Sea")</code>.</p>
 
 
-						<p>In the other hand, if you expect your animals to migrate upstream, then <code>section.order = c("Sea", "Fjord", "River")</code>. To learn more about how to organise your study area in an actel-friendly way, have a look at [this manual page.](a-1_study_area.html)</p>
+						<p>In the other hand, if you expect your animals to migrate upstream, then <code>section.order = c("Sea", "Fjord", "River")</code>. To learn more about how to organise your study area in an actel-friendly way, have a look at <a href="manual-study-area.html">this manual page</a>.</p>
 
 
 
@@ -228,20 +234,20 @@ migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 
 
 
+              <div id="disregard-parallels" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
 
 						<h3>disregard.parallels</h3>
 
-						<p>This argument controls whether or not the presence of parallel arrays (in multi-branch analyses) should potentially lead to the invalidation of efficiency peers. This argument is a bit tough to explain in few words, so I recommend that you [have a look at how efficiency is calculated in migration()](c-3_migration_efficiency.html#cjs-and-multiple-branches).</p>
+						<p>This argument controls whether or not the presence of parallel arrays (in multi-branch analyses) should potentially lead to the invalidation of efficiency peers. This argument is a bit tough to explain in few words, so I recommend that you <a href="manual-migration-efficiency.html#multiple-branches">have a look at how efficiency is calculated in <code>migration()</code></a>.</p>
 
 						<p>Now that you know how to run the migration analysis, you may want to:
 						</p>
 
-						<p>__[Learn more about what migration() is doing](b-1_explore_processes.html)__
-						</p>
-						<p>__[Learn more about the results of migration()](b-2_explore_results.html)__
-						</p>
-
+							<p><a href="manual-migration-processes.html">Learn more about what <code>migration()</code> is doing</a>. 
+							</p>
+							<p><a href="manual-migration-results.html">Learn more about the results of <code>migration()</code></a>.
+							</p>
 					</div>
 				</div>
 			</section>
