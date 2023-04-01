@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start Head -->
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" content="R package actel.">
+
+    <title>residency() processes</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="assets/images/actel_favicon.ico"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- Slick slider -->
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- Modal popup -->
+    <link href="assets/css/modal.css" rel="stylesheet">
+
+    <!-- Main Style -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/section_image_bg.css" rel="stylesheet">
+    <link href="assets/css/basic_typography.css" rel="stylesheet">
+    <link href="assets/css/dropdown_menu.css" rel="stylesheet">
+    <link href="assets/css/tables.css" rel="stylesheet">
+    <link href="assets/css/buttons.css" rel="stylesheet">
+    <link href="assets/css/size_responsiveness.css" rel="stylesheet">
+    <link href="assets/css/prism.css" rel="stylesheet">
+
+    <!-- Fonts -->
+
+    <!-- Poppins For Title -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+ 
+    <!-- navBar  -->
+    <link href="assets/css/navBar_for_white_bg.css" rel="stylesheet">
+    <link href="assets/css/navBar-second_for_white_bg.css" rel="stylesheet">
+
+    <!-- Code colouring -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+
+  </head>
+<!-- End Head -->
+<!-- Start Body -->
+  <body>
+  <div class="page-container">  
+  <!--START SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#">
+      <i class="fa fa-angle-up"></i>
+    </a>
+  <!-- END SCROLL TOP BUTTON -->
+  <!-- Start NavBar -->
+    <div class="navBar" id="navBar">
+      <a href="index.html">Home</a>
+      <a href="news.html">News</a>
+      <button onclick="toogleManualNavBarResponsive()"><strong>Manual</strong> <i class="fa-solid fa-caret-down"></i></button>
+      <a href="mailto:hflavio@wlu.ca" onclick="closeNavBarDropdown()">Need help?<i class="fa fa-envelope" style="padding-left: 10px"></i></a>
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleNavBarResponsive()"><i class="fa fa-bars"></i></a>
+    </div>
+  <!-- End NavBar -->
+  <!-- Start manual NavBar -->
+    <div class="navBar-second" id="navBar-manual">
+      <a href="manual-index.html">Section index</a>
+      <a href="manual-data.html">Input data</a>
+      <a href="manual-explore.html"><code>explore()</code></a>
+      <a href="manual-migration.html"><code>migration()</code></a>
+      <a href="manual-residency.html"><code><strong>residency()</strong></code></a>
+      <a href="manual-manual.html">Manual mode</a>
+      <a href="manual-beyond.html">Beyond the three analyses</a>
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleManualNavBarResponsive()"><i class="fa-solid fa-arrow-left"></i></a>
+    </div>
+  <!-- End manual NavBar -->
+<!-- Start Main Content -->
+    <main>
+    <!-- Start About -->
+      <section class="section-white-bg">
+        <div class="container">
+      
+          <div class="section-white-bg-area">
+
+            <div class="callout">
+              <div class="callout-header">Note:</div>
+              <div class="callout-container">
+                <p>The processes behind multi-way efficiency estimations are explained in a <a href="manual-residency-efficiency.html">dedicated manual page.</a></p>
+              </div>
+            </div>
+
+            <h2>How does <code>residency()</code> work?</h2>
+            <div class="manual">
+                  
+              <p>
+                The initial processes of <code>residency()</code> are the same as those from <a href="manual-explore.html">the <code>explore()</code> function</a>. In this page, only changes/new steps are documented.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="section-white-bg-area">
+
+
+
+              <div id="section-movements" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+            <h2>Section movements</h2>
+            <div class="manual">
+
+              <p>Upon validating the movement events, the residency analysis proceeds to compressing these array-level events into section-level events. <a href="manual-residency-results.html#section-movements">You can find an example here</a>. This shows how many times a tag entered and left each section. It is here that <a href="manual-residency.html#section-minimum">the argument <code>section.minimum</code></a> comes in. If the number of consecutive detections at a given section are lower than the value stipulated, a warning will be issued, and user interaction is suggested:</p>
+
+<pre>
+
+M: Section movements with less than 2 detections are present for tag R64K-3.
+Would you like to inspect the section movements from tag R64K-3?(y/N/comment)
+
+</pre>              
+
+              <p>You can then decide whether or not something should be considered invalid. Once all tags have been validated, if any section movement has been deemed invalid, the respective array movements will also be invalidated. Actel will let you know this happened by issuing a message:</p>
+
+<pre>
+
+M: Rendering 1 array movement(s) invalid for tag R64K-3 as the respective section movements were discarded by the user.
+
+</pre> 
+
+
+            </div>
+          </div>
+
+
+          <div class="section-white-bg-area">
+
+            <h2>Residency lists</h2>
+            <div class="manual">
+
+              <p>Once the section movements have been validated, actel fills in the gaps between movements using the departure timestamp of a given section and the arrival timestamp of the next. These middle locations are labelled using both sections' names, separated with a dash (e.g. Down-Right). <a href="manual-residency-results.html#residency-list">You can find an example here</a>.</p>
+
+            </div>
+          </div>
+
+
+          <div class="section-white-bg-area">
+
+            <h2>Compiling a timetable</h2>
+            <div class="manual">
+
+              <p>Using the residency table above, actel compiles a summary timetable containing the following information for each section: number of times the tag entered the section, average entry time, average time spent per stay, average departure time and total time spent in the section. A few more summary columns are added to this table before it is bound to the information provided in the biometrics table.</p>
+
+            </div>
+          </div>
+
+
+            <div class="section-white-bg-area">
+
+            <h2>Daily/Hourly locations</h2>
+            <div class="manual">
+
+              <p>Based on the table above, actel will proceed to calculate the amount of time spent per day (or hour, if <code>timestep = "hours"</code>) at each location (in seconds). This leads to a very long table displaying both the number of seconds spent per day/hour at each location, as well as the respective percentages. It also contains an additional column showing the location where the tags spent the most time each day/hour. <a href="manual-residency-results.html#time-ratios">You can find an example here</a>.</p>
+
+            </div>
+          </div>
+        
+
+          <div class="section-white-bg-area">
+
+            <h2>Global ratios</h2>
+            <div class="manual">
+
+              <p>Using the table above as a reference for each tag, actel is then able to calculate how many of your animals were at each location during each passing day/hour. Actel calculates two similar tables, one with absolute numbers, and one with percentages. <a href="manual-residency-results.html#global-ratios">You can find an example here</a>.</p>
+
+            </div>
+          </div>
+        
+
+          <div class="section-white-bg-area">
+
+            <h2>Wrapping up</h2>
+            <div class="manual">
+
+
+<p>After all this information has been compiled and stored, actel will wrap up by collecting the valid detections and storing them in the <code>valid.detections</code> object, which you can then use for other analyses. One last table is also stored containing a summary of the place of last detection for each animal group.</p>
+
+<p><a href="manual-residency-results.html">Learn more about the results of <code>residency()</code>.</a></p>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    <!-- End Actions -->
+    </main>
+  <!-- End main content --> 
+  <!-- Start footer -->
+    <footer id="st-footer">
+      <div class="container">
+        <div class="st-footer-area">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="st-footer-left">
+                <p class="st-copy-right">actel: Simplifying acoustic telemetry data analysis</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="st-footer-right">
+                <div class="st-social-media">
+                  <a href="mailto:hflavio@wlu.ca" target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i></a>
+                  <a href="https://ecoevo.social/@HugoMFlavio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-mastodon"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  <!-- End footer --> 
+  <!-- Start JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <!-- Slick slider -->
+      <script type="text/javascript" src="assets/js/slick.min.js"></script>
+    <!-- Ajax contact form  -->
+      <script type="text/javascript" src="assets/js/app.js"></script>
+    <!-- Modal popup -->
+      <script type="text/javascript" src="assets/js/modal.js"></script>
+    <!-- Custom js -->
+      <script type="text/javascript" src="assets/js/custom.js"></script>
+      <script type="text/javascript" src="assets/js/navBar.js"></script>
+
+    <!-- Code colouring -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+
+    <!-- Live reload (For testing) -->
+      <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+  <!-- End JavaScript -->
+  </div>
+  </body>
+<!-- End Body -->
+</html>
+
+
+
