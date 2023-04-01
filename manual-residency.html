@@ -88,9 +88,9 @@
 						
 							<p>The <code>residency()</code> function builds on the same principles as the <strong> </strong> function and, in addition, computes metrics aiming to show the animal behaviour over time.</p>
 
-							<p><code>migration()</code> has the same arguments as explore(), and includes a set of new arguments aimed to fine tune the migration-related metrics. Like with explore, you do not need to start working with all arguments right away. For simple study areas, defining the <code>tz</code> is enough to get you going!</p>
+							<p><code>residency()</code> has the same arguments as <code>explore()</code>, and includes a set of new arguments aimed to control the residency-related metrics. Like with explore, you you do not need to start working with all arguments right away. For simple study areas, defining the <code>tz</code> is enough to get you going!</p>
 
-							<pre><code class="language-r">migration(tz = "Europe/Copenhagen")</code></pre>
+							<pre><code class="language-r">residency(tz = "Europe/Copenhagen")</code></pre>
 
 
 						</div>
@@ -99,19 +99,19 @@
 
 					<div class="section-white-bg-area" id="arguments">
 
-						<h2>Migration arguments</h2>
+						<h2>Residency arguments</h2>
 						<div class="manual">
 
-						<p>Study areas can differ considerably. The arguments within <code>migration()</code> allow you to capture that diversity!</p>
+						<p>The arguments within <code>residency()</code> allow you thoroughly analyse the animal behaviour.</p>
 
 <pre><code class="language-r">
-migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, minimum.detections = 2, 
-          start.time = NULL, stop.time = NULL, speed.method = c("last to first", "first to first"), 
-          speed.warning = NULL, speed.error = NULL, jump.warning = 2, jump.error = 3, 
-          inactive.warning = NULL, inactive.error = NULL, exclude.tags = NULL, override = NULL, report = FALSE,
-          auto.open = TRUE, discard.orphans = FALSE, save.detections = FALSE, if.last.skip.section = TRUE, 
-          replicates = NULL, disregard.parallels = TRUE, GUI = c("needed", "always", "never"),
-          save.tables.locally = FALSE, detections.y.axis = c("stations", "arrays"))
+residency(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, minimum.detections = 2, 
+        start.time = NULL, stop.time = NULL, speed.method = c("last to first", "first to first"), 
+        speed.warning = NULL, speed.error = NULL, jump.warning = 2, jump.error = 3, inactive.warning = NULL,
+        inactive.error = NULL, exclude.tags = NULL, override = NULL, report = FALSE, auto.open = TRUE,
+        discard.orphans = FALSE, save.detections = FALSE, section.minimum = 2, timestep = c("days", "hours"),
+        replicates = NULL, GUI = c("needed", "always", "never"), save.tables.locally = FALSE, 
+        detections.y.axis = c("stations", "arrays"))
 </pre></code>
 
 						<p>Below are listed only new arguments that do not exist in <a href = "manual-explore.html#general-arguments">explore</a>.</p>
@@ -119,58 +119,35 @@ migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 
 						<h3>section.order</h3>
 
-						<p>For the <code>migration()</code> analysis, the order of the study area sections must reflect the expected order in which your animals will cross them. If a <code>section.order</code> is not provided, actel will order the sections by their appearance in the spatial.csv file. However, if you want to alter this default order, you can specify a given order using this argument. E.g. if you expect your animals to move from the river, to a fjord and ultimately to the sea (and you have receivers in all these ecosystems), then <code>section.order = c("River", "Fjord", "Sea")</code>.</p>
+						<p>This argument allows you to specify by which order you would like the sections to appear in plots and tables. By default, actel will order the sections by the order in which they appear in the spatial.csv file. However, you can force a specific order using the <code>section.order</code> argument. To learn more about how to organise your study area in an actel-friendly way, have a look at <a href="manual-study-area.html">this manual page</a>.</p>
 
-
-						<p>In the other hand, if you expect your animals to migrate upstream, then <code>section.order = c("Sea", "Fjord", "River")</code>. To learn more about how to organise your study area in an actel-friendly way, have a look at [this manual page.](a-1_study_area.html)</p>
-
-						<h3>success.arrays</h3>
+						<h3>section.minimum</h3>
 
 						<p>
-						If a tag is last detected at an array listed in <code>success.arrays</code>, the respective animal will be considered to have successfully crossed the study area. By default, the last array of your study area is considered a success array. However, if you are not sure about your last array's efficiency, you can define multiple success arrays (e.g. <code>success.arrays = c("Sea1", "Sea2")</code> ).</p>
+						This argument controls how many times a tag must be registered at a section for the event to be considered reliable. As part of the analysis, <code>residency()</code> will crunch the array level movement events into section level events. Should there be section events with less overall detections than those listed in <code>section.minimum</code>, a warning is raised, and you are given the chance to render events invalid.</p>
+
+<p>You can find more about the <a href="manual-residency-processes.html#section-movements">creation and validation of section movements here</a>.</p>
+
+
+						<h3>timestep</h3>
+
+						<p>By default, residency metrics are calculated on a daily basis (e.g. where did my animal spent the most time this day?). However, you may be interested in extracting results at a finer scale. By setting <code>timestep = "hours"</code>, actel will calculate all residency-related values on an hourly basis, rather than on a daily basis.
+						</p>
 
 
 						<div class="callout">
 						  <div class="callout-header">Note:</div>
 							  <div class="callout-container">
-							    <p>In multi-branch study areas with multiple endings, the last array of each ending is, by default, considered a success array.</p>
+							    <p>Setting <code>timestep</code> to hours will increase computing times.</p>
 							  </div>
 							</div>
 						</pre>
 
 
-						<h3>if.last.skip.section</h3>
-
-						<p>This option is best explained with examples. Let us assume we have a study area with four arrays: River1, River2, Fjord1 and Fjord2. Now, we have a tag that was last detected at River2. Should this animal be considered to have disappeared in the river or in the fjord? It comes down to how your stations are deployed in the field, and this is what <code>if.last.skip.section</code> is controlling for. Lets have a look at the two maps below.
-						</p>
-
-
-
-
-
-						<div class = "row">
-							<div class="image-margins col-md-6">
-								<img src="assets/images/manual/if_last_skip_section_true.svg" alt="drawing">
-							</div>
-							<div class="image-margins col-md-6">
-								<img src="assets/images/manual/if_last_skip_section_false.svg" alt="drawing">
-							</div>
-						</div>
-
-
-
-
-						<p>On study area **A**, it seems reasonable that a tag last detected at River2 has likely died in the fjord, before reaching Fjord1. In this case, <code>if.last.skip.section = TRUE</code>.</p>
-
-
-
-						<p>However, on study area **B**, if a tag was last detected at River2, it most likely died somewhere in the river. In this case, <code>if.last.skip.section = FALSE</code>.</p>
-
-
 
 						<h3>replicates</h3>
 
-						<p>TOne of the main drawbacks of array efficiency calculations is that it can be tricky to estimate efficiency for arrays which have no valid efficiency peers (i.e. no other arrays that can be used as quality checks). However, if these "isolated" arrays are composed by two lines of receivers, one line can be used as a replicate of the other, which in turn allows for the estimation of intra-array efficiency. If this is your case, then you should make use of the <code>replicates</code> argument.</p>
+						<p>One of the main drawbacks of array efficiency calculations is that it can be tricky to estimate efficiency for arrays which have no valid efficiency peers (i.e. no other arrays that can be used as quality checks). However, if these "isolated" arrays are composed by two lines of receivers, one line can be used as a replicate of the other, which in turn allows for the estimation of intra-array efficiency. If this is your case, then you should make use of the <code>replicates</code> argument.</p>
 
 
 						<div class="callout">
@@ -193,15 +170,6 @@ migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 							</div>
 						</div>
 
-						<div class = "row">
-							<div class="image-margins col-md-6">
-								<img src="assets/images/manual/replicates_C.svg" alt="drawing">
-							</div>
-							<div class="image-margins col-md-6">
-								<img src="assets/images/manual/replicates_D.svg" alt="drawing">
-							</div>
-						</div>
-
 
 
 
@@ -213,7 +181,7 @@ migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 
 						<p>Once you know which replicates you want to list for your array(s), you can include them in the analysis. Lets imagine you want to use stations St.1 and St.2 as replicates for the array River1, and St.3 as a replicate for array River3. This is how they should be listed:</p>
 
-						<pre><code class="language-r">migration([...], estimates = list(River1 = c("St.1", "St.2"), River3 = "St.3"))</code></pre>
+						<pre><code class="language-r">residency([...], estimates = list(River1 = c("St.1", "St.2"), River3 = "St.3"))</code></pre>
 
 						<p>Where [...] stands for other arguments you want to specify in the function.</p>
 
@@ -223,18 +191,15 @@ migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 
 
 
-						<h3>disregard.parallels</h3>
 
-						<p>This argument controls whether or not the presence of parallel arrays (in multi-branch analyses) should potentially lead to the invalidation of efficiency peers. This argument is a bit tough to explain in few words, so I recommend that you [have a look at how efficiency is calculated in migration()](c-3_migration_efficiency.html#cjs-and-multiple-branches).</p>
 
-						<p>Now that you know how to run the migration analysis, you may want to:
+						<p>Now that you know how to run the residency analysis, you may want to:
 						</p>
 
-						<p>__[Learn more about what migration() is doing](b-1_explore_processes.html)__
-						</p>
-						<p>__[Learn more about the results of migration()](b-2_explore_results.html)__
-						</p>
-
+							<p><a href="manual-residency-processes.html">Learn more about what <code>residency()</code> is doing</a>. 
+							</p>
+							<p><a href="manual-residency-results.html">Learn more about the results of <code>residency()</code></a>.
+							</p>
 					</div>
 				</div>
 			</section>
