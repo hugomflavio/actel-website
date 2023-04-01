@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start Head -->
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" content="R package actel.">
+
+    <title>residency() results</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="assets/images/actel_favicon.ico"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- Slick slider -->
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- Modal popup -->
+    <link href="assets/css/modal.css" rel="stylesheet">
+
+    <!-- Main Style -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/section_image_bg.css" rel="stylesheet">
+    <link href="assets/css/basic_typography.css" rel="stylesheet">
+    <link href="assets/css/dropdown_menu.css" rel="stylesheet">
+    <link href="assets/css/tables.css" rel="stylesheet">
+    <link href="assets/css/buttons.css" rel="stylesheet">
+    <link href="assets/css/size_responsiveness.css" rel="stylesheet">
+    <link href="assets/css/prism.css" rel="stylesheet">
+
+    <!-- Fonts -->
+
+    <!-- Poppins For Title -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+ 
+    <!-- navBar  -->
+    <link href="assets/css/navBar_for_white_bg.css" rel="stylesheet">
+    <link href="assets/css/navBar-second_for_white_bg.css" rel="stylesheet">
+
+    <!-- Code colouring -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+
+  </head>
+<!-- End Head -->
+<!-- Start Body -->
+  <body>
+  <div class="page-container">  
+  <!--START SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#">
+      <i class="fa fa-angle-up"></i>
+    </a>
+  <!-- END SCROLL TOP BUTTON -->
+  <!-- Start NavBar -->
+    <div class="navBar" id="navBar">
+      <a href="index.html">Home</a>
+      <a href="news.html">News</a>
+      <button onclick="toogleManualNavBarResponsive()"><strong>Manual</strong> <i class="fa-solid fa-caret-down"></i></button>
+      <a href="mailto:hflavio@wlu.ca" onclick="closeNavBarDropdown()">Need help?<i class="fa fa-envelope" style="padding-left: 10px"></i></a>
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleNavBarResponsive()"><i class="fa fa-bars"></i></a>
+    </div>
+  <!-- End NavBar -->
+  <!-- Start manual NavBar -->
+    <div class="navBar-second" id="navBar-manual">
+      <a href="manual-index.html">Section index</a>
+      <a href="manual-data.html">Input data</a>
+      <a href="manual-explore.html"><code>explore()</code></a>
+      <a href="manual-migration.html"><code>migration()</code></a>
+      <a href="manual-residency.html"><code><strong>residency()</strong></code></a>
+      <a href="manual-manual.html">Manual mode</a>
+      <a href="manual-beyond.html">Beyond the three analyses</a>
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleManualNavBarResponsive()"><i class="fa-solid fa-arrow-left"></i></a>
+    </div>
+  <!-- End manual NavBar -->
+<!-- Start Main Content -->
+    <main>
+    <!-- Start About -->
+      <section class="section-white-bg">
+        <div class="container">
+      
+          <div class="section-white-bg-area">
+
+            <h2>What do you get from <code>migration()</code>?</h2>
+            <div class="manual">
+                  
+              <p>
+                The results compiled by the <code>residency()</code> function include those of <a href="manual-explore-results.html">the <code>explore()</code> function</a>. In this page, only changes/new outputs are documented.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="section-white-bg-area" id="within-r">
+
+            <h2>Results within R</h2>
+            <div class="manual">
+
+              <h3>status.df</h3>
+
+<p>The <strong>status.df</strong> object is a data frame that combines both the timetable data and your biometrics into a single, organised table (see <a href="manual-residency-processes.html#timetable">"Compiling a timetable"</a>). If you have stored any comments during the analysis process, they will show up in a reserved column in this table. The <strong>status.df</strong> also contains some more summary information for each animal. This table can be quite big, so it may be a good idea to use <code>head(status.df)</code> the first time you look at it.</p>
+
+
+              <div id="section-movements" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+
+              <h3>section.movements</h3>
+
+              <p>The <code>section.movements</code> list contains the section-level movement events created during <a href="manual-residency-processes.html#section-movements">the movement compressing process</a>. Here is an example:</p>
+
+<table><thead><tr><th>Section</th><th>Events</th><th>Detections</th><th>First.array</th><th>Last.array</th><th>First.time</th><th>Last.time</th><th>Time.travelling</th><th>Time.in.section</th></tr></thead><tbody><tr><td>Down</td><td>1</td><td>1</td><td>Down1</td><td>Down1</td><td>...</td><td>...</td><td>11:45</td><td>0:00</td></tr><tr><td>Right</td><td>2</td><td>2</td><td>Right1</td><td>Right2</td><td>...</td><td>...</td><td>44:00</td><td>563:32</td></tr><tr><td>Left</td><td>2</td><td>2</td><td>Left4</td><td>Left4</td><td>...</td><td>...</td><td>56:27</td><td>295:59</td></tr><tr><td>Right</td><td>2</td><td>2</td><td>Right2</td><td>Right1</td><td>...</td><td>...</td><td>101:00</td><td>626:12</td></tr><tr><td>Down</td><td>1</td><td>1</td><td>Down2</td><td>Down2</td><td>...</td><td>...</td><td>462:47</td><td>0:00</td></tr><tr><td>Left</td><td>1</td><td>1</td><td>Left3</td><td>Left3</td><td>...</td><td>...</td><td>54:59</td><td>0:00</td></tr></tbody></table>
+
+<p>(Timestamps were trimmed so the table fits better in the page)</p>
+
+
+              <div id="residency-list" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>residency.list</h3>
+
+
+<p>This list contains a table for each of the target tags, detailing where it was since its first valid detection to its last. Here is an example of the residency list produced based on the section movements above:</p>
+
+
+<table><thead><tr><th>Section</th><th>First.time</th><th>Last.time</th></tr></thead><tbody><tr><td>Down</td><td>2019-06-06 00:00:15</td><td>2019-06-06 00:00:15</td></tr><tr><td>Down-Right</td><td>2019-06-06 00:00:15</td><td>2019-06-07 20:00:20</td></tr><tr><td>Right</td><td>2019-06-07 20:00:20</td><td>2019-07-01 07:33:00</td></tr><tr><td>Left-Right</td><td>2019-07-01 07:33:00</td><td>2019-07-03 16:00:53</td></tr><tr><td>Left</td><td>2019-07-03 16:00:53</td><td>2019-07-16 00:00:16</td></tr><tr><td>Left-Right</td><td>2019-07-16 00:00:16</td><td>2019-07-20 05:00:35</td></tr><tr><td>Right</td><td>2019-07-20 05:00:35</td><td>2019-08-15 07:13:00</td></tr><tr><td>Down-Right</td><td>2019-08-15 07:13:00</td><td>2019-09-03 14:00:10</td></tr><tr><td>Down</td><td>2019-09-03 14:00:10</td><td>2019-09-03 14:00:10</td></tr><tr><td>Down-Left</td><td>2019-09-03 14:00:10</td><td>2019-09-05 21:00:05</td></tr><tr><td>Left</td><td>2019-09-05 21:00:05</td><td>2019-09-05 21:00:05</td></tr></tbody></table>
+
+              <h3>array.times</h3>
+
+<p>This table contains information on the all arrival times for each tag, at each array. It is used to produce circular graphics in the report.</p>
+
+
+              <h3>section.times</h3>
+
+<p>This list contains two tables. The first one has all the arrival times for each tag, at each section, and the second has all the departure times, sorted in the same fashion. These are used to produce circular graphics in the report.</p>
+
+
+
+              <div id="time-ratios" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>time.ratios</h3>
+
+<p>This list contains detailed information on the time spent at each location, per day (or hour, if <code>timestep = "hours"</code>), for each of the target tags. These tables can be quite long. Here is an example:</p>
+
+<table><thead><tr><th>Date</th><th>Down</th><th>pDown</th><th>Down-Right</th><th>pDown-Right</th><th>Right</th><th>pRight</th><th>...</th><th>Changes</th><th>Most.time</th></tr></thead><tbody><tr><td>2019-06-06</td><td>0</td><td>0</td><td>86385</td><td>1.000</td><td>0</td><td>0.000</td><td>...</td><td>0</td><td>Down-Right</td></tr><tr><td>2019-06-07</td><td>0</td><td>0</td><td>72020</td><td>0.834</td><td>14380</td><td>0.166</td><td>...</td><td>1</td><td>Down-Right</td></tr><tr><td>2019-06-08</td><td>0</td><td>0</td><td>0</td><td>0.000</td><td>86400</td><td>1.000</td><td>...</td><td>0</td><td>Right</td></tr><tr><td>2019-06-09</td><td>0</td><td>0</td><td>0</td><td>0.000</td><td>86400</td><td>1.000</td><td>...</td><td>0</td><td>Right</td></tr><tr><td>2019-06-10</td><td>0</td><td>0</td><td>0</td><td>0.000</td><td>86400</td><td>1.000</td><td>...</td><td>0</td><td>Right</td></tr><tr><td>2019-06-11</td><td>0</td><td>0</td><td>0</td><td>0.000</td><td>86400</td><td>1.000</td><td>...</td><td>0</td><td>Right</td></tr><tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr></tbody></table>
+
+<p>(Columns and rows were hidden so the table fits better in the page)</p>
+
+
+              <h3>time.locations</h3>
+
+<p>The data frame shows the place where each tag spent the most time during each day. It is a crucial middle step between the <code>time.ratios</code> and the <code>global.ratios</code></p>
+
+
+              <div id="global-ratios" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>global.ratios</h3>
+
+<p>The global ratios is a list containing two elements:</p>
+
+<ol>
+  <li>The absolute number of tags at each location in each day/hour:
+
+<table><thead><tr><th>Date</th><th>Down</th><th>Down-Left</th><th>Down-Right</th><th>Left</th><th>Left-Right</th><th>Right</th><th>Total</th></tr></thead><tbody><tr><td>2019-06-05</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td>2</td></tr><tr><td>2019-06-06</td><td>0</td><td>0</td><td>1</td><td>2</td><td>0</td><td>0</td><td>3</td></tr><tr><td>2019-06-07</td><td>1</td><td>0</td><td>2</td><td>1</td><td>0</td><td>0</td><td>4</td></tr><tr><td>2019-06-08</td><td>3</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>6</td></tr><tr><td>2019-06-09</td><td>3</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>6</td></tr><tr><td>2019-06-10</td><td>2</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>6</td></tr><tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr></tbody></table>
+
+</li>
+  <li> The percentage of tags at each location in each day/hour:
+
+<table><thead><tr><th>Date</th><th>Down</th><th>Down-Left</th><th>Down-Right</th><th>Left</th><th>Left-Right</th><th>Right</th><th>Total</th></tr></thead><tbody><tr><td>2019-06-05</td><td>0.000</td><td>0.000</td><td>0.000</td><td>1.000</td><td>0</td><td>0.000</td><td>1</td></tr><tr><td>2019-06-06</td><td>0.000</td><td>0.000</td><td>0.333</td><td>0.667</td><td>0</td><td>0.000</td><td>1</td></tr><tr><td>2019-06-07</td><td>0.250</td><td>0.000</td><td>0.500</td><td>0.250</td><td>0</td><td>0.000</td><td>1</td></tr><tr><td>2019-06-08</td><td>0.500</td><td>0.000</td><td>0.167</td><td>0.167</td><td>0</td><td>0.167</td><td>1</td></tr><tr><td>2019-06-09</td><td>0.500</td><td>0.000</td><td>0.167</td><td>0.167</td><td>0</td><td>0.167</td><td>1</td></tr><tr><td>2019-06-10</td><td>0.333</td><td>0.167</td><td>0.167</td><td>0.167</td><td>0</td><td>0.167</td><td>1</td></tr><tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr></tbody></table>
+
+</li>    
+
+</ol>
+
+
+              <h3>group.ratios</h3>
+
+<p>The group ratios are lists similar to the `global.ratios`, but where the data has been split by the groups you defined in the biometrics. This allows you to compare the residency patterns of your different groups!</p>
+
+
+              <h3>last.seen</h3>
+
+<p>This summary table shows how many tags from each group were last seen at each section, with an extra column for tags that were never detected:</p>
+
+<table><thead><tr><th></th><th>Disap. in Down</th><th>Disap. in Left</th><th>Disap. in Right</th><th>Disap. at Release</th></tr></thead><tbody><tr><td>Hatchery</td><td>2</td><td>1</td><td>0</td><td>0</td></tr><tr><td>Wild</td><td>2</td><td>2</td><td>3</td><td>0</td></tr></tbody></table>
+
+              <h3>efficiency</h3>
+
+<p>The <code>efficiency</code> is a list containing three elements.</p>
+
+<ol>
+  <li>A table of absolute events used to calculate the efficiency</li>
+  <li>The maximum efficiency estimates for each array, using the data in the absolutes table.</li>
+  <li>The minimum efficiency estimates, using the same table.</li>
+</ol>
+
+<p>You can find more about how efficiency estimations are made in the residency analysis <a href="manual-residency-efficiency.html">in this manual page.</a></p>
+
+              <h3>intra.array.CJS</h3>
+
+<p>If you provided intra-array estimates in the <a href="manual-residency.html#replicates">replicates argument</a>, actel will estimate intra-array efficiencies for the target arrays. These results are stored in the object <code>intra.array.CJS</code>, and the combined efficiency estimate is used to complement the overall efficiency results.</p>
+
+            </div>
+          </div>
+
+          <div class="section-white-bg-area" id="exported">
+
+            <h2>Results in your working directory</h2>
+            <div class="manual">
+
+
+<p>The residency function saves [outputs similar to those saved <a href="manual-explore-results.html#exported"> by <code>explore()</code></a>. The main differences are in the two elements listed below.</p>
+
+
+
+              <h3>actel_residency_results.RData</h3>
+
+<pre>
+
+Would you like to save a copy of the results to actel_residency_results.RData?(y/N) 
+
+</pre>
+
+<p>To make sure that you don't accidentally lose your results, you can save them right away in the current directory. The results present in this file are the same as the ones you obtain directly in your R console (see above). It differs from the <code>explore()</code> output both in name and content.</p>
+
+
+
+              <div id="report" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>actel_residency_report.html (if report = TRUE)</h3>
+
+<p>This is the main non-R output. If you activated the <code>report</code> option, actel will compile an html report for you. The migration report contains the same sections as the <a href="manual-explore-results.html#report">explore report</a>, plus the following:</p>
+
+<ol>
+<li>Array efficiency
+
+  <p>Here you can see how efficient your receiver arrays were at detecting the tags that moved past them. These results can also be found in the <code>efficiency</code> object, which is in your results in R. If you supplied replicates, the results of the intra-array estimations will also show up here.</p>
+</li>
+
+<li>Last seen
+
+  <p>The sections where the tags were last detected is displayed both as a table and a figure, both of which use the content of the <code>last.seen</code> object, which is in your results in R.</p>
+</li>
+
+<li>Average array arrival times
+
+  <p>For each of your study area's arrays, a circular plot will be drawn with all the arrival times of each tag. The tags are grouped by the groups listed in the biometrics.csv file. These plots are saved in .svg format in the Report folder, so you can easily use them elsewhere, if needed.</p>
+</li>
+
+<li>Section progression
+
+  <p>This section has a graphic representation of the data present in the <code>global.ratios</code> object. It shows how the tags have distributed across your study area as the days pass by.</p>
+</li>
+
+<li>Individual residency plots
+
+  <p>Here you can find a graphic representation of the data present in the <code>daily.ratios</code> object. It shows how much time each tag has spent at each location for each day/hour. All plots start and end in the same day, so it is easy to compare the behaviour of different animals.</p>
+</li>
+
+<li>Graphics of detected tags
+
+  <p>These graphics contain more information than those created by the explore function: the vertical grey dashed lines show the assigned moments of entry and exit for each study area section, and the assigned fate of the animal is shown in the header.</p>
+
+  <p>It is a good idea to have a good look at all of these graphics and verify that everything is looking correct (i.e. actel has assigned fates and entry/exit points correctly). This is also a good chance to have a closer look at the tags you flagged as suspicious during the analysis.</p>
+</li>
+</ol>
+
+            </div>
+          </div>
+
+          <div class="section-white-bg-area">
+
+            <h2>What if actel has miss-assigned something?</h2>
+            <div class="manual">
+
+<p>Tags with strange behaviour can be complicated to analyse. While actel's functions have been designed to deal with this as best as possible, you can always <a href="manual-manual.html">enter manual mode</a> if you find out that actel has miss-assigned something. I.e. has a movement event been invalidated that seems valid, or vice-versa? Are part of the movements detected characteristic of predator behaviour?</p>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    <!-- End Actions -->
+    </main>
+  <!-- End main content --> 
+  <!-- Start footer -->
+    <footer id="st-footer">
+      <div class="container">
+        <div class="st-footer-area">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="st-footer-left">
+                <p class="st-copy-right">actel: Simplifying acoustic telemetry data analysis</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="st-footer-right">
+                <div class="st-social-media">
+                  <a href="mailto:hflavio@wlu.ca" target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i></a>
+                  <a href="https://ecoevo.social/@HugoMFlavio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-mastodon"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  <!-- End footer --> 
+  <!-- Start JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <!-- Slick slider -->
+      <script type="text/javascript" src="assets/js/slick.min.js"></script>
+    <!-- Ajax contact form  -->
+      <script type="text/javascript" src="assets/js/app.js"></script>
+    <!-- Modal popup -->
+      <script type="text/javascript" src="assets/js/modal.js"></script>
+    <!-- Custom js -->
+      <script type="text/javascript" src="assets/js/custom.js"></script>
+      <script type="text/javascript" src="assets/js/navBar.js"></script>
+
+    <!-- Code colouring -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+
+    <!-- Live reload (For testing) -->
+      <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+  <!-- End JavaScript -->
+  </div>
+  </body>
+<!-- End Body -->
+</html>
+
+
+
