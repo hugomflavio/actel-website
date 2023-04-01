@@ -90,7 +90,9 @@
 
 
 							<h2>Development (available on <a href="https://github.com/hugomflavio/actel/"><u>GitHub</u></a>)</h2>
+
 							<p><strong>Fixes:</strong></p>
+
 							<ul>
 							<li>Prevent crash in migration if an array has 0 efficiency and there are no arrays coming before it.</li>
 							<li>Prevent crash if the dot file/string line breaks are coded as <code>\r\n</code>.</li>
@@ -102,13 +104,20 @@
 							<li>Prevent crash if the study area/population is so large that it clashes with ggplot's size limit failsafes.</li>
 							<li>Fix message overflow reported in issue <a href="https://github.com/hugomflavio/actel/issues/78" data-hovercard-type="issue" data-hovercard-url="/hugomflavio/actel/issues/78/hovercard">#78</a>.</li>
 							</ul>
+
+
 							<p><strong>Changes:</strong></p>
+
 							<ul>
+							<li>Moved package vignettes to <a href="https://hugomflavio.github.io/actel-website/index.html">https://hugomflavio.github.io/actel-website/index.html</a></li>
 							<li>Removed deprecated argument <code>plot.detections.by</code>.</li>
 							<li><code>minimum.detections</code> has been replaced by <code>min.total.detections</code> and <code>min.per.event</code>.</li>
 							<li><code>section.minimum</code> has been replaced by <code>section.warning</code> and <code>section.error</code>.</li>
 							</ul>
+
+
 							<p><strong>Enhancements:</strong></p>
+
 							<ul>
 							<li>New <code>Code.space</code> column in the biometrics allows the user to specificy the code space of the target tags.</li>
 							<li>New arguments in plotArray(): <code>by.group</code> and <code>y.style</code>. See function documentation for more details.</li>
