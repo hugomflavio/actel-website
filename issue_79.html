@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start Head -->
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" content="R package actel.">
+
+    <title>Issue 79</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/icon" href="assets/images/actel_favicon.ico"/>
+    <!-- Font Awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- Slick slider -->
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <!-- Theme color -->
+    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- Modal popup -->
+    <link href="assets/css/modal.css" rel="stylesheet">
+
+    <!-- Main Style -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/section_image_bg.css" rel="stylesheet">
+    <link href="assets/css/basic_typography.css" rel="stylesheet">
+    <link href="assets/css/dropdown_menu.css" rel="stylesheet">
+    <link href="assets/css/tables.css" rel="stylesheet">
+    <link href="assets/css/buttons.css" rel="stylesheet">
+    <link href="assets/css/size_responsiveness.css" rel="stylesheet">
+    <link href="assets/css/prism.css" rel="stylesheet">
+
+    <!-- Fonts -->
+
+    <!-- Poppins For Title -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+ 
+		<!-- navBar  -->
+    <link href="assets/css/navBar_for_white_bg.css" rel="stylesheet">
+    <link href="assets/css/navBar-second_for_white_bg.css" rel="stylesheet">
+	</head>
+<!-- End Head -->
+<!-- Start Body -->
+  <body>
+  <div class="page-container">	
+  <!--START SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#">
+      <i class="fa fa-angle-up"></i>
+    </a>
+  <!-- END SCROLL TOP BUTTON -->
+  <!-- Start NavBar -->
+		<div class="navBar" id="navBar">
+		  <a href="index.html">Home</a>
+		  <a href="news.html"><strong>News</strong></a>
+		  <button onclick="toogleManualNavBarResponsive()">Manual <i class="fa-solid fa-caret-down"></i></button>
+		  <a href="mailto:hflavio@wlu.ca" onclick="closeNavBarDropdown()">Need help?<i class="fa fa-envelope" style="padding-left: 10px"></i></a>
+		  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleNavBarResponsive()"><i class="fa fa-bars"></i></a>
+		</div>
+	<!-- End NavBar -->
+  <!-- Start manual NavBar -->
+		<div class="navBar-second" id="navBar-manual">
+		  <a href="manual-index.html">Section index</a>
+		  <a href="manual-data.html">Input data</a>
+		  <a href="manual-explore.html"><code>explore()</code></a>
+		  <a href="manual-migration.html"><code>migration()</code></a>
+		  <a href="manual-residency.html"><code>residency()</code></a>
+		  <a href="manual-manual.html">Manual mode</a>
+		  <a href="manual-beyond.html">Beyond the three analyses</a>
+		  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="toogleManualNavBarResponsive()"><i class="fa-solid fa-arrow-left"></i></a>
+		</div>
+	<!-- End manual NavBar -->
+	<!-- Start Main Content -->
+		<main>
+		<!-- Start About -->
+			<section class="section-white-bg">
+				<div class="container">
+					
+					<div class="col-md-12 section-white-bg-area">
+
+						<div class="manual">
+											
+							<h2>Issue 79: Parallel sections</h2>
+
+							<p><strong>When does it occur?</strong></p>
+
+							<p>Take for example the study area below, which is divided into four sections: A, B, C and D. Note that these are sections, and not arrays (which are visible in the image as red lines). This study are has two parallel sections: B, and C. This means that a tag can go from A to D without needing to pass through all the sections in between. </p>
+
+              <div class="image-margins col-md-6">
+                <img src="assets/images/manual/issue_79.svg" alt="drawing"/>
+              </div>
+
+              <p>Having multiple branches <strong>at the array level</strong> is something actel can easily handle nowadays. However, actel still expects the sections to encompass all the branches of the study area and progress linearly from start to end. This is a limitation that originated as a consequence of actel's very original intention: to track atlantic salmon smolts migrating through rivers towards the sea. While actel as a whole as grown greatly since then, this particular issue remained hidden. This causes a mismatch between reality and what actel sees:</p>
+
+              <div class="image-margins col-md-6">
+                <img src="assets/images/manual/issue_79_to_flat.svg" alt="drawing"/>
+              </div>
+
+              <p>This mismatch will lead to complications in understanding the number of tags that traversed either of the parallel sections. If an animal takes the course shown in the left example below, then actel will think it also crossed and survived section B. This will artificially inflate the number of animals thought to have reached and successfully crossed section B. Similarly, if an animal takes the course shown in the right example, actel will think it also crossed section C, leading to a similar, incorrect outcome.</p>
+
+              <div class="row">
+                <div class="image-margins col-md-6">
+                  <img src="assets/images/manual/issue_79_bypassB.svg" alt="drawing"/>
+                </div>
+                <div class="image-margins col-md-6">
+                  <img src="assets/images/manual/issue_79_bypassC.svg" alt="drawing"/>
+                </div>
+              </div>
+
+							<p><strong>How can you avoid it?</strong></p>
+
+							<p>Currently, the only way to avoid this situation is to make sure sections come sequentially after eachother. In the examples above, combining sections B and C into one single section would ensure correct results:</p>
+
+              <div class="image-margins col-md-6">
+                <img src="assets/images/manual/issue_79_fix.svg" alt="drawing"/>
+              </div>
+
+              <p>You can still obtain branch-by-branch information by exploring all the detailed outputs that actel offers you. Another possibility could be to run a second analysis where you combine all the receivers in one branch into one array, and then look at the detections by array to extract that information.</p>
+
+							<p><strong>When will it be fixed?</strong></p>
+
+							<p> While not everyone is aware of it, actel has been developed and is maintained by one person only (me). At my previous job, part of my time was dedicated exclusively to updating, expanding, and fine-tuning actel. I've left that position in 2020, and my current work keeps me pretty busy. Even so, a lot of content/fixes have still been released to GitHub over the last years.</p>
+
+							<p><a href="https://github.com/hugomflavio/actel/issues/79">Issue 79</a> has been known for just over a year now. I've looked into it, but the amount of hours it will take to <strong>safely</strong> fix it is currently prohibitive. As such, I cannot provide an estimate of when it will be fixed at the moment. Stay tuned to the <a href="https://github.com/hugomflavio/actel/issues/79">GitHub issue</a> page and the <a href="https://hugomflavio.github.io/actel-website/news.html">News page</a> here for more details as they come.</p>
+
+
+							<p> On the topic of bugs, did you know that, actel's code is thoroughly tested by over 1500 unit tests covering 93% of its code. Whenever a change is made to the code, all those tests have to pass before the code is considered safe. Sadly, this is not a bullet-proof method (as seen above), but you can rest assured that such breakaway bugs will always remain scarce!</p>
+
+
+							<p>Thank you for your understanding,</p>
+							<p>Hugo</p>
+
+					</div>
+				</div>
+			</section>
+
+		<!-- End Actions -->
+		</main>
+	<!-- End main content -->	
+	<!-- Start footer -->
+		<footer id="st-footer">
+			<div class="container">
+				<div class="st-footer-area">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="st-footer-left">
+								<p class="st-copy-right">actel: Simplifying acoustic telemetry data analysis</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="st-footer-right">
+								<div class="st-social-media">
+									<a href="mailto:hflavio@wlu.ca" target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope"></i></a>
+									<a href="https://ecoevo.social/@HugoMFlavio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-mastodon"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	<!-- End footer -->	
+	<!-- Start JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+		<!-- Slick slider -->
+	    <script type="text/javascript" src="assets/js/slick.min.js"></script>
+   	<!-- Ajax contact form  -->
+	    <script type="text/javascript" src="assets/js/app.js"></script>
+  	<!-- Modal popup -->
+	    <script type="text/javascript" src="assets/js/modal.js"></script>
+    <!-- Custom js -->
+			<script type="text/javascript" src="assets/js/custom.js"></script>
+			<script type="text/javascript" src="assets/js/navBar.js"></script>
+
+			<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+  <!-- End JavaScript -->
+	</div>
+  </body>
+<!-- End Body -->
+</html>
+
+
+
