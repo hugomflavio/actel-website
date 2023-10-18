@@ -90,13 +90,13 @@
                 <img src="assets/images/manual/issue_79.svg" alt="drawing"/>
               </div>
 
-              <p>Having multiple branches <strong>at the array level</strong> is something actel can easily handle nowadays. However, actel still expects the sections to encompass all the branches of the study area and progress linearly from start to end. This is a limitation that originated as a consequence of actel's very original intention: to track atlantic salmon smolts migrating through rivers towards the sea. While actel as a whole as grown greatly since then, this particular issue remained hidden. This causes a mismatch between reality and what actel sees:</p>
+              <p>Having multiple branches at the array level is something actel can easily handle nowadays. However, actel still expects the sections to encompass all the branches of the study area and progress linearly from start to end. This is a limitation that originated as a consequence of actel's very original intention: to track atlantic salmon smolts migrating through rivers towards the sea. While actel as a whole as grown greatly since then, this particular issue remained hidden. This causes a mismatch between reality and what actel sees:</p>
 
               <div class="image-margins col-md-6">
                 <img src="assets/images/manual/issue_79_to_flat.svg" alt="drawing"/>
               </div>
 
-              <p>This mismatch will lead to complications in understanding the number of tags that traversed either of the parallel sections. If an animal takes the course shown in the left example below, then actel will think it also crossed and survived section B. This will artificially inflate the number of animals thought to have reached and successfully crossed section B. Similarly, if an animal takes the course shown in the right example, actel will think it also crossed section C, leading to a similar, incorrect outcome.</p>
+              <p>This mismatch will lead to complications in understanding the number of tags that traversed either of the parallel sections. If an animal takes the course shown in example 1 below, then actel will think it also crossed and survived section B. This will artificially inflate the number of animals thought to have reached and successfully crossed section B. Similarly, if an animal takes the course shown in the example 2, actel will think it also crossed section C, leading to a similar, incorrect outcome.</p>
 
               <div class="row">
                 <div class="image-margins col-md-6">
@@ -109,7 +109,7 @@
 
 							<p><strong>How can you avoid it?</strong></p>
 
-							<p>Currently, the only way to avoid this situation is to make sure sections come sequentially after eachother. In the examples above, combining sections B and C into one single section would ensure correct results:</p>
+							<p>Currently, the only way to avoid this situation is to make sure sections come sequentially after eachother. Four our example study area, that would imply combining sections B and C into one single section:</p>
 
               <div class="image-margins col-md-6">
                 <img src="assets/images/manual/issue_79_fix.svg" alt="drawing"/>
@@ -119,12 +119,12 @@
 
 							<p><strong>When will it be fixed?</strong></p>
 
-							<p> While not everyone is aware of it, actel has been developed and is maintained by one person only (me). At my previous job, part of my time was dedicated exclusively to updating, expanding, and fine-tuning actel. I've left that position in 2020, and my current work keeps me pretty busy. Even so, a lot of content/fixes have still been released to GitHub over the last years.</p>
+							<p> While not everyone is aware of it, actel has been developed and maintained by one person only (me). At my previous job, part of my time was dedicated exclusively to updating, expanding, and fine-tuning actel. I've left that position in 2020, and my current work keeps me pretty busy. Even so, a lot of content/fixes have still been released to GitHub over the last years.</p>
 
 							<p><a href="https://github.com/hugomflavio/actel/issues/79">Issue 79</a> has been known for just over a year now. I've looked into it, but the amount of hours it will take to <strong>safely</strong> fix it is currently prohibitive. As such, I cannot provide an estimate of when it will be fixed at the moment. Stay tuned to the <a href="https://github.com/hugomflavio/actel/issues/79">GitHub issue</a> page and the <a href="https://hugomflavio.github.io/actel-website/news.html">News page</a> here for more details as they come.</p>
 
 
-							<p> On the topic of bugs, did you know that, actel's code is thoroughly tested by over 1500 unit tests covering 93% of its code. Whenever a change is made to the code, all those tests have to pass before the code is considered safe. Sadly, this is not a bullet-proof method (as seen above), but you can rest assured that such breakaway bugs will always remain scarce!</p>
+							<p> On the topic of bugs: did you know that actel's code is thoroughly tested by over 1500 unit tests covering 93% of its code? Whenever a change is made to the code, all those tests have to pass before the code is considered safe. Sadly, this is 100% bug-proof (as seen above), but you can rest assured that such breakaway bugs will always remain scarce!</p>
 
 
 							<p>Thank you for your understanding,</p>
