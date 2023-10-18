@@ -179,9 +179,9 @@
 					<div class="manual">
 						<h4>Importing the shapefile and preparing it</h4>
 						
-						<p>Now that both your shapefile and your spatial.csv file are ready, lets get back to R. The first thing you need to do is import your shapefile and convert to a raster. I have created a function that can perform these steps for you, called <code>loadShape()</code>.</p>
+						<p>Now that both your shapefile and your spatial.csv file are ready, lets get back to R. The first thing you need to do is import your shapefile and convert to a raster. I have created a function that can perform these steps for you, called <code>shapeToRaster()</code>.</p>
 
-						<pre><code class="language-r">base.raster <- loadShape(shape, size, spatial, coord.x, coord.y, buffer)</code></pre>
+						<pre><code class="language-r">base.raster <- shapeToRaster(shape, size, spatial, coord.x, coord.y, buffer)</code></pre>
 
 						<ol>
 							<li>The <code>shape</code> is the path to your shapefile, including the ".shp" extension. </li>
@@ -199,7 +199,7 @@
 
 						<pre><code class="language-r">raster::plot(base.raster)</code></pre>
 
-						<p>This should show you a plot where only the water areas are painted. Some water may show up around the edges of the original shapefile due to the range adjustments made by loadShape. Converting a shapefile into a raster can take a while, specially if the original shapefile is very big and the pixel size is low.</p>
+						<p>This should show you a plot where only the water areas are painted. Some water may show up around the edges of the original shapefile due to the range adjustments made by shapeToRaster. Converting a shapefile into a raster can take a while, specially if the original shapefile is very big and the pixel size is low.</p>
 
 					</div>
 
@@ -220,7 +220,7 @@
 
     				<p>Increasing the <code>directions</code> improves the distance estimation fidelity, but also increases computation time.</p>
 
-						<p>Transition layers can take a long time to compute, especially for larger rasters, so you may have to bear with your computer for a bit here. To avoid having to go through this process multiple times, it may be a good idea to save the output of loadShape and transitionLayer in a separate RData file, for later use.</p>
+						<p>Transition layers can take a long time to compute, especially for larger rasters, so you may have to bear with your computer for a bit here. To avoid having to go through this process multiple times, it may be a good idea to save the output of shapeToRaster and transitionLayer in a separate RData file, for later use.</p>
 					
 					</div>
 
@@ -257,7 +257,7 @@ file.copy(paste0(aux, "/example_spatial.csv"), "spatial.csv")
 
 # import the example shapefile and use the spatial.csv file to check
 # the extents.
-base.raster <- loadShape(shape = paste0(aux, "/example_shapefile.shp"), 
+base.raster <- shapeToRaster(shape = paste0(aux, "/example_shapefile.shp"), 
                          coord.x = "x", coord.y = "y", size = 20)
 
 # You can have a look at the resulting raster by running
@@ -279,7 +279,7 @@ setwd(old.wd)
 rm(old.wd)
 </code></pre>
 
-<p>Remember that you can find more information about each of these functions by visiting their help pages. You can access the help pages by running <code>?loadShape</code>, <code>?transitionLayer</code> or <code>?distancesMatrix</code>.</p>
+<p>Remember that you can find more information about each of these functions by visiting their help pages. You can access the help pages by running <code>?shapeToRaster</code>, <code>?transitionLayer</code> or <code>?distancesMatrix</code>.</p>
 
 </div>
 
