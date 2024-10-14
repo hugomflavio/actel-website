@@ -38,6 +38,9 @@
 		<!-- navBar  -->
     <link href="assets/css/navBar_for_white_bg.css" rel="stylesheet">
     <link href="assets/css/navBar-second_for_white_bg.css" rel="stylesheet">
+	  <!-- Code colouring -->
+		<link rel="stylesheet"
+	    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
 	</head>
 <!-- End Head -->
 <!-- Start Body -->
@@ -405,7 +408,16 @@ Warning: File 'filename' does not match to any of the supported hydrophone file 
 											
 							<p>If your study area has multiple branches, then you need to tell actel how your arrays connect with each other. This file is optional because, if omitted, actel will assume that your study area is composed by a single branch and that the array order is the one listed in the spatial.csv file.</p>
 
-							<p>The spatial.txt file is very simple; all you need to do is connect your arrays with either dashes or arrows (find out the difference below). You can connect your arrays in pairs or make longer strings. To decide whether or not two arrays should be connected, ask yourself the following: "Can the animals move from A to B without having to pass through any other array?" If the answer is yes, then the arrays should be connected. Let's have a look at some examples:</p>
+							<p>The spatial.txt file is very simple; all you need to do is connect your arrays with either dashes or arrows (find out the difference below). You can connect your arrays in pairs or make longer strings. To decide whether or not two arrays should be connected, ask yourself the following: "Can the animals move from A to B without having to pass through any other array?" If the answer is yes, then the arrays should be connected. Let's have a look at some examples.</p>
+
+							<div class="callout">
+							  <div class="callout-header">Note: readDot() and plotDot()</div>
+							  <div class="callout-container">
+							    <p>The functions <code>readDot()</code> and <code>plotDot()</code> can be used to check the contents of your spatial.txt file.</p>
+							    <p>Read more about them by running <code>?readDot</code> and <code>?plotDot</code>.</p>
+							  </div>
+							</div>
+
 
 						</div>
 
@@ -508,8 +520,18 @@ C -- E
 
 </pre>				
 
-							<p>If are feeling wary of including multiple links in a single line, you can use the function <code>readDot</code> to read your spatial.txt file before starting the analysis and see if everything checks out. E.g.: <code>readDot(input = "spatial.txt")</code></p>							
+							<p>Again, remember that you can use the functions <code>readDot()</code> and <code>plotDot()</code> to read and check your spatial.txt file before starting the analysis and see if everything checks out. E.g.: </p>
 
+<pre><code class="language-r"># Start by loading the spatial.txt file 
+dot <- readDot(input = "spatial.txt")
+
+# then plot it:
+plotDot(dot)
+
+# You can load in your spatial.csv file as well with loadSpatial() to 
+# colour the dot plot and position the arrays in the map proportionally 
+# to their coordinates. See ?plotDot
+</code></pre>
 
 							<div class="callout">
 							  <div class="callout-header">Note:</div>
@@ -702,6 +724,9 @@ E -- F -- E
     <!-- Custom js -->
 			<script type="text/javascript" src="assets/js/custom.js"></script>
 			<script type="text/javascript" src="assets/js/navBar.js"></script>
+		<!-- Code colouring -->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+			<script>hljs.highlightAll();</script>
 
 			<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
