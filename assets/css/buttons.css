@@ -59,17 +59,41 @@
 	float: left;
 	text-align: center;
 	width: 100%;
-	margin-top: 60px;
+	margin-top: 20px;
 }
 
 .home-scrolldown {
 	font-size: 40px;
 	color: #fff;
 	display: inline-block;
-	margin-top: 30px;
+	margin-top: 10px;
 }
 
 .home-scrolldown:hover,
 .home-scrolldown:focus {
 	color: #fff;
 }
+
+
+.home_user_guide {
+	display: inline-block;
+	margin-top: 10px;
+	padding-top: 2px;
+	bottom: 60px;
+	color: #fff;
+	background-color: #05b58e;
+	font-size: 20px;
+	line-height: 50px;
+	text-align: center;
+	text-decoration: none;
+	width: 280px;
+	height: 55px;
+	border-radius: 30px;
+}
+
+.home_user_guide:hover,
+.home_user_guide:focus {
+	background-color: #0be0b1;
+	color: #fff;
+}
+
