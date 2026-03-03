@@ -114,7 +114,7 @@
 							<p>All the arguments of <code>explore()</code>, which also exist in <code>migration()</code> and <code>residency()</code>, are explained below.</p>
 
 <pre><code class="language-r">explore(tz, max.interval = 60, minimum.detections = 2, start.time = NULL, stop.time = NULL,
-  speed.method = c("last to first", "first to first"), speed.warning = NULL, 
+  speed.method = c("last to first", "last to last", "first to first"), speed.warning = NULL, 
   speed.error = NULL, jump.warning = 2, jump.error = 3, inactive.warning = NULL, 
   inactive.error = NULL, exclude.tags = NULL, override = NULL, report = FALSE, 
   auto.open = TRUE, discard.orphans = FALSE, discard.first = NULL, discard.orphans = FALSE, 
@@ -208,7 +208,7 @@ Decision:(a/b/comment)
 
 							<h3>speed.method</h3>
 
-							<p>When calculating movement speeds from one array to the next, it is important to know if actel should count the time <strong>from the last detection</strong> in the previous array <strong>to the first detection</strong> in the target array, or if you want actel to count the time <strong>from the last detection</strong> in the previous array  <strong>to the last detection</strong> in the target array. This is what <code>speed.method</code> is doing. You can choose one of "last to first" or "last to last". The example below illustrates the difference between both methods:
+							<p>When calculating movement speeds from one array to the next, it is important to know how actel should group the detections at the arrays. There are three possibilities: you may want actel to count the time <strong>from the last detection</strong> in the previous array <strong>to the first detection</strong> in the target array; you may want actel to count the time <strong>from the last detection</strong> in the previous array <strong>to the last detection</strong> in the target array; or you may want actel to count the time <strong>from the first detection</strong> in the previous array <strong>to the first detection</strong> in the target array. With <code>speed.method</code>, you can choose one of "last to first" (default), "last to last", or "first to first". The figure below illustrates the difference between the three methods:
 							</p>
 
 
@@ -226,7 +226,7 @@ Decision:(a/b/comment)
 							</pre>
 
 
-							<p>There are two main consequences of choosing different options for speed.method. The first is that the "average.speed.m.s" column in the movement events will reflect the respective "Speed to X" in the graphic above. The second is only relevant during the migration analysis: if speed.method = "first to last", speed will be displayed in two columns in the <code>status.df</code> object: "Average.speed.to.[Section]" and "Average.speed.in.[Section]"; while if speed.method = "last to last", only the "Average.speed.to.[Section]" will be generated.
+							<p>There are two main consequences of choosing different options for speed.method. The first is that the "average.speed.m.s" column in the movement events will reflect the respective "Speed to X" in the graphic above. The second is only relevant during the migration analysis: if speed.method = "first to last", speed will be displayed in two columns in the <code>status.df</code> object: "Average.speed.to.[Section]" and "Average.speed.in.[Section]"; while if speed.method = "last to last" or "first to first", only the "Average.speed.to.[Section]" will be generated.
 							</p>
 
 

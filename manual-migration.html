@@ -112,7 +112,7 @@
 
 <pre><code class="language-r">
 migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, minimum.detections = 2, 
-          start.time = NULL, stop.time = NULL, speed.method = c("last to first", "first to first"), 
+          start.time = NULL, stop.time = NULL, speed.method = c("last to first", "last to last", "first to first"), 
           speed.warning = NULL, speed.error = NULL, jump.warning = 2, jump.error = 3, 
           back.warning = 2, back.error = 3, inactive.warning = NULL, inactive.error = NULL,
           exclude.tags = NULL, override = NULL, report = FALSE, auto.open = TRUE, discard.orphans = FALSE,
