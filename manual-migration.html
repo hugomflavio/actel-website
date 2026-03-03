@@ -114,14 +114,17 @@
 migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, minimum.detections = 2, 
           start.time = NULL, stop.time = NULL, speed.method = c("last to first", "first to first"), 
           speed.warning = NULL, speed.error = NULL, jump.warning = 2, jump.error = 3, 
-          inactive.warning = NULL, inactive.error = NULL, exclude.tags = NULL, override = NULL, report = FALSE,
-          auto.open = TRUE, discard.orphans = FALSE, save.detections = FALSE, if.last.skip.section = TRUE, 
-          replicates = NULL, disregard.parallels = TRUE, GUI = c("needed", "always", "never"),
+          back.warning = 2, back.error = 3, inactive.warning = NULL, inactive.error = NULL,
+          exclude.tags = NULL, override = NULL, report = FALSE, auto.open = TRUE, discard.orphans = FALSE,
+          save.detections = FALSE, if.last.skip.section = TRUE, replicates = NULL,
+          disregard.parallels = TRUE, GUI = c("needed", "always", "never"),
           save.tables.locally = FALSE, detections.y.axis = c("stations", "arrays"))
 </pre></code>
 
 						<p>Below are listed only new arguments that do not exist in <a href = "manual-explore.html#general-arguments">explore</a>.</p>
 
+
+            <div id="section-order" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
 						<h3>section.order</h3>
 
@@ -132,7 +135,7 @@ migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 
 
 
-              <div id="success-arrays" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+            <div id="success-arrays" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
 						<h3>success.arrays</h3>
 
@@ -148,15 +151,19 @@ migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 							</div>
 						</pre>
 
+						<div id="back-parameters" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+						<h3>back.warning and back.error</h3>
+
+						<p>In migration, tags are expected to move through the receiver arrays in a given direction. When that does not happen, actel may issue warnings and even request user intervention. For example, a tag moving against the normal movement path could indicate the tagged animal was eaten by a predator. The <code>back.warning</code> and <code>back.error</code> arguments control how many arrays a tag must cross in the unexpected direction for actel to intervene.
+						</p>
+
+            <div id="if-last-skip-section" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
 						<h3>if.last.skip.section</h3>
 
 						<p>This option is best explained with examples. Let us assume we have a study area with four arrays: River1, River2, Fjord1 and Fjord2. Now, we have a tag that was last detected at River2. Should this animal be considered to have disappeared in the river or in the fjord? It comes down to how your stations are deployed in the field, and this is what <code>if.last.skip.section</code> is controlling for. Lets have a look at the two maps below.
 						</p>
-
-
-
-
 
 						<div class = "row">
 							<div class="image-margins col-md-6">
@@ -167,19 +174,13 @@ migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 							</div>
 						</div>
 
-
-
-
 						<p>On study area **A**, it seems reasonable that a tag last detected at River2 has likely died in the fjord, before reaching Fjord1. In this case, <code>if.last.skip.section = TRUE</code>.</p>
-
-
 
 						<p>However, on study area **B**, if a tag was last detected at River2, it most likely died somewhere in the river. In this case, <code>if.last.skip.section = FALSE</code>.</p>
 
 
 
-
-							<div id="replicates" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+						<div id="replicates" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
 						<h3>replicates</h3>
 
@@ -234,8 +235,7 @@ migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 
 
 
-              <div id="disregard-parallels" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
-
+            <div id="disregard-parallels" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
 						<h3>disregard.parallels</h3>
 
