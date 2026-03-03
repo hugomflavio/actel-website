@@ -116,8 +116,7 @@ migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
           speed.warning = NULL, speed.error = NULL, jump.warning = 2, jump.error = 3, 
           back.warning = 2, back.error = 3, inactive.warning = NULL, inactive.error = NULL,
           exclude.tags = NULL, override = NULL, report = FALSE, auto.open = TRUE, discard.orphans = FALSE,
-          save.detections = FALSE, if.last.skip.section = TRUE, replicates = NULL,
-          disregard.parallels = TRUE, GUI = c("needed", "always", "never"),
+          save.detections = FALSE, replicates = NULL, disregard.parallels = TRUE, GUI = c("needed", "always", "never"),
           save.tables.locally = FALSE, detections.y.axis = c("stations", "arrays"))
 </pre></code>
 
@@ -157,28 +156,6 @@ migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 
 						<p>In migration, tags are expected to move through the receiver arrays in a given direction. When that does not happen, actel may issue warnings and even request user intervention. For example, a tag moving against the normal movement path could indicate the tagged animal was eaten by a predator. The <code>back.warning</code> and <code>back.error</code> arguments control how many arrays a tag must cross in the unexpected direction for actel to intervene.
 						</p>
-
-            <div id="if-last-skip-section" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
-
-						<h3>if.last.skip.section</h3>
-
-						<p>This option is best explained with examples. Let us assume we have a study area with four arrays: River1, River2, Fjord1 and Fjord2. Now, we have a tag that was last detected at River2. Should this animal be considered to have disappeared in the river or in the fjord? It comes down to how your stations are deployed in the field, and this is what <code>if.last.skip.section</code> is controlling for. Lets have a look at the two maps below.
-						</p>
-
-						<div class = "row">
-							<div class="image-margins col-md-6">
-								<img src="assets/images/manual/if_last_skip_section_true.svg" alt="drawing">
-							</div>
-							<div class="image-margins col-md-6">
-								<img src="assets/images/manual/if_last_skip_section_false.svg" alt="drawing">
-							</div>
-						</div>
-
-						<p>On study area **A**, it seems reasonable that a tag last detected at River2 has likely died in the fjord, before reaching Fjord1. In this case, <code>if.last.skip.section = TRUE</code>.</p>
-
-						<p>However, on study area **B**, if a tag was last detected at River2, it most likely died somewhere in the river. In this case, <code>if.last.skip.section = FALSE</code>.</p>
-
-
 
 						<div id="replicates" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
