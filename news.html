@@ -127,12 +127,12 @@
 								<li>New <code>processInnovaseaFile()</code> function to handle updated Innovasea detection file format (issue <a href="https://github.com/hugomflavio/actel/issues/97">#97</a>).</li>
 								<li>New <code>convertLotekCDMAFile()</code> function to prepare Lotek txt logs for further analyses (issue <a href="https://github.com/hugomflavio/actel/issues/103">#103</a>).</li>
 								<li>New <code>plotDot()</code> function to help users inspect their spatial.txt files (issue <a href="https://github.com/hugomflavio/actel/issues/55">#55</a>).</li>
-								<li>Improved internal mechanisms for message/warning/debug/stop reporting. new internal function <code>event()</code> replaces the old <code>appendTo()`, <code>stopAndReport()`, and <code>emergencyBreak()</code> (issue <a href="https://github.com/hugomflavio/actel/issues/135">#135</a>). Note: this introduced a repetitive warning bug that was later found and fixed (introduced with 1.3.0.9015, corrected in 1.3.0.9022).</li>
+								<li>Improved internal mechanisms for message/warning/debug/stop reporting. new internal function <code>event()</code> replaces the old <code>appendTo()</code>, <code>stopAndReport()</code>, and <code>emergencyBreak()</code> (issue <a href="https://github.com/hugomflavio/actel/issues/135">#135</a>). Note: this introduced a repetitive warning bug that was later found and fixed (introduced with 1.3.0.9015, corrected in 1.3.0.9022).</li>
 								<li>Added the ability to use output of <code>loadSpatial()</code> as 'starters' for <code>distancesMatrix()</code> when 'actel' is 'TRUE'. This allows a user to input their spatial.csv if located in a separate working directory (issue <a href="https://github.com/hugomflavio/actel/issues/133">#133</a>)</li>
-								<li>Distance matrix is now retained in the output of <code>explore()`, <code>residency()`, and <code>migration()</code> analysis when invalid. Additionally, if the distance matrix is not available NA will be denoted in the output. (issue <a href="https://github.com/hugomflavio/actel/issues/142">#142</a>)</li>
+								<li>Distance matrix is now retained in the output of <code>explore()</code>, <code>residency()</code>, and <code>migration()</code> analysis when invalid. Additionally, if the distance matrix is not available NA will be denoted in the output. (issue <a href="https://github.com/hugomflavio/actel/issues/142">#142</a>)</li>
 								<li>Improved the inner mechanics of <code>extractSignals()</code> and <code>extractCodeSpaces()</code> so they're much faster now.</li>
 								<li>New arguments <code>back.warning</code> and <code>back.error</code> included to <code>migration()</code> to give users more control over warnings and user interaction prompts.</li>
-								<li>New column "Last.section" in <code>status.df`.</li>
+								<li>New column "Last.section" in <code>status.df</code>.</li>
 								<li>New argument <code>y.order</code> for function <code>plotDetections()</code> following user request (issue <a href="https://github.com/hugomflavio/actel/issues/183">#183</a>).</li>
 							</ul>
 						</div>
