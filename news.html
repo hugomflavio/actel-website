@@ -85,8 +85,60 @@
 						<div class="manual">
 											
 							<!-- <h2>Development (available on <a href="https://github.com/hugomflavio/actel/"><u>GitHub</u></a>)</h2> -->
-							
-							<h2>actel 1.3.0 (Available on <a href="https://cran.r-project.org/package=actel"><u>CRAN</u></a>)</h2>
+	
+							<h2>actel 1.4.0 (Available on <a href="https://cran.r-project.org/package=actel"><u>CRAN</u></a>)</h2>
+
+							<p><strong>Fixes:</strong></p>
+
+							<ul>
+								<li>Fix warning bug when reporting duplicated signals in the presence of dual-signal tags.</li>
+								<li>Gracefully stop in the presence of "" array names (issue <a href="https://github.com/hugomflavio/actel/issues/95">#95</a>).</li>
+								<li>Fix minor aesthetic bug that would cause invalid detections to show up as NA in the captions of individual detection plots.</li>
+								<li>Fix crash when running migration analysis with only one array (issue <a href="https://github.com/hugomflavio/actel/issues/113">#113</a>).</li>
+								<li>Fix crash when running residency analysis and a group of animals is never detected (issue <a href="https://github.com/hugomflavio/actel/issues/114">#114</a>).</li>
+								<li>Remove "Index" column from residency list tables with one row (issue <a href="https://github.com/hugomflavio/actel/issues/93">#93</a>).</li>
+								<li>Fix silent bug causing <code>time.ratios</code> (residency analysis) to occasionally calculate exceedingly long times when using <code>timestep = hours</code> (issue <a href="https://github.com/hugomflavio/actel/issues/89">#89</a>).</li>
+								<li>Fixed <code>loadDistances()</code> issue where R objects were causing errors but .csv files were non-issue (issue <a href="https://github.com/hugomflavio/actel/issues/134">#134</a>).</li>
+								<li>Fixed inactiveness check crash if distances matrix contains NAs (issue <a href="https://github.com/hugomflavio/actel/issues/148">#148</a>).</li>
+								<li>Fixed circular plot warnings issued when no tags passed by an array (issue <a href="https://github.com/hugomflavio/actel/issues/151">#151</a>).</li>
+								<li>Fixed bug where edge arrays were only correctly identified following the expected direction of movement. E.g. A1 -- A2 -- B1 -- B2 would identify A2 as edge but not B1.</li>
+								<li>Fixed issue <a href="https://github.com/hugomflavio/actel/issues/79">#79</a>, which prevented setting up parallel sections.</li>
+							</ul>
+
+
+							<p><strong>Changes:</strong></p>
+
+							<ul>
+								<li>Column "Status" in object <code>status.df</code> is now character (was factor before).</li>
+								<li>Column "Status" in object <code>status.df</code> will now show "Never detected" for tags that were never detected (showed the top level section before).</li>
+								<li>Column "Status" in object <code>status.df</code> now shows "Disap. between X and Y" when a tag is last heard at the edge of two sections. Shows "Disap. between X, Y, and Z" if it is a triple edge. Shows "Disap. between X and n other sections" for more complex edges.</li>
+								<li>Section "Section Survival" in the <code>migration()</code> report has been renamed to "Section Summary". The contents were adapted to reflect the possibility of parallel sections.</li>
+								<li>If the spatial input does not have a "Section" column, a column is generated with a warning. All arrays are assigned to section "All". Previous behaviour was to limit input usability to <code>explore()</code> only.</li>
+								<li>Built-in object <code>example.results</code> was updated to reflect latest changes in output format.</li>
+							</ul>
+
+
+							<p><strong>Enhancements:</strong></p>
+
+							<ul>
+								<li>Improve timestamp handling when importing data through <code>preload()</code> (issue <a href="https://github.com/hugomflavio/actel/issues/94">#94</a>).</li>
+								<li>Improve column name checks to avoid accidentally matching anything to the dot wildcard.</li>
+								<li>Add new "first to first" method to speed calculations (issue <a href="https://github.com/hugomflavio/actel/issues/96">#96</a>)</li>
+								<li>New <code>processInnovaseaFile()</code> function to handle updated Innovasea detection file format (issue <a href="https://github.com/hugomflavio/actel/issues/97">#97</a>).</li>
+								<li>New <code>convertLotekCDMAFile()</code> function to prepare Lotek txt logs for further analyses (issue <a href="https://github.com/hugomflavio/actel/issues/103">#103</a>).</li>
+								<li>New <code>plotDot()</code> function to help users inspect their spatial.txt files (issue <a href="https://github.com/hugomflavio/actel/issues/55">#55</a>).</li>
+								<li>Improved internal mechanisms for message/warning/debug/stop reporting. new internal function <code>event()</code> replaces the old <code>appendTo()`, <code>stopAndReport()`, and <code>emergencyBreak()</code> (issue <a href="https://github.com/hugomflavio/actel/issues/135">#135</a>). Note: this introduced a repetitive warning bug that was later found and fixed (introduced with 1.3.0.9015, corrected in 1.3.0.9022).</li>
+								<li>Added the ability to use output of <code>loadSpatial()</code> as 'starters' for <code>distancesMatrix()</code> when 'actel' is 'TRUE'. This allows a user to input their spatial.csv if located in a separate working directory (issue <a href="https://github.com/hugomflavio/actel/issues/133">#133</a>)</li>
+								<li>Distance matrix is now retained in the output of <code>explore()`, <code>residency()`, and <code>migration()</code> analysis when invalid. Additionally, if the distance matrix is not available NA will be denoted in the output. (issue <a href="https://github.com/hugomflavio/actel/issues/142">#142</a>)</li>
+								<li>Improved the inner mechanics of <code>extractSignals()</code> and <code>extractCodeSpaces()</code> so they're much faster now.</li>
+								<li>New arguments <code>back.warning</code> and <code>back.error</code> included to <code>migration()</code> to give users more control over warnings and user interaction prompts.</li>
+								<li>New column "Last.section" in <code>status.df`.</li>
+								<li>New argument <code>y.order</code> for function <code>plotDetections()</code> following user request (issue <a href="https://github.com/hugomflavio/actel/issues/183">#183</a>).</li>
+							</ul>
+						</div>
+						
+						<div class="manual">
+							<h2>actel 1.3.0</h2>
 
 							<p><strong>Fixes:</strong></p>
 
@@ -103,7 +155,7 @@
 							<li>Fix bug in <code>plotRatios()</code> brought up in issue <a href="https://github.com/hugomflavio/actel/issues/77">#77</a> which would occur when the user specified a section for which not all groups were detected.</li>
 							<li>Prevent crashes in <code>residency()</code> when the data has an unusually high percentage of exact-time detections (e.g. midnight).</li>
 							<li>Prevent crash if only some tags have multiple sensors and Sensor.unit is only included for those tags.</li>
-							<li>Prevent crash if the study area/population is so large that it clashes with ggplot's size limit failsafes.</li>
+							<li>Prevent crash if the study area/population is so large that it clashes with ggplot's size limit failsafe.</li>
 							<li>Fix message overflow reported in issue <a href="https://github.com/hugomflavio/actel/issues/78">#78</a>.</li>
 							</ul>
 
