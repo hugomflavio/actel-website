@@ -78,7 +78,7 @@
 					
 					<div class="col-md-12 section-white-bg-area">
 
-						<h2>Telling actel what your study area looks like</h2>
+						<h2>Telling actel what your study area looks like<a href="#" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 						<div class="manual">
 							<p>
 								To be able to process your data, actel must understand how your study area works. To do this, actel relies on two things: the study area sections and the receiver arrays. There are three levels of organization in an actel study area: stations, arrays and sections,. Sections are composed by one or more arrays, arrays are composed by one ore more stations, and each station can have one or more receivers deployed in it.
@@ -94,7 +94,9 @@
 					
 					<div class="col-md-12 section-white-bg-area">
 
-						<h2>Stations</h2>
+						<div id="stations" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+						<h2>Stations<a href="#stations" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 						<div class="manual">
 						
 							<p>
@@ -103,7 +105,9 @@
 
 							<p>You can find some examples below.</p>
 
-							<h3>Release sites</h3>
+							<div id="release-sites" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+							<h3>Release sites<a href="#release-sites" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>Release sites are a special form of station. Used to pinpoint the release locations of the tagged animals, release sites do not have receivers associated to them. Additionally, instead of being allocated to an array, they indicate which array is expected to be the first to detect the released animals. If you are not sure which array is expected to detect your animals first (i.e. upon release, animals can move to multiple arrays), you can tell actel to expect a first detection at multiple arrays. This has important consequences for array efficiency estimation, so it is important to get this right. Some examples are provided further down.</p>
 
@@ -112,13 +116,17 @@
 					
 					<div class="col-md-12 section-white-bg-area">
 
-						<h2>Arrays</h2>
+						<div id="arrays" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+						
+						<h2>Arrays<a href="#arrays" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 						<div class="manual">											
 							<p>
 								Arrays are the functional movement unit for actel. They determine groups of stations that, together, represent a point of change in the animal position. In the study area above, there are seven arrays, which are grouped into three sections. Arrays can be named freely, and must be connected to their respective sections using the <em>spatial.csv</em> file.  
 							</p>
 
-							<h3>Avoid overlapping arrays</h3>
+							<div id="overlapping" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+							<h3>Avoid overlapping arrays<a href="#overlapping" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>When a tag moves from one array to another, a new movement event is created (you will learn more about movement events later on). This means that, if you have two stations close to each other, but listed in two different arrays, you can end up with many 'false' movement events (i.e. the tag is just standing still within range of both arrays). Here is an example:</p>
 							
@@ -145,11 +153,9 @@
 					
 					<div class="col-md-12 section-white-bg-area">
 
+            <div id="sections" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-
-              <div id="sections" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
-
-						<h2>Sections</h2>
+						<h2>Sections<a href="#sections" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 						<div class="col-md-12 manual">
 											
 							<p>The sections divide your study area in big blocks, for which you would like specific metrics to be calculated (e.g. residency time, survival, etc.). In the example above, there are three sections: River, Fjord and Sea. The sections must be filled in in the 'Section' column of the <em>spatial.csv</em> file.</p>
@@ -165,7 +171,9 @@
 					
 					<div class="col-md-12 section-white-bg-area">
 
-						<h2>Rivers with multiple parallel channels</h2>
+						<div id="parallel" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+						
+						<h2>Rivers with multiple parallel channels<a href="#parallel" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 						<div class="col-md-12 manual">
 											
 							<p> If your study area includes multiple pathways that the animals may take, you must tell actel how to connect the arrays. By default, arrays are sorted in a linear order according to the spatial.csv file. To instruct actel to act otherwise, you must create a '<strong>spatial.txt</strong>' file. The spatial.txt file is very simple; all you need to do is connect your arrays in pairs. <a href="manual-data.html#spatial-txt">You can learn more about spatial.txt files here.</a></p>
@@ -177,10 +185,15 @@
 
 					<div class="col-md-12 section-white-bg-area">
 
-						<h2>Examples</h2>
+						<div id="parallel-examples" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+						<h2>Examples<a href="#parallel-examples" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 
 						<div class="col-md-12 manual">
-						<h3>Single channel</h3>
+
+						<div id="parallel-single" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+						<h3>Single channel<a href="#parallel-single" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 											
 							<p>Let's imagine the following study area, where the red dots represent receiver stations. The first thing you will want to do is give individual names to your stations:</p>
 
@@ -245,7 +258,10 @@
 						</div>
 
 						<div class="col-md-12 manual">
-						<h3>Complex study area:</h3>
+
+						<div id="parallel-complex" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+						<h3>Complex study area:<a href="#parallel-complex" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 
 							<p>Let's now imagine a more complex study area, like the one below:</p>

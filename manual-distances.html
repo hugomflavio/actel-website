@@ -88,7 +88,7 @@
 						  </div>
 						</div>
 
-					<h2>What is the distances matrix?</h2>
+					<h2>What is the distances matrix?<a href="#" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 					<div class="manual">
 								
 						<p>
@@ -126,9 +126,9 @@
 		<section class="section-white-bg">
 			<div class="container">
 					
-				<div class="col-md-12 section-white-bg-area">
+				<div class="col-md-12 section-white-bg-area" id = creating>
 
-					<h2>Creating your distances matrix</h2>
+					<h2>Creating your distances matrix<a href="#creating" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 					<div class="manual">
 								
 						<p>
@@ -138,7 +138,9 @@
 					</div>
 
 					<div class="manual">
-						<h3>The automatic way</h3>
+						<div id="automatic" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+						<h3>The automatic way<a href="#automatic" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 						<p>As your studies start having more and more receivers, it might get complicated to find and write down the distances between every single combination of receivers and release sites. To avoid doing this manually, you can get R to do it for you. Here's what you need:</p>
 
@@ -151,7 +153,9 @@
 					</div>
 
 					<div class="manual">
-						<h4>Preparing the shapefile</h4>
+						<div id="shapefile" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+						<h4>Preparing the shapefile<a href="#shapefile" class="anchor-link"><i class="fa-solid fa-link"></i></a></h4>
 
 						<p>To begin, you need to create a shapefile that extends over all your receivers and release sites. This shapefile is expected to contain polygons of the land masses, which means that your rivers, lakes, fjords and any water bodies must be "empty space". The width of your water channels is important, as the shapefile will be converted into a raster later on (i.e. a image made of pixels). If your pixels represent squares of 30 by 30 metres, and your channel width originally was of five metres, then the river path will be lost during the conversion process. Try to ensure, as best as possible, that the corners of your shapefile are aligned (i.e. the shape as a rectangular/quadrangular form).</p>
 
@@ -174,13 +178,17 @@
 					</div>
 
 					<div class="manual">
-						<h4>Preparing the spatial.csv file</h4>
+						<div id="spatial" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+						<h4>Preparing the spatial.csv file<a href="#spatial" class="anchor-link"><i class="fa-solid fa-link"></i></a></h4>
 						
 						<p>In your spatial file, you must include two columns with the coordinates for your receiver stations and release sites. These coordinates **must** be in the same coordinate system as the shapefile you just created before. Later on, you will need to know the *column names* of the columns that contain the X and Y coordinates.</p>
 					</div>
 					
 					<div class="manual">
-						<h4>Importing the shapefile and preparing it</h4>
+						<div id="import-shape" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+						<h4>Importing the shapefile and preparing it<a href="#import-shape" class="anchor-link"><i class="fa-solid fa-link"></i></a></h4>
 						
 						<p>Now that both your shapefile and your spatial.csv file are ready, lets get back to R. The first thing you need to do is import your shapefile and convert to a raster. I have created a function that can perform these steps for you, called <code>shapeToRaster()</code>.</p>
 
@@ -217,7 +225,9 @@ points(x = spatial$X, y = spatial$Y, pch = 20, col = "red")
 					</div>
 
 					<div class="manual">
-						<h4>Creating a transition layer</h4>
+						<div id="transition" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+						<h4>Creating a transition layer<a href="#transition" class="anchor-link"><i class="fa-solid fa-link"></i></a></h4>
 
 						<p>A transition layer is an object that allows R to estimate least cost paths between two locations. Using the raster generated above, creating a transition layer is straight forward:</p>
 
@@ -238,7 +248,9 @@ points(x = spatial$X, y = spatial$Y, pch = 20, col = "red")
 					</div>
 
 					<div class="manual">
-						<h4>Creating the distances matrix</h4>
+						<div id="auto-matrix" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+						<h4>Creating the distances matrix<a href="#auto-matrix" class="anchor-link"><i class="fa-solid fa-link"></i></a></h4>
 
 						<p>Once you have your transition layer, you can use it to calculate multiple distances matrices, as long as the target objects fall within the extent of the original shapefile, and all targets are within water. To create your distances matrix, you must run <code>distancesMatrix()</code> in the same working directory as your 'spatial.csv' file. This will allow it you automatically load the spatial file into the function environment.</p>
 
@@ -297,7 +309,9 @@ rm(old.wd)
 </div>
 
 					<div class="manual">
-						<h3>The manual way</h3>
+						<div id="manual-matrix" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+						
+						<h3>The manual way<a href="#manual-matrix" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 						<p>The manual way is simple. In your R session, move to the folder where you have your spatial file, and run the command <code>emptyMatrix</code>. This will read your spatial data and create a matrix that is in accordance with it. It is important that you create your template this way, as the column and row names of the distance matrix are essential for actel to recognise the data. Below is an example of a distances matrix created by <code>emptyMatrix</code>.</p>
 

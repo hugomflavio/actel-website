@@ -104,7 +104,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="section-white-bg-area">
-								<h2>The <code>preload()</code> function</h2>
+								<h2>The <code>preload()</code> function<a href="#" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 
 									<div class="row">
 										<div class="col-md-12">
@@ -130,7 +130,9 @@
 
 <pre><code class="language-r">results <- explore(datapack = x)</code></pre>
 
-												<h3>What about the optional files?</h3>
+												<div id="optional" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+												<h3>What about the optional files?<a href="#optional" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 												<p>If you want to use <code>preload()</code> and include a distances matrix or the equivalent of a 'spatial.txt' file, you must use the <code>distances</code> and <code>dot</code> arguments (respectively). I recommend that you calculate the distances matrix using the actel functions provided for that (more details <a href="manual-distances.html">in this page</a>). As for the dot argument, simply create a string that looks like what your 'spatial.txt' file would have looked like. e.g:</p>
 
@@ -143,7 +145,9 @@ x <- preload(biometrics = biometrics, spatial = spatial, deployments = deploymen
 detections = detections, distances = distances, dot = dot, tz = "Europe/Copenhagen")
 </code></pre>
 
-												<h3>migration/residency-compatible datapacks</h3>
+												<div id="compatibility" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+												<h3>migration/residency-compatible datapacks<a href="#compatibility" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 												<p>If your final goal is to run a <code>migration()</code> or <code>residency()</code> analysis, remember to have a 'Section' column in your spatial input. Apart from that, the process is exactly the same! Load your data using preload, and then source the loaded datapack into the analysis functions:</p>
 
@@ -154,7 +158,9 @@ detections = detections, distances = distances, dot = dot, tz = "Europe/Copenhag
 results <- residency(datapack = x)
 </code></pre>
 
-												<h3>Remaining arguments</h3>
+												<div id="remaining" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+												<h3>Remaining arguments<a href="#remaining" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 												<p>The <code>preload()</code> function also contains the following arguments: <code>exclude.tags</code>, <code>disregard.parallels</code>, <code>discard.orphans</code>, <code>start.time</code> and <code>stop.time</code>. These perform exactly the same tasks as their counterparts on the main functions.</p>
 
@@ -165,7 +171,9 @@ results <- residency(datapack = x)
 												  </div>
 												</div>
 
-												<h3>Final notes on the detections</h3>
+												<div id="detections" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+												<h3>Final notes on the detections<a href="#detections" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 												<p>If you load detections through <code>preload()</code>, they will be required to have four specific columns: Timestamp, Receiver, CodeSpace and Signal. You can use the functions <code>extractCodeSpaces()</code> and <code>extractSignals()</code> to help you out if needed. On top of these four columns, you can include two columns for sensor data: Sensor.Value and Sensor.Unit (notice the capital first letters). On top of these six columns, you can include as many columns as you want! These extra columns will be carried through the main analyses and exported in the <code>detections</code> and <code>valid.detections</code> objects.</p>
 

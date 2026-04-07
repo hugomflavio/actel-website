@@ -121,7 +121,7 @@
 				
 				<div class="col-md-12 section-white-bg-area">
 
-					<h2>Calculating utilization distribution areas and space-use overlaps</h2>
+					<h2>Calculating utilization distribution areas and space-use overlaps<a href="#utilization-areas" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 					<div class="manual">
 
 						<p>The <a href="https://github.com/YuriNiella/RSP#rsp" target="_blank" rel="noopener noreferrer">R package RSP</a> allows you to run spatial analyses on the habitat use of your animals using the output of your actel analysis. With the RSP toolkit you can analyse the fine scale movements of aquatic animals while accounting for the surrounding land masses. The animal movements between detections are recreated to have occurred exclusively in water and the utilization distribution areas are limited by the land contours, providing realistic estimations of space use.</p>
@@ -140,7 +140,7 @@
 				
 				<div class="col-md-12 section-white-bg-area">
 
-					<h2>Calculating efficiency ranges</h2>
+					<h2>Calculating efficiency ranges<a href="#advEfficiency" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 					<div class="manual">
 						<p>Both the <code>migration()</code> and the <code>residency()</code> analyses include efficiency calculations. However, these calculations can sometimes be somewhat limited. To get a better idea of your array efficiencies, you can run the function <code>advEfficiency()</code> on the efficiency outputs of your actel analysis.</p>
 
@@ -215,7 +215,7 @@ advEfficiency(x)
 				
 				<div class="col-md-12 section-white-bg-area">
 
-					<h2>Plotting personalised circular plots</h2>
+					<h2>Plotting personalised circular plots<a href="#circular-plots" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 					<div class="manual">
 
 <p>Circular plots are a great way to display your results in a publication. Examples include differences between groups or between arrival points at different places. Although actel provides circular plots with its analyses, these default plots may not be exactly what you are looking for. As such, I created the function <code>plotTimes</code>, to help you get your plot just right.</p>
@@ -294,7 +294,7 @@ plotTimes(x, col = c("blue", "orange"), title = "A plot of two datasets!")
 				
 				<div class="col-md-12 section-white-bg-area">
 
-					<h2>Plotting personalised detection plots</h2>
+					<h2>Plotting personalised detection plots<a href="#detection-plots" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 					<div class="manual">
 
 <p>Detection plots provide a lot of information. However, the default plots printed in the reports may be to small to analyse, or perhaps you would like to edit them to use in a presentation or paper. <code>plotDetections()</code> is the function you are looking for.
@@ -336,7 +336,7 @@ p
 				
 				<div class="col-md-12 section-white-bg-area">
 
-					<h2>Plotting sensor data for individual tags</h2>
+					<h2>Plotting sensor data for individual tags<a href="#sensor-plots" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 					<div class="manual">
 
 <p>When your tags have sensor data, these data will be automatically plotted in the report (just like the detections). However, similarly to <code>plotDetections()</code>, you can use <code>plotSensors()</code> to plot the sensor data for a specific tag.
@@ -360,7 +360,7 @@ plotSensors(results, tag = "R64K-1995")
 				
 				<div class="col-md-12 section-white-bg-area">
 
-					<h2>Plotting movements for multiple tags at the same time</h2>
+					<h2>Plotting movements for multiple tags at the same time<a href="#movement-plots" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 					<div class="manual">
 
 <p>Sometimes it can be useful to compare the movements of multiple tags at the same time. Comparing individual detection plots works, but being able to overlap plots would be much nicer! That's exactly why I created the <code>plotMoves()</code> function. This function allows you to overlap the movements of multiple tags.
@@ -382,7 +382,7 @@ plotMoves(results, tags = c("R64K-1995", "R64K-2001"))
 				
 				<div class="col-md-12 section-white-bg-area">
 
-					<h2>Extracting detailed array-level movement speeds</h2>
+					<h2>Extracting detailed array-level movement speeds<a href="#array-speed" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 					<div class="col-md-12 manual">
 
 
@@ -446,7 +446,7 @@ getSpeeds(results, direct = TRUE, type = "all", n.events = "last")
 				
 				<div class="col-md-12 section-white-bg-area">
 
-					<h2>Simultaneous and cumulative presence at one or more arrays</h2>
+					<h2>Simultaneous and cumulative presence at one or more arrays<a href="#array-presence" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 					<div class="manual">
 
 <p>A classic plot in migration analyses is one showing the cumulative arrival of tags at a specific array. The function <code>plotArray()</code> allows you to obtain both the simultaneous presence at an array (if <code>cumulative = FALSE</code>, the default), or the cumulative arrivals at an array (yes, you guessed it, with <code>cumulative = TRUE</code>). 
@@ -483,7 +483,7 @@ plotArray(results, arrays = "A1", timestep = "mins") # Will aggregate the result
 				
 				<div class="col-md-12 section-white-bg-area">
 
-					<h2>Plotting individual residency for individual tags</h2>
+					<h2>Plotting individual residency for individual tags<a href="#individual-residency-plots" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 					<div class="manual">
 
 <p>When you run a residency analysis, one of the outputs is the individual places where your animal spent most of its time. Like the individual detection plots, these are also drawn automatically for each tag in your report. And like the detection plots, you can also get these ones directly in R! Just use <code>plotResidency()</code>:
@@ -510,7 +510,7 @@ plotResidency(results, tag = "R64K-1995")
 				
 				<div class="col-md-12 section-white-bg-area">
 
-					<h2>Plotting global and group residency</h2>
+					<h2>Plotting global and group residency<a href="#global-residency-plots" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 					<div class="manual">
 
 <p>Another great output from the residency analysis is the global and group residency ratios (through the objects <code>global.ratios</code> and <code>group.ratios</code>). The function <code>plotRatios()</code> allows you to plot either of these metrics! This function comes with an argument 'group'. If you do not set a 'group', the global ratios will be printed, but if you set a group, then only that group will be plotted. Additionally, you can choose between absolute values (number of animals at each section) and percentage values (proportion of animals at each section), using the argument type.
@@ -554,7 +554,7 @@ plotRatios(results, sections = c("River", "River-Fjord", "Fjord"), type = "perce
 				
 				<div class="col-md-12 section-white-bg-area">
 
-					<h2>Plotting array live times</h2>
+					<h2>Plotting array live times<a href="#live-arrays" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 					<div class="manual">
 
 
@@ -582,7 +582,7 @@ plotLive(results, array = "A1", show.stations = FALSE, array.size = 3)
 				
 				<div class="col-md-12 section-white-bg-area">
 
-					<h2>What would you like to see here?</h2>
+					<h2>What would you like to see here?<a href="#new-ideas" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 					<div class="manual">
 
 <p>actel is a work in progress. Is there any anything you would like to do or see in your data that is missing? Have you thought of any cool function for actel? Get in touch! Run <code>maintainer('actel')</code> in R to find my latest contact information :)
