@@ -90,7 +90,7 @@
               </div>
             </div>
 
-            <h2>How does <code>migration()</code> work?</h2>
+            <h2>How does <code>migration()</code> work?<a href="#" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
                   
               <p>
@@ -103,7 +103,7 @@
 
           <div class="section-white-bg-area" id="movements">
 
-            <h2>Additional movement processes</h2>
+            <h2>Additional movement processes<a href="#movements" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
               <p>when it comes to movement validity, during the <code>migration()</code> analysis, actel will now also check if the tag was detected at an array that is not directly or indirectly after its release site. Should this happen, the following warning will be issued:</p>
@@ -142,15 +142,17 @@ Decision:(a/b/c/comment)
 
 
 
-              <div id="section-movements" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+            <div id="section-movements" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-            <h2>Section movements</h2>
+            <h2>Section movements<a href="#section-movements" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
               <p>Upon validating the movement events, the migration analysis proceeds to compressing these array-level events into section-level events. These section-level events are then used to access the unidirectionality of movement, from release to the success arrays.</p>
 
 
-              <h3>Backwards movements</h3>
+              <div id="backwards-movements" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>Backwards movements<a href="#backwards-movements" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
               <p>Tagged animals can move backwards either because they are reluctant of the new environments or because something ate them and you are now tracking the predator. The very first evidence of this is that the arrays to which each movement event belongs will no longer be arranged as expected.</p>
 
@@ -167,7 +169,9 @@ Decision:(a/b/c/comment)
               </div>
             </div>
 
-<h4>A) Movement events unordered, but last events ordered</h4>
+<div id="backwards-movements-ordered" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+<h4>A) Movement events unordered, but last events ordered<a href="#backwards-movements-ordered" class="anchor-link"><i class="fa-solid fa-link"></i></a></h4>
 
 <p>In this example, the animal starts by moving towards the Fjord, as expected, but then the moves back upstream into the river again. However, the animal then moves back in the expected direction and eventually leaves the study area. In this case, the last event in the Fjord will be after the last event in the River.</p>
 
@@ -179,7 +183,9 @@ Warning: Inter-section backwards movements were detected for tag R64K-4456.
 
 </pre>
 
-<h4>B) Both Movement events and last events are unordered</h4>
+<div id="backwards-movements-unordered" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+<h4>B) Both Movement events and last events are unordered<a href="#backwards-movements-unordered" class="anchor-link"><i class="fa-solid fa-link"></i></a></h4>
 
 <p>In this example, contrary to the above, the animal moves back into the river and then disappears. This means that the last event in the Fjord is actually <strong>before</strong> the last event in the River.</p>
 
@@ -191,7 +197,9 @@ Warning: Inter-section backwards movements were detected for tag R64K-4526 and t
 
 </pre>
 
-<h4>Making movements linear</h4>
+<div id="backwards-movements-linear" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+<h4>Making movements linear<a href="#backwards-movements-linear" class="anchor-link"><i class="fa-solid fa-link"></i></a></h4>
 
 <p>While early versions of actel required you to linearise the movements, the migration update introduced on 2020-05-31 gives <code>migration()</code> the power to handle these events. As such, you can choose to leave them as valid, if you think they represent the movements of your target animal, or invalidate them, if these seem like the movements of a predator, for example. Note that, for CJS calculations, only the forward movements are considered! You can read more about the CJS calculations <a href="manual-migration-efficiency.html">here</a>.</p>
 
@@ -206,20 +214,20 @@ M: Rendering 1 array movement(s) invalid for tag R64K-4508 as the respective sec
            </div>
           </div>
 
-          <div class="section-white-bg-area">
+          <div class="section-white-bg-area" id = "timetable">
 
-            <h2>Compiling a timetable</h2>
+            <h2>Compiling a timetable<a href="#timetable" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
-<p>Once the movement events have been verified, they will be used to fill in the timetable, which is the most important step of <code>migration()</code>. For each animal, actel will compile a series of metrics  for each of the <a href="manual-study-area.html#sections">study area's sections</a> (e.g. average speed, total time spent, number of entries, etc). Once actel determines when the animals entered and left the study area's sections, it becomes possible to determine the animal's fate. This is where the <a href="manual-migration#success-arrays"><code>success.arrays</code> variable</a> comes in. If the animal was last detected on an one of those arrays, it's fate will be assigned as "Succeeded".</p>
+<p>Once the movement events have been verified, they will be used to fill in the timetable, which is the most important step of <code>migration()</code>. For each animal, actel will compile a series of metrics  for each of the <a href="manual-study-area.html#sections">study area's sections</a> (e.g. average speed, total time spent, number of entries, etc). Once actel determines when the animals entered and left the study area's sections, it becomes possible to determine the animal's fate. This is where the <a href="manual-migration#success.arrays"><code>success.arrays</code> variable</a> comes in. If the animal was last detected on an one of those arrays, it's fate will be assigned as "Succeeded".</p>
 
             </div>
           </div>
 
 
-          <div class="section-white-bg-area">
+          <div class="section-white-bg-area" id = "status.df">
 
-            <h2>Combining the time data with the biometrics</h2>
+            <h2>Combining the time data with the biometrics<a href="#status.df" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
               <p>Finally, actel will automatically combine the time information with the information you included in the biometrics file. This new data frame is called <code>status.df</code>, and will be available to you in the function output.</p>
@@ -227,9 +235,9 @@ M: Rendering 1 array movement(s) invalid for tag R64K-4508 as the respective sec
             </div>
           </div>
 
-          <div class="section-white-bg-area">
+          <div class="section-white-bg-area" id = "report">
 
-            <h2>Inspecting the results</h2>
+            <h2>Inspecting the results<a href="#report" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
 

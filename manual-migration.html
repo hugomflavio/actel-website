@@ -83,7 +83,7 @@
 					
 					<div class="section-white-bg-area">
 
-						<h2>The <code>migration()</code> function</h2>
+						<h2>The <code>migration()</code> function<a href="#" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 						<div class="manual">
 						
 							<p>The <code>migration()</code> functions builds on the same principles as the <code>explore()</code> function and, in addition, computes metrics under the assumption that the animals will move in a predictable direction.</p>
@@ -105,7 +105,7 @@
 
 					<div class="section-white-bg-area" id="arguments">
 
-						<h2>Migration arguments</h2>
+						<h2>Migration arguments<a href="#arguments" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 						<div class="manual">
 
 						<p>Study areas can differ considerably. The arguments within <code>migration()</code> allow you to capture that diversity!</p>
@@ -122,8 +122,9 @@ migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 
 						<p>Below are listed only new arguments that do not exist in <a href = "manual-explore.html#general-arguments">explore</a>.</p>
 
+            <div id="section.order" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-						<h3>section.order</h3>
+						<h3>section.order<a href="#section.order" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 						<p>For the <code>migration()</code> analysis, the order of the study area sections must reflect the expected order in which your animals will cross them. If a <code>section.order</code> is not provided, actel will order the sections by their appearance in the spatial.csv file. However, if you want to alter this default order, you can specify a given order using this argument. E.g. if you expect your animals to move from the river, to a fjord and ultimately to the sea (and you have receivers in all these ecosystems), then <code>section.order = c("River", "Fjord", "Sea")</code>.</p>
 
@@ -132,9 +133,9 @@ migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 
 
 
-              <div id="success-arrays" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+            <div id="success.arrays" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-						<h3>success.arrays</h3>
+						<h3>success.arrays<a href="#success.arrays" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 						<p>
 						If a tag is last detected at an array listed in <code>success.arrays</code>, the respective animal will be considered to have successfully crossed the study area. By default, the last array of your study area is considered a success array. However, if you are not sure about your last array's efficiency, you can define multiple success arrays (e.g. <code>success.arrays = c("Sea1", "Sea2")</code> ).</p>
@@ -148,8 +149,9 @@ migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 							</div>
 						</pre>
 
+            <div id="if.last.skip.section" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-						<h3>if.last.skip.section</h3>
+						<h3>if.last.skip.section<a href="#if.last.skip.section" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 						<p>This option is best explained with examples. Let us assume we have a study area with four arrays: River1, River2, Fjord1 and Fjord2. Now, we have a tag that was last detected at River2. Should this animal be considered to have disappeared in the river or in the fjord? It comes down to how your stations are deployed in the field, and this is what <code>if.last.skip.section</code> is controlling for. Lets have a look at the two maps below.
 						</p>
@@ -179,9 +181,9 @@ migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 
 
 
-							<div id="replicates" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+						<div id="replicates" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-						<h3>replicates</h3>
+						<h3>replicates<a href="#replicates" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 						<p>One of the main drawbacks of array efficiency calculations is that it can be tricky to estimate efficiency for arrays which have no valid efficiency peers (i.e. no other arrays that can be used as quality checks). However, if these "isolated" arrays are composed by two lines of receivers, one line can be used as a replicate of the other, which in turn allows for the estimation of intra-array efficiency. If this is your case, then you should make use of the <code>replicates</code> argument.</p>
 
@@ -218,7 +220,8 @@ migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 
 
 
-						<h3>Setting up the replicates argument</h3>
+            <div id="replicates-setup" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+						<h3>Setting up the replicates argument<a href="#replicates-setup" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 
 
@@ -234,10 +237,9 @@ migration(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 
 
 
-              <div id="disregard-parallels" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+            <div id="disregard.parallels" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-
-						<h3>disregard.parallels</h3>
+						<h3>disregard.parallels<a href="#disregard.parallels" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 						<p>This argument controls whether or not the presence of parallel arrays (in multi-branch analyses) should potentially lead to the invalidation of efficiency peers. This argument is a bit tough to explain in few words, so I recommend that you <a href="manual-migration-efficiency.html#multiple-branches">have a look at how efficiency is calculated in <code>migration()</code></a>.</p>
 

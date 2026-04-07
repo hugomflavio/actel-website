@@ -83,7 +83,7 @@
       
           <div class="section-white-bg-area">
 
-            <h2>Forward efficiency</h2>
+            <h2>Forward efficiency<a href="#" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
                   
               <p>
@@ -109,9 +109,9 @@
 
           <div class="section-white-bg-area">
 
-              <div id="multiple-branches" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+            <div id="multiple-branches" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-            <h2>CJS and multiple branches</h2>
+            <h2>CJS and multiple branches<a href="#multiple-branches" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
               <p>Actel calculates array efficiency through CJS modelling, based in the equations provided by <a href="https://www.researchgate.net/publication/256443823_Using_mark-recapture_models_to_estimate_survival_from_telemetry_data" target="_blank">Perry et al. (2012)</a>. In short, this implies comparing the individual tags detected at an array with those detected at the arrays that come after that said array.</p>
@@ -128,10 +128,10 @@
 
           <div class="section-white-bg-area" id="section-movements">
 
-            <h2>Dealing with parallel arrays</h2>
+            <h2>Dealing with parallel arrays<a href="#section-movements" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
-              <p>Parallel arrays are particularly tricky to deal with, because they do not come before, nor after their neighbours. It is here that <a href="manual-migration.html#disregard-parallels">the argument <code>disregard.parallels</code></a> comes in. Let's have a look at this study area, which has up to three branches.</p>
+              <p>Parallel arrays are particularly tricky to deal with, because they do not come before, nor after their neighbours. It is here that <a href="manual-migration.html#disregard.parallels">the argument <code>disregard.parallels</code></a> comes in. Let's have a look at this study area, which has up to three branches.</p>
 
               <div class="image-margins">
               <img src="assets/images/manual/one_way_efficiency_a.svg" alt="drawing" width="500"/>
@@ -157,7 +157,9 @@ E -- F -- E
 <p>Now let's try to determine the valid efficiency peers of array <strong>D</strong>, first with <code>disregard.parallels = TRUE</code> and then with <code>disregard.parallels = FALSE</code>.</p>
 
 
-              <h3>if disregard.parallels = TRUE</h3>
+              <div id="parallels-true" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>if disregard.parallels = TRUE<a href="#parallels-true" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
               <div class="image-margins">
               <img src="assets/images/manual/one_way_efficiency_b.svg" alt="drawing" width="500"/>
@@ -175,7 +177,9 @@ E -- F -- E
               <p>So, if <code>disregard.parallels = TRUE</code>, arrays <strong>E</strong> and <strong>F</strong> are valid efficiency peers of array <strong>D</strong>.</p>
 
 
-              <h3>if disregard.parallels = FALSE</h3>
+              <div id="parallels-false" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>if disregard.parallels = FALSE<a href="#parallels-false" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
               <div class="image-margins">
               <img src="assets/images/manual/one_way_efficiency_c.svg" alt="drawing" width="500"/>
@@ -193,7 +197,9 @@ E -- F -- E
 <p>As such, if <code>disregard.parallels = FALSE</code>, then array <strong>D</strong> no longer has any valid peers.</p>
 
 
-              <h3>So, should you go with TRUE or FALSE?</h3>
+              <div id="parallels-decide" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>So, should you go with TRUE or FALSE?<a href="#parallels-decide" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
               <p>It depends on your study area, and on your animals. If you expect that the tagged animals are likely to move between parallel arrays (e.g. because these arrays are very close to each other), then it may be a good idea to <strong>not</strong> disregard the presence of parallels (i.e. run the analysis with <code>disregard.parallels = FALSE</code>). A practical example would be if you have multiple channels leading to a lake, and you have arrays at each lake entrance. As the animals may have to explore other lake entrances before finding the lake exit, disregarding parallel arrays could potentially lead to underestimations of array efficiency.</p>
 
@@ -203,14 +209,16 @@ E -- F -- E
            </div>
           </div>
 
-          <div class="section-white-bg-area">
+          <div class="section-white-bg-area" id = "no-peers">
 
-            <h2>Arrays with no efficiency peers</h2>
+            <h2>Arrays with no efficiency peers<a href="#no-peers" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
 <p>Regardless of the mechanics explained above, arrays <strong>C</strong>, <strong>E</strong>, <strong>F</strong> and <strong>G</strong> would never have any valid efficiency peers. As such, inter-array efficiency cannot be calculated for them using a CJS model. However, you have the chance to calculate intra-array efficiency, if an array is <a href="manual-migration.html#replicates">composed by two lines of receivers</a>. You can find the efficiency peers of each array in the <a href="manual-explore-results.html#arrays"><code>arrays</code> object</a>.</p>
 
-<h3>Intra-array efficiency</h3>
+<div id="intra-array" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+<h3>Intra-array efficiency<a href="#intra-array" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>Intra array efficiency calculations are also performed following the equations provided by <a href="https://www.researchgate.net/publication/256443823_Using_mark-recapture_models_to_estimate_survival_from_telemetry_data" target="_blank">Perry et al. (2012)</a>. Specifically, actel splits the array's receivers in "original" and "replicates" (depending on what you specified in the <a href="manual-migration.html#replicates">replicates argument</a>), and compares the tags detected at both of these elements. The results of the intra-array calculations for each array are then stored in the <a href="manual-migration-results.html#intra-array"><code>intra.array.CJS</code> list</a>.</p>
 

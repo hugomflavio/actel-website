@@ -83,7 +83,7 @@
       
           <div class="section-white-bg-area">
 
-            <h2>What do you get from <code>migration()</code>?</h2>
+            <h2>What do you get from <code>migration()</code>?<a href="#" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
                   
               <p>
@@ -96,10 +96,12 @@
 
           <div class="section-white-bg-area" id="within-r">
 
-            <h2>Results within R</h2>
+            <h2>Results within R<a href="#within-r" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
-              <h3>section.movements</h3>
+              <div id="section.movements" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+              
+              <h3>section.movements<a href="#section.movements" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
               <p>The <code>section.movements</code> list contains the section-level movement events created during <a href="manual-migration-processes.html#section-movements">the movement compressing process</a>. Here is an example:</p>
 
@@ -107,14 +109,18 @@
 
 <p>(Timestamps were trimmed so the table fits better in the page)</p>
 
-              <h3>status.df</h3>
+              <div id="status.df" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>status.df<a href="#status.df" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>The <code>status.df</code> is a data frame that combines both the timetable data and your biometrics into a single, organised table. If you have stored any comments during the analysis process, they will show up in a reserved column in this table.</p> 
 
 <p>The <code>status.df</code> also contains the recorded fate for each animal (i.e. disappeared somewhere or succeeded at crossing the study area), and summary information on the number and length of the recorded backwards movements. This table can be quite big, so it may be a good idea to use <code>head(status.df)</code> the first time you look at it.</p>
 
 
-              <h3>section.overview</h3>
+              <div id="section.overview" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>section.overview<a href="#section.overview" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 
 <p>This small table is automatically generated with data extracted from the <code>status.df</code>. For each animal group, it details the number of tags that disappeared on any section and those that passed to the next. It is very helpful to get a quick overview of the results, and is incorporated in the <a href="manual-migration-results.html#report">actel migration report</a>. Here is an example:</p>
@@ -123,7 +129,9 @@
 <table><tr><th></th><th>Total</th><th>Disap..in.River</th><th>Migrated.to.Sea</th><th>Disap..in.Sea</th><th>Succeeded</th></tr><tr><td>Hatchery</td><td>40</td><td>30</td><td>10</td><td>3</td><td>7</td></tr><tr><td>Wild</td><td>40</td><td>24</td><td>16</td><td>2</td><td>14</td></tr></table>
 
 
-              <h3>array.overview</h3>
+              <div id="array.overview" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>array.overview<a href="#array.overview" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>The <code>array.overview</code> shows you the number of known and estimated tags, per group, to have passed each of your arrays.</p>
 
@@ -140,13 +148,16 @@
 
 
 
+              <div id="matrices" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-              <h3>matrices</h3>
+              <h3>matrices<a href="#matrices" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>In this object you will find the matrix/matrices that were used for efficiency estimations during CJS modelling. Note that these matrices only represent the forward movements. You can read more about it below, in the description of the <code>overall.CJS</code>.</p>
 
 
-              <h3>overall.CJS</h3>
+              <div id="overall.CJS" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>overall.CJS<a href="#overall.CJS" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>This object contains the results of the efficiency estimations performed by actel. During the migration analysis, actel calculates forward efficiency only to improve the accuracy of the efficiency measurement. You can learn more about how these one-way efficiency estimations are made in <a href="manual-migration-efficiency.html">this manual page</a>.</p>
 
@@ -154,7 +165,7 @@
 
               <div id="intra-array" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-              <h3>intra.array.CJS</h3>
+              <h3>intra.array.CJS<a href="#intra-array" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>If you requested intra-array estimates in the <a href="manual-migration.html#replicates">replicates argument</a>, actel will estimate intra-array efficiencies for the target arrays. These results are stored in the object <code>intra.array.CJS</code>, and the combined efficiency estimate is used to complement the overall CJS.</p>
 
@@ -165,14 +176,16 @@
 
           <div class="section-white-bg-area" id="exported">
 
-            <h2>Results in your working directory</h2>
+            <h2>Results in your working directory<a href="#exported" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
 
 <p>The migration function saves [outputs similar to those saved <a href="manual-explore-results.html#exported"> by <code>explore()</code></a>. The main differences are in the two elements listed below.</p>
 
 
-              <h3>actel_migration_results.RData</h3>
+              <div id="rdata" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>actel_migration_results.RData<a href="#rdata" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <pre>
 
@@ -186,7 +199,7 @@ Would you like to save a copy of the results to actel_migration_results.RData?(y
 
               <div id="report" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-              <h3>actel_migration_report.html (if report = TRUE)</h3>
+              <h3>actel_migration_report.html (if report = TRUE)<a href="#report" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>This is the main non-R output. If you activated the <code>report</code> option, actel will compile an html report for you. The migration report contains the same sections as the <a href="manual-explore-results.html#report">explore report</a>, plus the following:</p>
 
