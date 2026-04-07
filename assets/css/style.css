@@ -46,6 +46,29 @@ Heavily edited
 	color: #333;
 }
 
+.anchor-link {
+  margin-left: 0.4em;
+  text-decoration: none;
+  opacity: 0;
+  color: inherit;
+}
+
+.anchor-link i {
+  font-size: 0.8em;
+}
+
+h2:hover .anchor-link {
+  opacity: 1;
+}
+
+h3:hover .anchor-link {
+  opacity: 1;
+}
+
+h4:hover .anchor-link {
+  opacity: 1;
+}
+
 .section-white-bg-header {
 	display: inline;
 	float: center;

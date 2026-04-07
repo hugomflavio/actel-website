@@ -83,7 +83,7 @@
       
           <div class="section-white-bg-area">
 
-            <h2>How does <code>explore()</code> work?</h2>
+            <h2>How does <code>explore()</code> work?<a href="#" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
                   
               <p>
@@ -96,7 +96,7 @@
 
           <div class="section-white-bg-area" id="first-checks">
 
-            <h2>Making sure everything checks out</h2>
+            <h2>Making sure everything checks out<a href="#first-checks" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
               <p>The first thing actel does is import your data. This also includes all of your detection files, which can take a bit of time. Then, actel performs many verifications to make sure everything is all right. As the list of checks is long, I will not explore each one of them in detail here. Should something be out of the ordinary, actel will let you know with a warning or an error message, depending on the severity of the issue.</p>
@@ -107,7 +107,7 @@
 
           <div class="section-white-bg-area" id="organizing-detections">
 
-            <h2>Organising the detections</h2>
+            <h2>Organising the detections<a href="#organizing-detections" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
               <p>Once everything is in place, actel will start by:</p>
@@ -138,7 +138,7 @@
 
               <div id="creating-movements" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-            <h2>From detections to movements</h2>
+            <h2>From detections to movements<a href="#creating-movements" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
 <p>The process of compiling movement events is entirely automatic, and the outcome depends on two things:</p>
@@ -155,7 +155,7 @@
 
           <div class="section-white-bg-area" id="event-quality">
 
-            <h2>Checking event quality</h2>
+            <h2>Checking event quality<a href="#event-quality" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
               <p>Upon finishing the movement event creation, actel checks the movement events to look out for strange behaviour. If something looks odd, you are given a chance to invalidate specific movement events, so that invalid detections can be discarded.</p>
@@ -170,7 +170,7 @@
 
               <div id="impassables" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-              <h3>Impassables</h3>
+              <h3>Impassables<a href="#impassables" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
               <p>As you probably know by now, you can [define unidirectional connections between <a href="manual-data.html#barriers">arrays</a>. This tells actel that something (e.g. a weir or dam) prevents the animal from moving in a particular direction. Let's see the examples below, with arrays A, B and C:</p>
 
@@ -207,10 +207,10 @@ Events to be rendered invalid:
               <p>As the warning says, you then have two options: Invalidate events until the impassable exception is resolved, or re-structure your spatial.txt file.</p>
 
 
-              <div id="jumping-arrays" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+              <div id="jumping.arrays" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
 
-              <h3>Jumping arrays</h3>
+              <h3>Jumping arrays<a href="#jumping.arrays" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>If the tag has been jumping around (i.e. passing through multiple arrays undetected), actel will issue warnings and prompt user intervention, depending on <a href="manual-explore.html#jump.parameters">the values set for <code>jump.warning</code> and <code>jump.error</code></a>.</p>
 
@@ -247,7 +247,7 @@ Would you like to render any movement event invalid, or expand an event?(y/n/com
 
               <div id="average-speed" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-              <h3>Average speed</h3>
+              <h3>Average speed<a href="#average-speed" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 
 <p>If you include a <a href="manual-data.html#distances-matrix">distance matrix</a> in the analysis, you can specify the maximum expected speed for your animals using <a href="manual-explore.html#speed.parameters">speed.warning and speed.error</a>. Doing so will trigger the speed checks, where the average speed between each movement event is compared to the specified arguments.</p>
@@ -279,7 +279,7 @@ Would you like to render any movement event invalid, or expand an event?(y/n/com
 
               <div id="inactiveness" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-              <h3>Inactiveness</h3>
+              <h3>Inactiveness<a href="#inactiveness" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>Specifying a value for <a href="manual-explore.html#inactive.parameters">inactive.warning and/or inactive.error</a> will trigger the inactiveness checks. These differ depending on whether or not you included a distance matrix in the analysis.</p>
 
@@ -289,8 +289,9 @@ Inactiveness checks are performed in the tail of the movement events. That is, a
 
 <p>In this case, the last three events are valid candidates for inactiveness. Actel will then check the time difference between the first detection at event 3 and the last detection at event 5. Should this difference be larger than <code>inactive.warning</code>, actel will proceed to the next step, which depends on whether the distances.matrix is present.</p>
 
+<div id="inactiveness-dist" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-<h4>If a distances matrix is present</h4>
+<h4>If a distances matrix is present<a href="#inactiveness-dist" class="anchor-link"><i class="fa-solid fa-link"></i></a></h4>
 
 <p>Actel will gather all the stations where these last detections occurred and check if they are less than 1500 metres a part. If this is true, then there is a valid case for inactivity, and a warning will be issued:</p>
 
@@ -300,7 +301,9 @@ Warning: Tag R64K-1234 was detected 7 times at stations less than 1.5 km apart i
 
 </pre>
 
-<h4>If a distances matrix is NOT present</h4>
+<div id="inactiveness-time" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+<h4>If a distances matrix is NOT present<a href="#inactiveness-time" class="anchor-link"><i class="fa-solid fa-link"></i></a></h4>
 
 <p>Actel will count the number of individual stations in which the tag was detected. If there are three or less individual stations, there is a valid case for inactivity, and a similar warning will be issued:</p>
 
@@ -339,7 +342,7 @@ Would you like to render any movement event invalid, or expand an event?(y/n/com
 
               <div id="comments" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-            <h2>Leaving comments for later</h2>
+            <h2>Leaving comments for later<a href="#comments" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
 <p>If a tag is causing doubts, you can attach a comment to it at any time. Just reply "comment" to a question when the word "comment" shows up between brackets and the comment dialogue will be triggered:</p>
@@ -362,7 +365,7 @@ Continue editing last valid events?(y/N/comment)
 
           <div class="section-white-bg-area" id="first-detections">
 
-            <h2>Time of first detection at each array</h2>
+            <h2>Time of first detection at each array<a href="#first-detections" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
 
@@ -373,7 +376,7 @@ Continue editing last valid events?(y/N/comment)
 
           <div class="section-white-bg-area" id="explore-ends-here">
 
-            <h2>The <code>explore()</code> analysis ends here</h2>
+            <h2>The <code>explore()</code> analysis ends here<a href="#explore-ends-here" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
 

@@ -83,7 +83,7 @@
       
           <div class="section-white-bg-area">
 
-            <h2>What do you get from <code>explore()</code>?</h2>
+            <h2>What do you get from <code>explore()</code>?<a href="#" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
                   
               <p>
@@ -96,12 +96,14 @@
 
           <div class="section-white-bg-area" id="within-r">
 
-            <h2>Results within R</h2>
+            <h2>Results within R<a href="#within-r" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
               <p>If you ran the explore function and stored it into an object (i.e. <code>output <- explore(...)</code>), this object will now be a list, containing all the useful results actel has compiled for you:</p>
 
-              <h3>detections</h3>
+              <div id="detections" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>detections<a href="#detections" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
               <p>The <code>detections</code> list contains the detections found in your detections file which match your target tags, split by each of the tags. This is the base data with which actel worked. Here is an example:</p>
 
@@ -109,31 +111,38 @@
 
 
 
-              <h3>valid.detections</h3>
+              <div id="valid.detections" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>valid.detections<a href="#valid.detections" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>The <code>valid.detections</code> object only contains the detections that were deemed valid during the analysis.</p>
 
 
-              <h3>spatial</h3>
+              <div id="spatial" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>spatial<a href="#spatial" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 
 <p>The <code>spatial</code> list contains the stations, release sites and some more summary information. This object may come in handy if you have to go back to your results some time after you completed the analysis, so you can verify the study area design and match the stations names to their locations.</p>
 
 
-              <h3>deployments</h3>
+              <div id="deployments" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>deployments<a href="#deployments" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>The <code>deployments</code> data frame is similar to t deployments.csv file, with the exception that unique serial numbers have been created for receivers which were deployed more than once.</p>
 
 
-
               <div id="arrays" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-              <h3>arrays</h3>
+              <h3>arrays<a href="#arrays" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>The <code>arrays</code> list contains detailed information for each array: Which arrays are directly before, which arrays are directly after, which arrays are valid efficiency peers, which arrays are directly OR indirectly after, and more.</p>
 
 
-              <h3>movements</h3>
+              <div id="movements" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>movements<a href="#movements" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>The <code>movements</code> list contains the movement events created during <a href="manual-explore-processes.html#creating-movements">the detection sorting process</a>. These records can become very useful if you need to go back to a given tag and inspect its behaviour in more detail. Here is an example:</p>
 
@@ -141,14 +150,16 @@
 <table><tr><th>Array</th><th>Detections</th><th>First station</th><th>Last station</th><th>First time</th><th>Last time</th><th>Time travelling</th><th>Time on array</th></tr><tr><td>River1</td><td>92</td><td>St.2</td><td>St.2</td><td>2018-04-18 19:07:45</td><td>2018-04-18 23:27:29</td><td>NA</td><td>4:19:44</td></tr><tr><td>River2</td><td>1</td><td>St.11</td><td>St.11</td><td>2018-04-18 23:49:16</td><td>2018-04-18 23:49:16</td><td>0:21:47</td><td>0:00:00</td></tr><tr><td>River3</td><td>3</td><td>St.12</td><td>St.12</td><td>2018-04-19 01:52:34</td><td>2018-04-19 01:57:01</td><td>2:03:18</td><td>0:04:27</td></tr><tr><td>River4</td><td>10</td><td>St.13</td><td>St.13</td><td>2018-04-19 03:35:44</td><td>2018-04-19 03:42:17</td><td>1:38:43</td><td>0:06:33</td></tr><tr><td>Bay1</td><td>52</td><td>St.16</td><td>St.17</td><td>2018-04-20 05:33:51</td><td>2018-04-20 06:12:20</td><td>25:51:34</td><td>0:38:29</td></tr><tr><td>Bay1</td><td>69</td><td>St.17</td><td>St.16</td><td>2018-04-20 12:00:31</td><td>2018-04-20 13:00:36</td><td>5:48:11</td><td>1:00:05</td></tr></table>
 
 
-              <h3>valid.movements</h3>
+              <div id="valid.movements" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+              
+              <h3>valid.movements<a href="#valid.movements" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>The <code>valid.movements</code> represents a refined version of the <code>movements</code> object, where all movements deemed invalid during the analysis were removed.
 </p>
 
               <div id="times" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-              <h3>times</h3>
+              <h3>times<a href="#times" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>The <code>times</code> data frame contains the timestamps of first valid detection in each array, for each tag. These are used to draw the circular plots in the report (like the ones below), but you can also use them to test for differences between groups!
 </p>
@@ -156,7 +167,9 @@
                   <img src="assets/images/manual/times_Sea1.svg" alt="drawing"/>
                 </div>
 
-              <h3>dist.mat</h3>
+              <div id="dist.mat" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>dist.mat<a href="#dist.mat" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>If a valid <a href="manual-distances.html">distance matrix</a> was supplied for the analysis, it will be returned together with the results. This allows you to easily check speeds between specific movements of particular interest, and can serve as a basis for other relevant metrics.
 </p>
@@ -167,14 +180,16 @@
 
           <div class="section-white-bg-area" id="exported">
 
-            <h2>Results in your working directory</h2>
+            <h2>Results in your working directory<a href="#exported" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
 
 <p>On top of the results stored in your R session, actel saves some additional information in your working directory, if you ask it to:</p>
 
 
-              <h3>actel_explore_results.RData</h3>
+              <div id="rdata" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>actel_explore_results.RData<a href="#rdata" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <pre>
 
@@ -184,7 +199,9 @@ Would you like to save a copy of the results to actel_explore_results.RData?(y/N
 
 <p>To make sure that you don't accidentally lose your results, you can save them right away in the current directory. The results present in this file are the same as the ones you obtain directly in your R console (see above).</p>
 
-              <h3>actel.log.txt (if report = FALSE)</h3>
+              <div id="log" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>actel.log.txt (if report = FALSE)<a href="#log" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <pre>
 
@@ -199,7 +216,9 @@ Would you like to save a copy of the analysis log to [timestamp].actel.log.txt?(
 </p>
 
 
-              <h3>stray_tags.csv</h3>
+              <div id="stray.tags" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>stray_tags.csv<a href="#stray.tags" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <pre>
 
@@ -213,7 +232,7 @@ Stray tags were detected in your study area. Would you like to save a summary to
 
               <div id="report" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-              <h3>actel_explore_report.html (if report = TRUE)</h3>
+              <h3>actel_explore_report.html (if report = TRUE)<a href="#report" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>This is the main non-R output. If you activated the <code>report</code> option, actel will compile an html report for you. For the explore function, this report contains the following sections:</p>
 

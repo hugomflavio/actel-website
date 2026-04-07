@@ -83,7 +83,8 @@
 			
 					<div class="section-white-bg-area">
 
-						<h2>The <code>explore()</code> function</h2>
+						<h2>The <code>explore()</code> function<a href="#" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
+
 						<div class="manual">
 									
 							<p>
@@ -108,7 +109,7 @@
 
 					<div class="section-white-bg-area" id="general-arguments">
 
-						<h2>General arguments</h2>
+						<h2>General arguments<a href="#general-arguments" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 						<div class="manual">
 
 							<p>All the arguments of <code>explore()</code>, which also exist in <code>migration()</code> and <code>residency()</code>, are explained below.</p>
@@ -122,7 +123,9 @@
   detections.y.axis = c("stations", "arrays"))
 </pre></code>
 
-							<h3>tz</h3>
+							<div id="tz" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+							<h3>tz<a href="#tz" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>Receivers usually work in Coordinated Universal Time (UTC). Although this is nice to integrate data from multiple receivers, depending on where you are working, it may mean that the receivers' time is actually displaced from the daytime in your study area. To correct for this, you must include your time zone in this field. For example, to analyse a study performed in Denmark, we must use <code>tz = "Europe/Copenhagen"</code>.</p>
 
@@ -138,7 +141,7 @@
 
 							<div id="max.interval" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-							<h3>max.interval</h3>
+							<h3>max.interval<a href="#max.interval" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>If an animal is detected multiple times in one array without being detected in other arrays, these detections are grouped into a single event, assuming that the time difference between two consecutive detections does not exceed <code>max.interval</code> (which is <strong>set in minutes</strong>). Should the time between detections exceed <code>max.interval</code>, a new movement event will be created, in the same receiver array.</p>
 
@@ -160,7 +163,9 @@
 
 							<table><tr><th>Array</th><th>Detections</th><th>First station</th><th>Last station</th><th>First time</th><th>Last time</th><th>Time travelling</th><th>Time on array</th></tr><tr><td>Array1</td><td>4</td><td>St.1</td><td>St.1</td><td>2019-05-15 12:00:00</td><td>2019-05-15 13:00:00</td><td>NA</td><td>1:00:00</td></tr><tr><td>Array1</td><td>3</td><td>St.1</td><td>St.1</td><td>2019-05-15 13:50:00</td><td>2019-05-15 14:40:00</td><td>0:50:00</td><td>0:50:00</td></tr><tr><td>Array1</td><td>2</td><td>St.1</td><td>St.1</td><td>2019-05-15 16:00:00</td><td>2019-05-15 16:20:00</td><td>1:20:00</td><td>0:20:00</td></tr><tr><td>Array1</td><td>4</td><td>St.1</td><td>St.1</td><td>2019-05-15 17:10:00</td><td>2019-05-15 18:00:00</td><td>0:50:00</td><td>0:50:00</td></tr><tr><td>Array1</td><td>1</td><td>St.1</td><td>St.1</td><td>2019-05-15 19:45:00</td><td>2019-05-15 19:45:00</td><td>1:45:00</td><td>0:00:00</td></tr></table>
 
-							<h3>minimum.detections</h3>
+							<div id="minimum.detections" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+							<h3>minimum.detections<a href="#minimum.detections" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>This argument controls how many times a tag must be registered to be considered valid, if there is only one movement event. Lets have a look at an example: Tag 1234 only has one movement event at <strong>River1</strong>, with <strong>one</strong> detection. If <code>minimum.detections = 1</code>, this movement is considered <strong>valid</strong> , and the tag is considered to have passed through <strong>River1</strong> and then disappeared. If <code>minimum.detections = 2</code>, this movement is considered <strong>invalid</strong> (i.e. could be the result of error detections), and the tag is considered to have been lost after release. If a tag has more than one movement event, then the <code>minimum.detections</code> argument no longer plays a role. 
 							</p>
@@ -168,7 +173,9 @@
 							</p>
 
 
-							<h3>start.time and stop.time</h3>
+							<div id="start.time" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+							<h3>start.time and stop.time<a href="#start.time" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>Sometimes your receivers contain much more detection data than what you are interested in, which can increase the time it takes to process all the detections. By including a <code>start.time</code> and/or an <code>stop.time</code>, you can trim the detection data to those target times.
 							</p>
@@ -206,7 +213,9 @@ Decision:(a/b/comment)
 							</pre>
 
 
-							<h3>speed.method</h3>
+							<div id="speed.method" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+							<h3>speed.method<a href="#speed.method" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>When calculating movement speeds from one array to the next, it is important to know if actel should count the time <strong>from the last detection</strong> in the previous array <strong>to the first detection</strong> in the target array, or if you want actel to count the time <strong>from the last detection</strong> in the previous array  <strong>to the last detection</strong> in the target array. This is what <code>speed.method</code> is doing. You can choose one of "last to first" or "last to last". The example below illustrates the difference between both methods:
 							</p>
@@ -233,7 +242,7 @@ Decision:(a/b/comment)
 
 							<div id="speed.parameters" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-							<h3>speed.warning and speed.error</h3>
+							<h3>speed.warning and speed.error<a href="#speed.parameters" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>These two variables control the speed checks. By default, they are NULL, and no speed checks are performed. actel will let you know this happened with the following message:
 							</p>
@@ -257,7 +266,7 @@ Warning: 'speed.warning'/'speed.error' were set, but a valid distance matrix is 
 
 							<div id="jump.parameters" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-							<h3>jump.warning and jump.error</h3>
+							<h3>jump.warning and jump.error<a href="#jump.parameters" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>During the course of a study, tags can (hopefully not too often) pass through a receiver array undetected. However, if this happens consecutively for more than one array, then perhaps something fishy is going on. Was your animal eaten by a bird? Was there something wrong with the arrays? Whatever the cause, there is a point after which you get suspicious. The <code>jump.warning</code> and <code>jump.error</code> arguments control how suspicious you want to be.
 							</p>
@@ -267,7 +276,7 @@ Warning: 'speed.warning'/'speed.error' were set, but a valid distance matrix is 
 
 							<div id="inactive.parameters" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-							<h3>inactive.warning and inactive.error</h3>
+							<h3>inactive.warning and inactive.error<a href="#inactive.parameters" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>These two variables control the inactiveness checks. <code>inactive.warning</code> and <code>inactive.error</code> must be set in days. That is, if <code>inactive.warning = 2</code>, any tag that is deemed inactive for two days or more will trigger a warning. By default, they are NULL, and no inactiveness checks are performed. Actel will let you know this happened with the following message:
 							</p>
@@ -293,7 +302,7 @@ M: Running inactiveness checks without a distance matrix. Performance may be lim
 
 							<div id="exclude.tags" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-							<h3>exclude.tags</h3>
+							<h3>exclude.tags<a href="#exclude.tags" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>It is possible for a stray tag with the same signal as one of your tags to enter the study area. Although this is unexpected, it would mean you could end up with two tags that differ only in code spaces. As actel works based on the tag signals alone, it does not know which tag is yours, and which is a stray, so you must intervene. If this happens, the following error is issued:
 							</p>
@@ -322,7 +331,7 @@ M: Excluding tag(s) A69-1601-1081 from the analysis per used command (detections
 
 							<div id="override" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-							<h3>override</h3>
+							<h3>override<a href="#override" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>Once you finish your analysis, you should go through the generated outputs and check for any strange behaviour. We will discuss this in more detail [later on](b-2_explore_results.html), but for now the important message is that, if you would like to <strong>manually change the results for any set of tags</strong> , you can list their respective signals in <code>override</code> to trigger full manual mode (e.g. <code>override = c(1234, 1405)</code>).
 							</p>
@@ -342,7 +351,7 @@ M: Override has been triggered for tag R64K-1234. Entering full manual mode.
 
 							<div id="report" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-							<h3>report</h3>
+							<h3>report<a href="#report" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>The <code>report</code> option activates a series of print functions that draw tables and figures for later integration in an html report. When you activate this option, actel assembles the <a href="manual-explore-results.html#report">html report</a> and stores it in your working directory. If you already have a report in your working directory, actel will create a new file with a different name.
 							</p>
@@ -363,27 +372,37 @@ M: Override has been triggered for tag R64K-1234. Entering full manual mode.
 							</div>
 
 
-							<h3>auto.open</h3>
+							<div id="auto.open" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+							<h3>auto.open<a href="#auto.open" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>When the <code>report</code> option is activated, <code>auto.open</code> comes into play. If <code>auto.open</code> is TRUE (the default), then actel will automatically open your web browser and open the report as soon as it is completed!
 							</p>
 
-							<h3>discard.orphans</h3>
+							<div id="discard.orphans" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+							<h3>discard.orphans<a href="#discard.orphans" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>This is a flow optimization argument. When actel finds detections outside of the receiver deployment periods, or that were recorded before their respective animals were released, by default, actel will ask the user what to do (discard those detections or stop the analysis so the user can check the data). However, you can tell actel to automatically discard any orphan detections by setting <code>discard.orphans</code> to TRUE.
 							</p>
 
-							<h3>discard.first</h3>
+							<div id="discard.first" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+							<h3>discard.first<a href="#discard.first" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>This argument allows you to discard any detections that happen too soon after the animal was released. You may want to do this to ensure your results are not biased by post-handling disturbance effects. <code>discard.first</code> is set in hours, but if for example you want to set a time in days, you can always state that <code>discard.first = 24 * 7</code> (for seven days in this case).
 							</p>
 
-							<h3>save.detections</h3>
+							<div id="save.detections" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+							<h3>save.detections<a href="#save.detections" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>Detections can take a long time to compile. To save some time when importing the detections, you can set <code>save.detections</code> to TRUE and actel will save an 'actel.detections.RData' file in your current working directory (or in the detections sub-directory) for later use. This option is particularly useful when handling very large detection datasets.
 							</p>
 
-							<h3>GUI</h3>
+							<div id="GUI" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+							<h3>GUI<a href="#GUI" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>actel comes with a graphical interface intended to allow users to deal with very long movement tables that would otherwise overflow R's output limits. However, this graphical interface requires additional packages installed, so it may not always be an option to rely on it. This is where <code>GUI</code> comes in. Defaulting to 'needed', the graphical user interface will only kick in for very long tables. The other two options are 'always' and 'never', both of which are self explanatory.
 							</p>
@@ -391,12 +410,16 @@ M: Override has been triggered for tag R64K-1234. Entering full manual mode.
 							<p>If you cannot run the GUI on your computer and are faced with a very long table, do not worry! actel has a fall-back system, where the table is saved to a temporary file, which you can open in an external program such as Microsoft Excel of LibreOffice Calc. Have a look at the movements table there, let R know what you want to do, close the file and the analysis will continue automatically. This option requires a bit more work, but at least you can still complete your analysis :)
 							</p>
 
-							<h3>save.tables.locally</h3>
+							<div id="save.tables.locally" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+							<h3>save.tables.locally<a href="#save.tables.locally" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>If actel is unable to access the GUI, long tables will be saved to temporary files (as mentioned above). By default, these tables are saved into R's temporary directory. However, in some cases (particularly in MacOS), this temporary folder can be hard to find. You can set <code>save.tables.locally = TRUE</code> to have temporary tables saved in your current work directory, rather than the temporary folder. These temporary tables will be deleted once they are no longer required.
 							</p>
 
-							<h3>detections.y.axis</h3>
+							<div id="detections.y.axis" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+							<h3>detections.y.axis<a href="#detections.y.axis" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 							<p>By default, actel decides whether to plot the detections by station or by array, depending on the number of stations and arrays present in the study area. However, you can force a specific Y axis by setting <code>detections.y.axis</code> to either 'stations' or 'arrays'. Note that this will also affect the sensor data plots, as they are coloured consistently with the detection plots.
 							</p>
