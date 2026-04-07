@@ -90,7 +90,7 @@
               </div>
             </div>
 
-            <h2>How does <code>residency()</code> work?</h2>
+            <h2>How does <code>residency()</code> work?<a href="#" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
                   
               <p>
@@ -105,12 +105,12 @@
 
 
 
-              <div id="section-movements" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+            <div id="section-movements" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-            <h2>Section movements</h2>
+            <h2>Section movements<a href="#section-movements" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
-              <p>Upon validating the movement events, the residency analysis proceeds to compressing these array-level events into section-level events. <a href="manual-residency-results.html#section-movements">You can find an example here</a>. This shows how many times a tag entered and left each section. It is here that <a href="manual-residency.html#section-minimum">the argument <code>section.minimum</code></a> comes in. If the number of consecutive detections at a given section are lower than the value stipulated, a warning will be issued, and user interaction is suggested:</p>
+              <p>Upon validating the movement events, the residency analysis proceeds to compressing these array-level events into section-level events. <a href="manual-residency-results.html#section.movements">You can find an example here</a>. This shows how many times a tag entered and left each section. It is here that <a href="manual-residency.html#section.minimum">the argument <code>section.minimum</code></a> comes in. If the number of consecutive detections at a given section are lower than the value stipulated, a warning will be issued, and user interaction is suggested:</p>
 
 <pre>
 
@@ -134,10 +134,12 @@ M: Rendering 1 array movement(s) invalid for tag R64K-3 as the respective sectio
 
           <div class="section-white-bg-area">
 
-            <h2>Residency lists</h2>
+            <div id="lists" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+            <h2>Residency lists<a href="#lists" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
-              <p>Once the section movements have been validated, actel fills in the gaps between movements using the departure timestamp of a given section and the arrival timestamp of the next. These middle locations are labelled using both sections' names, separated with a dash (e.g. Down-Right). <a href="manual-residency-results.html#residency-list">You can find an example here</a>.</p>
+              <p>Once the section movements have been validated, actel fills in the gaps between movements using the departure timestamp of a given section and the arrival timestamp of the next. These middle locations are labelled using both sections' names, separated with a dash (e.g. Down-Right). <a href="manual-residency-results.html#residency.list">You can find an example here</a>.</p>
 
             </div>
           </div>
@@ -146,10 +148,9 @@ M: Rendering 1 array movement(s) invalid for tag R64K-3 as the respective sectio
           <div class="section-white-bg-area">
 
 
-              <div id="timetable" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+            <div id="timetable" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-
-            <h2>Compiling a timetable</h2>
+            <h2>Compiling a timetable<a href="#timetable" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
               <p>Using the residency table above, actel compiles a summary timetable containing the following information for each section: number of times the tag entered the section, average entry time, average time spent per stay, average departure time and total time spent in the section. A few more summary columns are added to this table before it is bound to the information provided in the biometrics table.</p>
@@ -160,10 +161,12 @@ M: Rendering 1 array movement(s) invalid for tag R64K-3 as the respective sectio
 
             <div class="section-white-bg-area">
 
-            <h2>Daily/Hourly locations</h2>
+            <div id="daily-hourly" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+            <h2>Daily/Hourly locations<a href="#daily-hourly" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
-              <p>Based on the table above, actel will proceed to calculate the amount of time spent per day (or hour, if <code>timestep = "hours"</code>) at each location (in seconds). This leads to a very long table displaying both the number of seconds spent per day/hour at each location, as well as the respective percentages. It also contains an additional column showing the location where the tags spent the most time each day/hour. <a href="manual-residency-results.html#time-ratios">You can find an example here</a>.</p>
+              <p>Based on the table above, actel will proceed to calculate the amount of time spent per day (or hour, if <code>timestep = "hours"</code>) at each location (in seconds). This leads to a very long table displaying both the number of seconds spent per day/hour at each location, as well as the respective percentages. It also contains an additional column showing the location where the tags spent the most time each day/hour. <a href="manual-residency-results.html#time.ratios">You can find an example here</a>.</p>
 
             </div>
           </div>
@@ -171,10 +174,12 @@ M: Rendering 1 array movement(s) invalid for tag R64K-3 as the respective sectio
 
           <div class="section-white-bg-area">
 
-            <h2>Global ratios</h2>
+            <div id="global-ratios" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+            <h2>Global ratios<a href="#global-ratios" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
-              <p>Using the table above as a reference for each tag, actel is then able to calculate how many of your animals were at each location during each passing day/hour. Actel calculates two similar tables, one with absolute numbers, and one with percentages. <a href="manual-residency-results.html#global-ratios">You can find an example here</a>.</p>
+              <p>Using the table above as a reference for each tag, actel is then able to calculate how many of your animals were at each location during each passing day/hour. Actel calculates two similar tables, one with absolute numbers, and one with percentages. <a href="manual-residency-results.html#global.ratios">You can find an example here</a>.</p>
 
             </div>
           </div>
@@ -182,7 +187,9 @@ M: Rendering 1 array movement(s) invalid for tag R64K-3 as the respective sectio
 
           <div class="section-white-bg-area">
 
-            <h2>Wrapping up</h2>
+            <div id="wrapping-up" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+            <h2>Wrapping up<a href="#wrapping-up" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
 

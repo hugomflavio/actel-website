@@ -83,7 +83,7 @@
       
           <div class="section-white-bg-area">
 
-            <h2>Multi-way efficiency</h2>
+            <h2>Multi-way efficiency<a href="#" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
                   
               <p>
@@ -146,8 +146,9 @@ E -- F
 
           <div class="section-white-bg-area">
 
+            <div id="success" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-            <h2>Assigning successful events</h2>
+            <h2>Assigning successful events<a href="#success" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
               <p>To count the number of successful events, actel assigns one point for every time the tags shift positions. This means that, if a tag has multiple detection events in one single array, it counts as a single point, but if a tag goes somewhere else and returns to the initial array, it will count as two points in the initial array. Let's see some movement tables as examples:</p>
@@ -174,7 +175,9 @@ E -- F
 
           <div class="section-white-bg-area">
 
-            <h2>Assigning failed events</h2>
+            <div id="failed" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+            <h2>Assigning failed events<a href="#failed" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
               <p>When a tag is detected at more than one array, actel checks if consecutive events are at neighbouring arrays or not. If the two consecutive arrays are neighbours, everything is in order, but if not, actel proceeds to finding out which arrays have failed. If there is one single shortest path between the two arrays, actel attributes a "surely missed" point to the arrays constituting that path. If there are more than one equally short paths between the two arrays, actel attributes a "potentially missed" point to all the arrays involved in those paths. Here is an example:</p>
@@ -218,7 +221,9 @@ E -- F
 
           <div class="section-white-bg-area">
 
-            <h2>Minimum and maximum efficiency</h2>
+            <div id="range" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+            <h2>Minimum and maximum efficiency<a href="#range" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
 <p>Actel repeats the processes above for all tags, and compiles a table of successful, surely missed and potentially missed events. Then, we have what we need to calculate efficiency:</p>
@@ -239,7 +244,9 @@ E -- F
 <p>All the information used to calculate the efficiency is stored in the <a href="manual-residency-results.html#efficiency"><code>efficiency</code> object</a>.</p>
 
 
-<h3>Intra-array efficiency</h3>
+<div id="intra-array" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+<h3>Intra-array efficiency<a href="#intra-array" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>Intra array efficiency calculations are also performed following the equations provided by <a href="https://www.researchgate.net/publication/256443823_Using_mark-recapture_models_to_estimate_survival_from_telemetry_data" target="_blank">Perry et al. (2012)</a>. Specifically, actel splits the array's receivers in "original" and "replicates" (depending on what you specified in the <a href="manual-migration.html#replicates">replicates argument</a>), and compares the tags detected at both of these elements. The results of the intra-array calculations for each array are then stored in the <a href="manual-migration-results.html#intra-array"><code>intra.array.CJS</code> list</a>.</p>
 

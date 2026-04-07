@@ -83,7 +83,7 @@
       
           <div class="section-white-bg-area">
 
-            <h2>What do you get from <code>migration()</code>?</h2>
+            <h2>What do you get from <code>residency()</code>?<a href="#" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
                   
               <p>
@@ -96,18 +96,19 @@
 
           <div class="section-white-bg-area" id="within-r">
 
-            <h2>Results within R</h2>
+            <h2>Results within R<a href="#within-r" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
-              <h3>status.df</h3>
+              <div id="status.df" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>status.df<a href="#status.df" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>The <strong>status.df</strong> object is a data frame that combines both the timetable data and your biometrics into a single, organised table (see <a href="manual-residency-processes.html#timetable">"Compiling a timetable"</a>). If you have stored any comments during the analysis process, they will show up in a reserved column in this table. The <strong>status.df</strong> also contains some more summary information for each animal. This table can be quite big, so it may be a good idea to use <code>head(status.df)</code> the first time you look at it.</p>
 
 
-              <div id="section-movements" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+              <div id="section.movements" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-
-              <h3>section.movements</h3>
+              <h3>section.movements<a href="#section.movements" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
               <p>The <code>section.movements</code> list contains the section-level movement events created during <a href="manual-residency-processes.html#section-movements">the movement compressing process</a>. Here is an example:</p>
 
@@ -116,9 +117,9 @@
 <p>(Timestamps were trimmed so the table fits better in the page)</p>
 
 
-              <div id="residency-list" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+              <div id="residency.list" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-              <h3>residency.list</h3>
+              <h3>residency.list<a href="#residency.list" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 
 <p>This list contains a table for each of the target tags, detailing where it was since its first valid detection to its last. Here is an example of the residency list produced based on the section movements above:</p>
@@ -126,20 +127,24 @@
 
 <table><thead><tr><th>Section</th><th>First.time</th><th>Last.time</th></tr></thead><tbody><tr><td>Down</td><td>2019-06-06 00:00:15</td><td>2019-06-06 00:00:15</td></tr><tr><td>Down-Right</td><td>2019-06-06 00:00:15</td><td>2019-06-07 20:00:20</td></tr><tr><td>Right</td><td>2019-06-07 20:00:20</td><td>2019-07-01 07:33:00</td></tr><tr><td>Left-Right</td><td>2019-07-01 07:33:00</td><td>2019-07-03 16:00:53</td></tr><tr><td>Left</td><td>2019-07-03 16:00:53</td><td>2019-07-16 00:00:16</td></tr><tr><td>Left-Right</td><td>2019-07-16 00:00:16</td><td>2019-07-20 05:00:35</td></tr><tr><td>Right</td><td>2019-07-20 05:00:35</td><td>2019-08-15 07:13:00</td></tr><tr><td>Down-Right</td><td>2019-08-15 07:13:00</td><td>2019-09-03 14:00:10</td></tr><tr><td>Down</td><td>2019-09-03 14:00:10</td><td>2019-09-03 14:00:10</td></tr><tr><td>Down-Left</td><td>2019-09-03 14:00:10</td><td>2019-09-05 21:00:05</td></tr><tr><td>Left</td><td>2019-09-05 21:00:05</td><td>2019-09-05 21:00:05</td></tr></tbody></table>
 
-              <h3>array.times</h3>
+              <div id="array.times" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>array.times<a href="#array.times" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>This table contains information on the all arrival times for each tag, at each array. It is used to produce circular graphics in the report.</p>
 
 
-              <h3>section.times</h3>
+              <div id="section.times" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>section.times<a href="#section.times" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>This list contains two tables. The first one has all the arrival times for each tag, at each section, and the second has all the departure times, sorted in the same fashion. These are used to produce circular graphics in the report.</p>
 
 
 
-              <div id="time-ratios" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+              <div id="time.ratios" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-              <h3>time.ratios</h3>
+              <h3>time.ratios<a href="#time.ratios" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>This list contains detailed information on the time spent at each location, per day (or hour, if <code>timestep = "hours"</code>), for each of the target tags. These tables can be quite long. Here is an example:</p>
 
@@ -148,14 +153,18 @@
 <p>(Columns and rows were hidden so the table fits better in the page)</p>
 
 
-              <h3>time.positions</h3>
+              <div id="time.positions" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+  
+              <h3>time.positions<a href="#time.positions" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>The data frame shows the place where each tag spent the most time during each day. It is a crucial middle step between the <code>time.ratios</code> and the <code>global.ratios</code></p>
 
 
-              <div id="global-ratios" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+              <div id="global.ratios" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+  
+              <div id="global.ratios" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-              <h3>global.ratios</h3>
+              <h3>global.ratios<a href="#global.ratios" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>The global ratios is a list containing two elements:</p>
 
@@ -174,12 +183,16 @@
 </ol>
 
 
-              <h3>group.ratios</h3>
+              <div id="group.ratios" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>group.ratios<a href="#group.ratios" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>The group ratios are lists similar to the `global.ratios`, but where the data has been split by the groups you defined in the biometrics. This allows you to compare the residency patterns of your different groups!</p>
 
 
-              <h3>last.seen</h3>
+              <div id="last.seen" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>last.seen<a href="#last.seen" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>This summary table shows how many tags from each group were last seen at each section, with an extra column for tags that were never detected:</p>
 
@@ -189,7 +202,7 @@
 
               <div id="efficiency" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-              <h3>efficiency</h3>
+              <h3>efficiency<a href="#efficiency" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>The <code>efficiency</code> is a list containing three elements.</p>
 
@@ -201,16 +214,20 @@
 
 <p>You can find more about how efficiency estimations are made in the residency analysis <a href="manual-residency-efficiency.html">in this manual page.</a></p>
 
-              <h3>intra.array.CJS</h3>
+              <div id="intra.array.CJS" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>intra.array.CJS<a href="#intra.array.CJS" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>If you provided intra-array estimates in the <a href="manual-residency.html#replicates">replicates argument</a>, actel will estimate intra-array efficiencies for the target arrays. These results are stored in the object <code>intra.array.CJS</code>, and the combined efficiency estimate is used to complement the overall efficiency results.</p>
 
             </div>
           </div>
 
-          <div class="section-white-bg-area" id="exported">
+          <div class="section-white-bg-area">
 
-            <h2>Results in your working directory</h2>
+            <div id="exported" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+            <h2>Results in your working directory<a href="#exported" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
             <div class="manual">
 
 
@@ -218,7 +235,9 @@
 
 
 
-              <h3>actel_residency_results.RData</h3>
+              <div id="rdata" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+              <h3>actel_residency_results.RData<a href="#rdata" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <pre>
 
@@ -232,7 +251,7 @@ Would you like to save a copy of the results to actel_residency_results.RData?(y
 
               <div id="report" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-              <h3>actel_residency_report.html (if report = TRUE)</h3>
+              <h3>actel_residency_report.html (if report = TRUE)<a href="#report" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 <p>This is the main non-R output. If you activated the <code>report</code> option, actel will compile an html report for you. The migration report contains the same sections as the <a href="manual-explore-results.html#report">explore report</a>, plus the following:</p>
 

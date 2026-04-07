@@ -83,7 +83,7 @@
 					
 					<div class="section-white-bg-area">
 
-						<h2>The <code>residency()</code> function</h2>
+						<h2>The <code>residency()</code> function<a href="#" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 						<div class="manual">
 						
 							<p>The <code>residency()</code> function builds on the same principles as the <strong> </strong> function and, in addition, computes metrics aiming to show the animal behaviour over time.</p>
@@ -97,9 +97,11 @@
 
 					</div>
 
-					<div class="section-white-bg-area" id="arguments">
+					<div class="section-white-bg-area">
 
-						<h2>Residency arguments</h2>
+            <div id="arguments" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+						<h2>Residency arguments<a href="#arguments" class="anchor-link"><i class="fa-solid fa-link"></i></a></h2>
 						<div class="manual">
 
 						<p>The arguments within <code>residency()</code> allow you thoroughly analyse the animal behaviour.</p>
@@ -117,15 +119,17 @@ residency(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 						<p>Below are listed only new arguments that do not exist in <a href = "manual-explore.html#general-arguments">explore</a>.</p>
 
 
-						<h3>section.order</h3>
+            <div id="section.order" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+						<h3>section.order<a href="#section.order" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 						<p>This argument allows you to specify by which order you would like the sections to appear in plots and tables. By default, actel will order the sections by the order in which they appear in the spatial.csv file. However, you can force a specific order using the <code>section.order</code> argument. To learn more about how to organise your study area in an actel-friendly way, have a look at <a href="manual-study-area.html">this manual page</a>.</p>
 
 
 
-              <div id="section-minimum" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+            <div id="section.minimum" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-						<h3>section.minimum</h3>
+						<h3>section.minimum<a href="#section.minimum" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 						<p>
 						This argument controls how many times a tag must be registered at a section for the event to be considered reliable. As part of the analysis, <code>residency()</code> will crunch the array level movement events into section level events. Should there be section events with less overall detections than those listed in <code>section.minimum</code>, a warning is raised, and you are given the chance to render events invalid.</p>
@@ -133,7 +137,9 @@ residency(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 <p>You can find more about the <a href="manual-residency-processes.html#section-movements">creation and validation of section movements here</a>.</p>
 
 
-						<h3>timestep</h3>
+            <div id="timestep" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+						<h3>timestep<a href="#timestep" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 						<p>By default, residency metrics are calculated on a daily basis (e.g. where did my animal spent the most time this day?). However, you may be interested in extracting results at a finer scale. By setting <code>timestep = "hours"</code>, actel will calculate all residency-related values on an hourly basis, rather than on a daily basis.
 						</p>
@@ -149,7 +155,9 @@ residency(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 
 
 
-						<h3>replicates</h3>
+            <div id="replicates" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
+
+						<h3>replicates<a href="#replicates" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 						<p>One of the main drawbacks of array efficiency calculations is that it can be tricky to estimate efficiency for arrays which have no valid efficiency peers (i.e. no other arrays that can be used as quality checks). However, if these "isolated" arrays are composed by two lines of receivers, one line can be used as a replicate of the other, which in turn allows for the estimation of intra-array efficiency. If this is your case, then you should make use of the <code>replicates</code> argument.</p>
 
@@ -185,8 +193,9 @@ residency(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 
 
 
+            <div id="replicates-setup" style="margin-top: -70px; margin-bottom: 100px;"></div> <!-- This div is here to ensure the title lands nicely under the navbar when the respective ID is called -->
 
-						<h3>Setting up the replicates argument</h3>
+						<h3>Setting up the replicates argument<a href="#replicates-setup" class="anchor-link"><i class="fa-solid fa-link"></i></a></h3>
 
 
 
@@ -201,13 +210,7 @@ residency(tz, section.order = NULL, success.arrays = NULL, max.interval = 60, mi
 						<p>It is important that you list replicates using the <code>list(Array = "Replicate")</code> construction. Keep this in mind while you prepare the code.</p>
 
 
-
-
-
-
-
-						<p>Now that you know how to run the residency analysis, you may want to:
-						</p>
+						<p>Now that you know how to run the residency analysis, you may want to:</p>
 
 							<p><a href="manual-residency-processes.html">Learn more about what <code>residency()</code> is doing</a>. 
 							</p>
